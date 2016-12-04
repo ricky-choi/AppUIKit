@@ -8,14 +8,16 @@
 
 import Cocoa
 
-class AUIWindow: NSWindow {
-    override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
-        super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
-        
-        setup()
+open class AUIWindow: NSWindow {
+    convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+        self.init(contentRect: contentRect, styleMask: .fullSizeContentView, backing: bufferingType, defer: flag)
     }
     
-    override func awakeFromNib() {
+    override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+        super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
+    }
+    
+    override open func awakeFromNib() {
         super.awakeFromNib()
         
         setup()

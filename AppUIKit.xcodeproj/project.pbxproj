@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1D5E9C1DEF9264004BF825 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */; };
 		9C74C8A21DECF21F009643B2 /* AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; };
 		9C74C8A71DECF21F009643B2 /* AppUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74C8A61DECF21F009643B2 /* AppUIKitTests.swift */; };
 		9C74C8A91DECF21F009643B2 /* AppUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C74C89B1DECF21F009643B2 /* AppUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +20,8 @@
 		9C9554D61DECFDC200156EA8 /* IrishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9554D51DECFDC200156EA8 /* IrishUITests.swift */; };
 		9C9554E11DECFF2600156EA8 /* AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; };
 		9C9554E21DECFF2600156EA8 /* AppUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CF0F7491DF158E600063DAC /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F7481DF158E600063DAC /* WindowController.swift */; };
+		9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		9C74C8981DECF21F009643B2 /* AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C74C89B1DECF21F009643B2 /* AppUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUIKit.h; sourceTree = "<group>"; };
 		9C74C89C1DECF21F009643B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		9C9554D11DECFDC100156EA8 /* IrishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9554D51DECFDC200156EA8 /* IrishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrishUITests.swift; sourceTree = "<group>"; };
 		9C9554D71DECFDC200156EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF0F7481DF158E600063DAC /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,8 @@
 				9C74C89B1DECF21F009643B2 /* AppUIKit.h */,
 				9C74C89C1DECF21F009643B2 /* Info.plist */,
 				9C9554B01DECFD8600156EA8 /* AUIWindow.swift */,
+				9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */,
+				9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */,
 			);
 			path = AppUIKit;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 			children = (
 				9C9554B81DECFDC100156EA8 /* AppDelegate.swift */,
 				9C9554BA1DECFDC100156EA8 /* ViewController.swift */,
+				9CF0F7481DF158E600063DAC /* WindowController.swift */,
 				9C9554BC1DECFDC100156EA8 /* Assets.xcassets */,
 				9C9554BE1DECFDC100156EA8 /* Main.storyboard */,
 				9C9554C11DECFDC100156EA8 /* Info.plist */,
@@ -410,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9554B11DECFD8600156EA8 /* AUIWindow.swift in Sources */,
+				9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */,
+				9C1D5E9C1DEF9264004BF825 /* DeviceInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9554BB1DECFDC100156EA8 /* ViewController.swift in Sources */,
+				9CF0F7491DF158E600063DAC /* WindowController.swift in Sources */,
 				9C9554B91DECFDC100156EA8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +783,7 @@
 				9C9554DA1DECFDC200156EA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C9554DB1DECFDC200156EA8 /* Build configuration list for PBXNativeTarget "IrishTests" */ = {
 			isa = XCConfigurationList;
@@ -779,6 +792,7 @@
 				9C9554DD1DECFDC200156EA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C9554DE1DECFDC200156EA8 /* Build configuration list for PBXNativeTarget "IrishUITests" */ = {
 			isa = XCConfigurationList;
@@ -787,6 +801,7 @@
 				9C9554E01DECFDC200156EA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

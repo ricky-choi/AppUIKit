@@ -627,6 +627,38 @@
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="0fA-2E-HtV"/>
+                                        <menuItem title="Size" id="7AQ-oT-VcS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Size" id="Pok-qQ-sDA">
+                                                <items>
+                                                    <menuItem title="iPhone 4" tag="1" id="QY5-35-biO">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setWindowSize:" target="Ady-hI-5gd" id="K8u-hM-Jeg"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="iPhone 5" tag="2" id="Ha8-Gt-YCz">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setWindowSize:" target="Ady-hI-5gd" id="mr4-rh-ygM"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="iPhone 7" tag="3" id="iFX-Af-SVm">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setWindowSize:" target="Ady-hI-5gd" id="Fhm-Ao-X0r"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="iPhone 7+" tag="4" id="ICZ-ip-qgw">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="setWindowSize:" target="Ady-hI-5gd" id="TEK-Pg-tdS"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                                         <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -663,7 +695,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="Irish" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="AUIWindow" customModule="AppUIKit">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
