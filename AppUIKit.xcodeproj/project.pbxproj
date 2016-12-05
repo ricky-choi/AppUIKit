@@ -20,6 +20,7 @@
 		9C9554D61DECFDC200156EA8 /* IrishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9554D51DECFDC200156EA8 /* IrishUITests.swift */; };
 		9C9554E11DECFF2600156EA8 /* AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; };
 		9C9554E21DECFF2600156EA8 /* AppUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C96FCB21DF62EDA0057050E /* AUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */; };
 		9CBD96471DF4E72900CAC2A6 /* AUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */; };
 		9CBD96491DF4E7F100CAC2A6 /* AUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD96481DF4E7F100CAC2A6 /* AUIViewController.swift */; };
 		9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD964A1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift */; };
@@ -99,6 +100,7 @@
 		9C9554D11DECFDC100156EA8 /* IrishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IrishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9554D51DECFDC200156EA8 /* IrishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrishUITests.swift; sourceTree = "<group>"; };
 		9C9554D71DECFDC200156EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIToolbar.swift; sourceTree = "<group>"; };
 		9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUILabel.swift; sourceTree = "<group>"; };
 		9CBD96481DF4E7F100CAC2A6 /* AUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIViewController.swift; sourceTree = "<group>"; };
 		9CBD964A1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
 				9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */,
 				9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */,
+				9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */,
 			);
 			path = AppUIKit;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */,
 				9CBD964D1DF4E82B00CAC2A6 /* AUINavigationController.swift in Sources */,
 				9CBD96571DF4E8A800CAC2A6 /* AUIBarButtonItem.swift in Sources */,
+				9C96FCB21DF62EDA0057050E /* AUIToolbar.swift in Sources */,
 				9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */,
 				9C1D5E9C1DEF9264004BF825 /* DeviceInfo.swift in Sources */,
 				9CBD96491DF4E7F100CAC2A6 /* AUIViewController.swift in Sources */,
