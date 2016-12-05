@@ -9,7 +9,7 @@
 import Cocoa
 
 open class AUIWindow: NSWindow {
-    convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    public convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         self.init(contentRect: contentRect, styleMask: .fullSizeContentView, backing: bufferingType, defer: flag)
     }
     
