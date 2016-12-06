@@ -1,0 +1,16 @@
+PODS:
+  - AppcidCocoaUtil (0.1.0)
+
+DEPENDENCIES:
+  - AppcidCocoaUtil (from `../AppcidCocoaUtil`)
+
+EXTERNAL SOURCES:
+  AppcidCocoaUtil:
+    :path: "../AppcidCocoaUtil"
+
+SPEC CHECKSUMS:
+  AppcidCocoaUtil: bb4be53c72eb8cd11a85b65fffc3b35ed600d3a2
+
+PODFILE CHECKSUM: fbae207f0fbfae8969bf14c8a7032f366216ad35
+
+COCOAPODS: 1.1.1

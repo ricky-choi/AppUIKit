@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C6947EBF610DCCD95D5EB683025E86AFFE3F4186",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C6947EBF610DCCD95D5EB683025E86AFFE3F4186" : 9223372036854775807,
+    "B4A93370F68B92C1CFF91C7C270F6C212EEBF233" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A4E4BDF9-7A11-43CC-B3AA-9BC0FCE7504F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C6947EBF610DCCD95D5EB683025E86AFFE3F4186" : "AppUIKit\/",
+    "B4A93370F68B92C1CFF91C7C270F6C212EEBF233" : "AppcidCocoaUtil\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AppUIKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AppUIKit.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Ricky-Choi\/AppcidCocoaUtil.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B4A93370F68B92C1CFF91C7C270F6C212EEBF233"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Ricky-Choi\/AppUIKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C6947EBF610DCCD95D5EB683025E86AFFE3F4186"
+    }
+  ]
+}

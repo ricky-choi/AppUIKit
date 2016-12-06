@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+import AppcidCocoaUtil
 
 @objc protocol AUINavigationControllerDelegate: class {
     @objc optional func navigationController(_ navigationController: AUINavigationController, willShow viewController: AUIViewController, animated: Bool)
@@ -63,6 +63,7 @@ open class AUINavigationController: AUIViewController {
     public func setNavigationBarHidden(_ hidden: Bool, animated: Bool) {
         
     }
+    public var navigationBarHeight: CGFloat = 44
     
     // Configuring Custom Toolbars
     public var toolbar: AUIToolbar {
@@ -76,6 +77,7 @@ open class AUINavigationController: AUIViewController {
         
     }
     public var isToolbarHidden: Bool = true
+    public var toolbarHeight: CGFloat = 44
     
     // Hiding the Navigation Bar
     public var hidesBarsOnTap: Bool = false
@@ -90,6 +92,17 @@ open class AUINavigationController: AUIViewController {
     // View LifeCycle
     open override func loadView() {
         view = AUIView()
+        
+        view.addSubview(_contentContainerView)
+        view.addSubview(_navigationBarContainerView)
+        
+        _contentContainerView.translatesAutoresizingMaskIntoConstraints = false
+        _navigationBarContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        _contentContainerView.fillToSuperview()
+        _navigationBarContainerView.fillXToSuperview()
+        _navigationBarContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        _navigationBarContainerView.fixHeight(navigationBarHeight)
     }
     
     open override func viewDidLoad() {
@@ -102,5 +115,9 @@ open class AUINavigationController: AUIViewController {
     // private implementation
     private var _navigationBar: AUINavigationBar?
     private var _toolbar: AUIToolbar?
+    
+    private var _contentContainerView = AUIView()
+    private var _navigationBarContainerView = AUIView()
+    private var _toolbarContainerView = AUIView()
 }
 
