@@ -14,6 +14,10 @@ open class AUIViewController: NSViewController {
     lazy public private(set) var navigationItem: AUINavigationItem = {
         return AUINavigationItem(title: self.title ?? "")
     }()
+    
+    func setup() {
+        
+    }
 
     override open func viewDidLoad() {
         super.viewDidLoad()

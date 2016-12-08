@@ -23,7 +23,8 @@ open class AUINavigationController: AUIViewController {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        viewControllers = [AUIViewController]()
+        super.init(coder: coder)
     }
     
     // Accessing Items on the Navigation Stack

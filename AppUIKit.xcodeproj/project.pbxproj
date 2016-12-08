@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6523B9DD94DD61A9095EB978 /* Pods_Irish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B126DB847CD35941C9F93C2 /* Pods_Irish.framework */; };
 		9C1D5E9C1DEF9264004BF825 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */; };
 		9C74C8A21DECF21F009643B2 /* AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C74C8981DECF21F009643B2 /* AppUIKit.framework */; };
 		9C74C8A71DECF21F009643B2 /* AppUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74C8A61DECF21F009643B2 /* AppUIKitTests.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B126DB847CD35941C9F93C2 /* Pods_Irish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Irish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A6A0CAD160F258C7D35903 /* Pods-AppUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		9C74C8981DECF21F009643B2 /* AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,8 @@
 		9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarButtonItem.swift; sourceTree = "<group>"; };
 		9CF0F7481DF158E600063DAC /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIWindowController.swift; sourceTree = "<group>"; };
+		A3807DD4F5DCA671B7F2279D /* Pods-Irish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.release.xcconfig"; sourceTree = "<group>"; };
+		E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.debug.xcconfig"; sourceTree = "<group>"; };
 		F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9554E11DECFF2600156EA8 /* AppUIKit.framework in Frameworks */,
+				6523B9DD94DD61A9095EB978 /* Pods_Irish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +170,8 @@
 			children = (
 				95A6A0CAD160F258C7D35903 /* Pods-AppUIKit.debug.xcconfig */,
 				F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */,
+				E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */,
+				A3807DD4F5DCA671B7F2279D /* Pods-Irish.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -261,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */,
+				6B126DB847CD35941C9F93C2 /* Pods_Irish.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -321,10 +329,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C9554D81DECFDC200156EA8 /* Build configuration list for PBXNativeTarget "Irish" */;
 			buildPhases = (
+				429CC5BD09EE1881F63D4557 /* [CP] Check Pods Manifest.lock */,
 				9C9554B21DECFDC100156EA8 /* Sources */,
 				9C9554B31DECFDC100156EA8 /* Frameworks */,
 				9C9554B41DECFDC100156EA8 /* Resources */,
 				9C9554E51DECFF2600156EA8 /* Embed Frameworks */,
+				C8328BB692EB8C7CB09BAEB0 /* [CP] Embed Pods Frameworks */,
+				4DBC41C60B505292436B89B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -485,6 +496,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		429CC5BD09EE1881F63D4557 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4DBC41C60B505292436B89B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Irish/Pods-Irish-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		833B0CA487505643BB7CE49B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,6 +539,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8328BB692EB8C7CB09BAEB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Irish/Pods-Irish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -763,6 +819,7 @@
 		};
 		9C9554D91DECFDC200156EA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -777,6 +834,7 @@
 		};
 		9C9554DA1DECFDC200156EA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3807DD4F5DCA671B7F2279D /* Pods-Irish.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
