@@ -21,8 +21,16 @@ class ViewController: NSViewController {
         }
     }
 
-    var windowController: AUIWindowController!
+    var navigationWindowController: AUINavigationWindowController!
     @IBAction func action(_ sender: Any) {
+        let viewController = AUIViewController()
+        viewController.title = "My Title"
+        navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
+        navigationWindowController.show()
+    }
+
+    var windowController: AUIWindowController!
+    func makeWindow1() {
         windowController = AUIWindowController()
         let viewController = AUIViewController()
         viewController.title = "My Title"
@@ -31,6 +39,5 @@ class ViewController: NSViewController {
         windowController.contentViewController = navigationController
         windowController.show()
     }
-
 }
 
