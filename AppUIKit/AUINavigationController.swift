@@ -192,6 +192,20 @@ open class AUINavigationController: AUIViewController {
         return view.window?.makeFirstResponder(topViewController) ?? true
     }
     
+    private var _title: String?
+    open override var title: String? {
+        get {
+            if _title != nil {
+                return _title
+            }
+            
+            return visibleViewController?.title
+        }
+        set {
+            _title = newValue
+        }
+    }
+    
     // fileprivate implementation
     fileprivate var _navigationBar: AUINavigationBar?
     fileprivate var _toolbar: AUIToolbar?

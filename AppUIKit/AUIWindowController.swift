@@ -28,6 +28,23 @@ open class AUIWindowController: NSWindowController {
 
     }
     
+    open override var contentViewController: NSViewController? {
+        didSet {
+            if let title = contentViewController?.title {
+                window?.title = title
+            }
+        }
+    }
+    
+    public func show() {
+        guard let window = window else {
+            return
+        }
+        window.makeKeyAndOrderFront(self)
+        
+        NSApp.addWindowsItem(window, title: window.title.isEmpty ? NSLocalizedString("Empty", comment: "") : window.title, filename: false)
+    }
+    
 }
 
 extension AUIWindowController {
