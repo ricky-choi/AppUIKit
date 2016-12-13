@@ -9,12 +9,16 @@
 import Cocoa
 
 open class AUIWindow: NSWindow {
+    static let defaultStyleMask: NSWindowStyleMask = [.titled, .closable, .miniaturizable, .fullSizeContentView]
+    
     public convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
-        self.init(contentRect: contentRect, styleMask: .fullSizeContentView, backing: bufferingType, defer: flag)
+        self.init(contentRect: contentRect, styleMask: AUIWindow.defaultStyleMask, backing: bufferingType, defer: flag)
     }
     
     override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
+        
+        setup()
     }
     
     override open func awakeFromNib() {

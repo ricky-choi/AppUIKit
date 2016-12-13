@@ -15,6 +15,18 @@ open class AUIViewController: NSViewController {
         return AUINavigationItem(title: self.title ?? "")
     }()
     
+    public init() {
+        super.init(nibName: nil, bundle: nil)!
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    open override func loadView() {
+        view = AUIView()
+    }
+    
     func setup() {
         
     }

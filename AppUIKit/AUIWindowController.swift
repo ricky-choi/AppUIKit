@@ -9,6 +9,19 @@
 import Cocoa
 
 open class AUIWindowController: NSWindowController {
+    
+    public convenience init() {
+        self.init(frame: NSZeroRect)
+    }
+    
+    public init(frame: NSRect) {
+        let window = AUIWindow(contentRect: frame, backing: .buffered, defer: true)
+        super.init(window: window)
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     override open func windowDidLoad() {
         super.windowDidLoad()

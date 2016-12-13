@@ -21,6 +21,16 @@ class ViewController: NSViewController {
         }
     }
 
+    var windowController: AUIWindowController!
+    @IBAction func action(_ sender: Any) {
+        windowController = AUIWindowController()
+        let viewController = AUIViewController()
+        let navigationController = AUINavigationController(rootViewController: viewController)
+        navigationController.view.frame = NSMakeRect(100, 100, 600, 400)
+        windowController.contentViewController = navigationController
+        
+        windowController.window?.makeKeyAndOrderFront(nil)
+    }
 
 }
 
