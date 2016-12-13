@@ -180,7 +180,7 @@ open class AUINavigationController: AUIViewController {
         addChildViewController(viewController)
         _contentContainerView.addSubview(viewController.view)
         
-        _constraintCenterXForLastViewController = viewController.view.fillAndCenter().xConstraint
+        _constraintCenterXForLastViewController = viewController.view.fillAndCenterToSuperview().xConstraint
     }
     
     open override func viewDidLoad() {
@@ -218,9 +218,9 @@ extension AUINavigationController {
             if push {
                 // animated && push
                 _contentContainerView.addSubview(toViewController.view)
-                let newConstraintX = toViewController.view.fillAndCenter(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
+                let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
                 if _constraintCenterXForLastViewController == nil {
-                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenter().xConstraint
+                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
                 }
                 
                 NSAnimationContext.runAnimationGroup({ (context) in
@@ -237,9 +237,9 @@ extension AUINavigationController {
             } else {
                 // animated && pop
                 _contentContainerView.addSubview(toViewController.view, positioned: .below, relativeTo: fromViewController.view)
-                let newConstraintX = toViewController.view.fillAndCenter(offset: ACDOffset(x: -viewWidth / 3.0, y: 0)).xConstraint
+                let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: -viewWidth / 3.0, y: 0)).xConstraint
                 if _constraintCenterXForLastViewController == nil {
-                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenter().xConstraint
+                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
                 }
                 
                 NSAnimationContext.runAnimationGroup({ (context) in
