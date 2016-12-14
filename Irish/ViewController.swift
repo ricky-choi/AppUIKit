@@ -26,6 +26,7 @@ class ViewController: NSViewController {
         let viewController = AUIViewController()
         viewController.title = "My Title"
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
+        navigationWindowController.navigationController.navigationBar.backgroundColor = NSColor.red
         navigationWindowController.show()
     }
 
