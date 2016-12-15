@@ -11,7 +11,7 @@ import AppcidCocoaUtil
 
 open class AUIView: NSView {
     
-    var backgroundColor = NSColor.white {
+    public var backgroundColor = NSColor.white {
         didSet {
             needsDisplay = true
         }

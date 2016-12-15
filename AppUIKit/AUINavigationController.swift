@@ -34,7 +34,7 @@ open class AUINavigationController: AUIViewController {
     public var visibleViewController: AUIViewController? {
         return topViewController
     }
-    public fileprivate(set) var viewControllers: [AUIViewController] // TODO: use var childViewControllers: [NSViewController]
+    public fileprivate(set) var viewControllers: [AUIViewController]
     public func setViewControllers(_ viewControllers: [AUIViewController], animated: Bool) {
         self.viewControllers = viewControllers
         
@@ -59,6 +59,7 @@ open class AUINavigationController: AUIViewController {
         _navigate(fromViewController: currentViewController, toViewController: viewController, animated: animated, push: true)
     }
     
+    @discardableResult
     public func popViewController(animated: Bool) -> AUIViewController? {
         guard viewControllers.count > 1 else {
             return nil
@@ -71,6 +72,7 @@ open class AUINavigationController: AUIViewController {
         return popedViewController
     }
     
+    @discardableResult
     public func popToRootViewController(animated: Bool) -> [AUIViewController]? {
         guard viewControllers.count > 1 else {
             return nil
@@ -84,6 +86,7 @@ open class AUINavigationController: AUIViewController {
         return Array(removeViewControllers)
     }
     
+    @discardableResult
     public func popToViewController(_ viewController: AUIViewController, animated: Bool) -> [AUIViewController]? {
         guard viewControllers.count > 1 && viewControllers.last != viewController else {
             return nil
@@ -174,15 +177,6 @@ open class AUINavigationController: AUIViewController {
         }
     }
     
-    private func setupInitialViewController(_ viewController: AUIViewController) {
-        navigationBar.setItems([viewController.navigationItem], animated: false)
-        viewController.navigationController = self
-        addChildViewController(viewController)
-        _contentContainerView.addSubview(viewController.view)
-        
-        _constraintCenterXForLastViewController = viewController.view.fillAndCenterToSuperview().xConstraint
-    }
-    
     open override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -218,13 +212,23 @@ open class AUINavigationController: AUIViewController {
 }
 
 extension AUINavigationController {
+    fileprivate func setupInitialViewController(_ viewController: AUIViewController) {
+        navigationBar.setItems([viewController.navigationItem], animated: false)
+        viewController.navigationController = self
+        addChildViewController(viewController)
+        _contentContainerView.addSubview(viewController.view)
+        
+        _constraintCenterXForLastViewController = viewController.view.fillAndCenterToSuperview().xConstraint
+    }
+    
     fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animated: Bool, push: Bool) {
         fromViewController.navigationController = self
         toViewController.navigationController = self
         
         delegate?.navigationController?(self, willShow: toViewController, animated: animated)
-        
+
         addChildViewController(toViewController)
+        toViewController.view.removeAllConstraints()
         
         if animated {
             let viewWidth = view.bounds.size.width
@@ -232,6 +236,7 @@ extension AUINavigationController {
             if push {
                 // animated && push
                 _contentContainerView.addSubview(toViewController.view)
+                
                 let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
                 if _constraintCenterXForLastViewController == nil {
                     _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
@@ -277,6 +282,7 @@ extension AUINavigationController {
             
             delegate?.navigationController?(self, didShow: toViewController, animated: animated)
         }
+
     }
 }
 

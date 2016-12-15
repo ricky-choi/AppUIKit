@@ -8,6 +8,7 @@
 
 import Cocoa
 import AppUIKit
+import AppcidCocoaUtil
 
 class ViewController: NSViewController {
 
@@ -26,7 +27,23 @@ class ViewController: NSViewController {
         let viewController = AUIViewController()
         viewController.title = "My Title"
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
+        navigationWindowController.navigationController.navigationBar.backgroundColor = NSColor.red.withAlphaComponent(0.5)
+        let button = NSButton(title: "push", target: self, action: #selector(togglePush))
+        navigationWindowController.navigationController.navigationBar.addSubview(button)
+        button.centerToSuperview()
         navigationWindowController.show()
+    }
+    
+    func togglePush() {
+        let animated = true
+        if navigationWindowController.navigationController.viewControllers.count > 1 {
+            navigationWindowController.navigationController.popViewController(animated: animated)
+        } else {
+            let viewController = AUIViewController()
+            (viewController.view as! AUIView).backgroundColor = NSColor.green
+            navigationWindowController.navigationController.pushViewController(viewController, animated: animated)
+        }
+        
     }
 
     var windowController: AUIWindowController!
