@@ -127,6 +127,10 @@ open class AUINavigationController: AUIViewController {
         
     }
     public var navigationBarHeight: CGFloat = 44
+    public var titleBarHeight: CGFloat = 0
+    public var navigationAreaHeight: CGFloat {
+        return navigationBarHeight + titleBarHeight
+    }
     
     // Configuring Custom Toolbars
     public var toolbar: AUIToolbar {
@@ -161,13 +165,27 @@ open class AUINavigationController: AUIViewController {
     open override func loadView() {
         view = AUIView()
         
+    }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+    
+    open override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        if let xButtonFrame = view.window?.standardWindowButton(NSWindowButton.closeButton)?.frame {
+            titleBarHeight = xButtonFrame.origin.y * 2 + xButtonFrame.size.height
+        }
+        
         view.addSubview(_contentContainerView)
         _contentContainerView.fillToSuperview()
         
         view.addSubview(_navigationBarContainerView)
         _navigationBarContainerView.fillXToSuperview()
         _navigationBarContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        _navigationBarContainerView.fixHeight(navigationBarHeight)
+        _navigationBarContainerView.fixHeight(navigationAreaHeight)
         
         _navigationBarContainerView.addSubview(navigationBar);
         navigationBar.fillToSuperview()
@@ -175,11 +193,6 @@ open class AUINavigationController: AUIViewController {
         if let viewController = topViewController {
             setupInitialViewController(viewController)
         }
-    }
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-
     }
     
     open override func becomeFirstResponder() -> Bool {
