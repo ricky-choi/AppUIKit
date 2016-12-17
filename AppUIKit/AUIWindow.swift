@@ -9,7 +9,7 @@
 import Cocoa
 
 open class AUIWindow: NSWindow {
-    static let defaultStyleMask: NSWindowStyleMask = [.titled, .closable, .miniaturizable, .fullSizeContentView]
+    static let defaultStyleMask: NSWindowStyleMask = [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView]
     
     public convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         self.init(contentRect: contentRect, styleMask: AUIWindow.defaultStyleMask, backing: bufferingType, defer: flag)
