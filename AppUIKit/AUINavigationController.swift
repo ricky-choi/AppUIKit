@@ -143,7 +143,7 @@ open class AUINavigationController: AUIViewController {
         
     }
     public var navigationBarHeight: CGFloat = 44
-    public var titleBarHeight: CGFloat = 0
+    public var titleBarHeight: CGFloat = 24
     public var navigationAreaHeight: CGFloat {
         return navigationBarHeight + titleBarHeight
     }
@@ -181,20 +181,6 @@ open class AUINavigationController: AUIViewController {
     open override func loadView() {
         view = AUIView()
         
-    }
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
-    open override func viewWillAppear() {
-        super.viewWillAppear()
-        
-        if let xButtonFrame = view.window?.standardWindowButton(NSWindowButton.closeButton)?.frame {
-            titleBarHeight = xButtonFrame.origin.y * 2 + xButtonFrame.size.height
-        }
-        
         view.addSubview(_contentContainerView)
         _contentContainerView.fillToSuperview()
         
@@ -205,13 +191,7 @@ open class AUINavigationController: AUIViewController {
         
         _navigationBarContainerView.addSubview(navigationBar);
         navigationBar.fillToSuperview()
-        
-        
-    }
-    
-    open override func viewDidAppear() {
-        super.viewDidAppear()
-        
+
         if let viewController = topViewController {
             setupInitialViewController(viewController)
         }
@@ -243,7 +223,7 @@ open class AUINavigationController: AUIViewController {
     fileprivate var _navigationBarContainerView = AUIView()
     fileprivate var _toolbarContainerView = AUIView()
     
-    fileprivate var _constraintCenterXForLastViewController: NSLayoutConstraint?
+    fileprivate var _constraintForLastViewController: ACDMarginConstraints?
 }
 
 extension AUINavigationController {
@@ -254,7 +234,7 @@ extension AUINavigationController {
         addChildViewController(viewController)
         _contentContainerView.addSubview(viewController.view)
         
-        _constraintCenterXForLastViewController = viewController.view.fillAndCenterToSuperview().xConstraint
+        _constraintForLastViewController = viewController.view.fillToSuperview()
         
         updateViewConstraints()
     }
@@ -266,7 +246,6 @@ extension AUINavigationController {
         delegate?.navigationController?(self, willShow: toViewController, animated: animation.isAnimated)
 
         addChildViewController(toViewController)
-        toViewController.view.removeAllConstraints()
         
         switch animation {
         case .push:
@@ -274,19 +253,18 @@ extension AUINavigationController {
             
             _contentContainerView.addSubview(toViewController.view)
             
-            let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
-            if _constraintCenterXForLastViewController == nil {
-                _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
-            }
+            let newConstraintX = toViewController.view.fillToSuperview(ACDMargin(leading: viewWidth, top: 0, trailing: viewWidth, bottom: 0))
             
             NSAnimationContext.runAnimationGroup({ (context) in
-                _constraintCenterXForLastViewController?.animator().constant = -viewWidth / 3.0
-                newConstraintX.animator().constant = 0
+                _constraintForLastViewController?.leadingConstraint.animator().constant = -viewWidth / 3.0
+                _constraintForLastViewController?.trailingConstraint.animator().constant = -viewWidth / 3.0
+                newConstraintX.leadingConstraint.animator().constant = 0
+                newConstraintX.trailingConstraint.animator().constant = 0
             }, completionHandler: {
                 fromViewController.removeFromParentViewController()
                 fromViewController.view.removeFromSuperview()
                 
-                self._constraintCenterXForLastViewController = newConstraintX
+                self._constraintForLastViewController = newConstraintX
                 
                 self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
             })
@@ -295,25 +273,24 @@ extension AUINavigationController {
             
             _contentContainerView.addSubview(toViewController.view, positioned: .below, relativeTo: fromViewController.view)
             
-            let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: -viewWidth / 3.0, y: 0)).xConstraint
-            if _constraintCenterXForLastViewController == nil {
-                _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
-            }
+            let newConstraintX = toViewController.view.fillToSuperview(ACDMargin(leading: -viewWidth / 3.0, top: 0, trailing: -viewWidth / 3.0, bottom: 0))
             
             NSAnimationContext.runAnimationGroup({ (context) in
-                _constraintCenterXForLastViewController?.animator().constant = viewWidth
-                newConstraintX.animator().constant = 0
+                _constraintForLastViewController?.leadingConstraint.animator().constant = viewWidth
+                _constraintForLastViewController?.trailingConstraint.animator().constant = viewWidth
+                newConstraintX.leadingConstraint.animator().constant = 0
+                newConstraintX.trailingConstraint.animator().constant = 0
             }, completionHandler: {
                 fromViewController.removeFromParentViewController()
                 fromViewController.view.removeFromSuperview()
                 
-                self._constraintCenterXForLastViewController = newConstraintX
+                self._constraintForLastViewController = newConstraintX
                 
                 self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
             })
         case .viewControllerTransitionOptions(let options):
             _contentContainerView.addSubview(toViewController.view)
-            _constraintCenterXForLastViewController = toViewController.view.fillAndCenterToSuperview().xConstraint
+            _constraintForLastViewController = toViewController.view.fillToSuperview()
             
             transition(from: fromViewController, to: toViewController, options: options, completionHandler: {
                 fromViewController.removeFromParentViewController()
@@ -323,7 +300,7 @@ extension AUINavigationController {
             })
         case .none:
             _contentContainerView.addSubview(toViewController.view)
-            _constraintCenterXForLastViewController = toViewController.view.fillAndCenterToSuperview().xConstraint
+            _constraintForLastViewController = toViewController.view.fillToSuperview()
             
             fromViewController.removeFromParentViewController()
             fromViewController.view.removeFromSuperview()
