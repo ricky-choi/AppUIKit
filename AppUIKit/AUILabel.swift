@@ -25,6 +25,7 @@ open class AUILabel: NSTextField {
         isSelectable = false
         isBezeled = false
         isBordered = false
+        backgroundColor = NSColor.clear
     }
     
     override open func draw(_ dirtyRect: NSRect) {

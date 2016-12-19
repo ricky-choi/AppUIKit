@@ -16,6 +16,22 @@ import AppcidCocoaUtil
 
 open class AUINavigationController: AUIViewController {
     
+    enum PushAnimation {
+        case push
+        case pop
+        case viewControllerTransitionOptions(NSViewControllerTransitionOptions)
+        case none
+        
+        var isAnimated: Bool {
+            switch self {
+            case .none:
+                return false
+            default:
+                return true
+            }
+        }
+    }
+    
     // Creating Navigation Controllers
     public init(rootViewController: AUIViewController) {
         viewControllers = [rootViewController]
@@ -56,7 +72,7 @@ open class AUINavigationController: AUIViewController {
         
         viewControllers.append(viewController)
         navigationBar.pushItem(viewController.navigationItem, animated: animated)
-        _navigate(fromViewController: currentViewController, toViewController: viewController, animated: animated, push: true)
+        _navigate(fromViewController: currentViewController, toViewController: viewController, animation: animated ? .push : .none)
     }
     
     @discardableResult
@@ -67,7 +83,7 @@ open class AUINavigationController: AUIViewController {
         
         let popedViewController = viewControllers.removeLast()
         navigationBar.popItem(animated: animated)
-        _navigate(fromViewController: popedViewController, toViewController: viewControllers.last!, animated: animated, push: false)
+        _navigate(fromViewController: popedViewController, toViewController: viewControllers.last!, animation: animated ? .pop : .none)
         
         return popedViewController
     }
@@ -81,7 +97,7 @@ open class AUINavigationController: AUIViewController {
         let rootViewController = viewControllers.first!
         let removeViewControllers = viewControllers.dropFirst()
         navigationBar.setItems([rootViewController.navigationItem], animated: animated)
-        _navigate(fromViewController: removeViewControllers.last!, toViewController: rootViewController, animated: animated, push: false)
+        _navigate(fromViewController: removeViewControllers.last!, toViewController: rootViewController, animation: animated ? .pop : .none)
         
         return Array(removeViewControllers)
     }
@@ -105,7 +121,7 @@ open class AUINavigationController: AUIViewController {
         let remainNavigationItems = remainViewControllers.map { $0.navigationItem }
         
         navigationBar.setItems(remainNavigationItems, animated: animated)
-        _navigate(fromViewController: removeViewControllers.last!, toViewController: remainViewControllers.last!, animated: animated, push: false)
+        _navigate(fromViewController: removeViewControllers.last!, toViewController: remainViewControllers.last!, animation: animated ? .pop : .none)
         
         return Array(removeViewControllers)
     }
@@ -190,6 +206,12 @@ open class AUINavigationController: AUIViewController {
         _navigationBarContainerView.addSubview(navigationBar);
         navigationBar.fillToSuperview()
         
+        
+    }
+    
+    open override func viewDidAppear() {
+        super.viewDidAppear()
+        
         if let viewController = topViewController {
             setupInitialViewController(viewController)
         }
@@ -228,72 +250,85 @@ extension AUINavigationController {
     fileprivate func setupInitialViewController(_ viewController: AUIViewController) {
         navigationBar.setItems([viewController.navigationItem], animated: false)
         viewController.navigationController = self
+        
         addChildViewController(viewController)
         _contentContainerView.addSubview(viewController.view)
         
         _constraintCenterXForLastViewController = viewController.view.fillAndCenterToSuperview().xConstraint
+        
+        updateViewConstraints()
     }
     
-    fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animated: Bool, push: Bool) {
+    fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animation: PushAnimation) {
         fromViewController.navigationController = self
         toViewController.navigationController = self
         
-        delegate?.navigationController?(self, willShow: toViewController, animated: animated)
+        delegate?.navigationController?(self, willShow: toViewController, animated: animation.isAnimated)
 
         addChildViewController(toViewController)
         toViewController.view.removeAllConstraints()
         
-        if animated {
+        switch animation {
+        case .push:
             let viewWidth = view.bounds.size.width
             
-            if push {
-                // animated && push
-                _contentContainerView.addSubview(toViewController.view)
-                
-                let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
-                if _constraintCenterXForLastViewController == nil {
-                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
-                }
-                
-                NSAnimationContext.runAnimationGroup({ (context) in
-                    _constraintCenterXForLastViewController?.animator().constant = -viewWidth / 3.0
-                    newConstraintX.animator().constant = 0
-                }, completionHandler: { 
-                    fromViewController.removeFromParentViewController()
-                    fromViewController.view.removeFromSuperview()
-                    
-                    self._constraintCenterXForLastViewController = newConstraintX
-                    
-                    self.delegate?.navigationController?(self, didShow: toViewController, animated: animated)
-                })
-            } else {
-                // animated && pop
-                _contentContainerView.addSubview(toViewController.view, positioned: .below, relativeTo: fromViewController.view)
-                let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: -viewWidth / 3.0, y: 0)).xConstraint
-                if _constraintCenterXForLastViewController == nil {
-                    _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
-                }
-                
-                NSAnimationContext.runAnimationGroup({ (context) in
-                    _constraintCenterXForLastViewController?.animator().constant = viewWidth
-                    newConstraintX.animator().constant = 0
-                }, completionHandler: { 
-                    fromViewController.removeFromParentViewController()
-                    fromViewController.view.removeFromSuperview()
-                    
-                    self._constraintCenterXForLastViewController = newConstraintX
-                    
-                    self.delegate?.navigationController?(self, didShow: toViewController, animated: animated)
-                })
-            }
-        } else {
             _contentContainerView.addSubview(toViewController.view)
-            toViewController.view.fillToSuperview()
+            
+            let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: viewWidth, y: 0)).xConstraint
+            if _constraintCenterXForLastViewController == nil {
+                _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
+            }
+            
+            NSAnimationContext.runAnimationGroup({ (context) in
+                _constraintCenterXForLastViewController?.animator().constant = -viewWidth / 3.0
+                newConstraintX.animator().constant = 0
+            }, completionHandler: {
+                fromViewController.removeFromParentViewController()
+                fromViewController.view.removeFromSuperview()
+                
+                self._constraintCenterXForLastViewController = newConstraintX
+                
+                self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
+            })
+        case .pop:
+            let viewWidth = view.bounds.size.width
+            
+            _contentContainerView.addSubview(toViewController.view, positioned: .below, relativeTo: fromViewController.view)
+            
+            let newConstraintX = toViewController.view.fillAndCenterToSuperview(offset: ACDOffset(x: -viewWidth / 3.0, y: 0)).xConstraint
+            if _constraintCenterXForLastViewController == nil {
+                _constraintCenterXForLastViewController = fromViewController.view.fillAndCenterToSuperview().xConstraint
+            }
+            
+            NSAnimationContext.runAnimationGroup({ (context) in
+                _constraintCenterXForLastViewController?.animator().constant = viewWidth
+                newConstraintX.animator().constant = 0
+            }, completionHandler: {
+                fromViewController.removeFromParentViewController()
+                fromViewController.view.removeFromSuperview()
+                
+                self._constraintCenterXForLastViewController = newConstraintX
+                
+                self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
+            })
+        case .viewControllerTransitionOptions(let options):
+            _contentContainerView.addSubview(toViewController.view)
+            _constraintCenterXForLastViewController = toViewController.view.fillAndCenterToSuperview().xConstraint
+            
+            transition(from: fromViewController, to: toViewController, options: options, completionHandler: {
+                fromViewController.removeFromParentViewController()
+                fromViewController.view.removeFromSuperview()
+                
+                self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
+            })
+        case .none:
+            _contentContainerView.addSubview(toViewController.view)
+            _constraintCenterXForLastViewController = toViewController.view.fillAndCenterToSuperview().xConstraint
             
             fromViewController.removeFromParentViewController()
             fromViewController.view.removeFromSuperview()
             
-            delegate?.navigationController?(self, didShow: toViewController, animated: animated)
+            delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
         }
 
     }

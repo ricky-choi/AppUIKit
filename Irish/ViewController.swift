@@ -26,11 +26,15 @@ class ViewController: NSViewController {
     @IBAction func action(_ sender: Any) {
         let viewController = AUIViewController()
         viewController.title = "My Title"
+        (viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
+        
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
         navigationWindowController.navigationController.navigationBar.backgroundColor = NSColor.red
+        
         let button = NSButton(title: "push", target: self, action: #selector(togglePush))
-        navigationWindowController.navigationController.navigationBar.addSubview(button)
+        viewController.view.addSubview(button)
         button.centerToSuperview()
+        
         navigationWindowController.show()
     }
     
