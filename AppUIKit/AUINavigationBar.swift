@@ -9,6 +9,34 @@
 import Cocoa
 
 open class AUINavigationBar: AUIView {
+    let contentView = AUIView()
+    var barHeight: CGFloat = 44 {
+        didSet {
+            heightConstraint.constant = barHeight
+        }
+    }
+    var heightConstraint: NSLayoutConstraint!
+    
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        contentView.backgroundColor = NSColor.clear
+        addSubview(contentView)
+        contentView.fillXToSuperview()
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        heightConstraint = contentView.heightAnchor.constraint(equalToConstant: barHeight)
+        heightConstraint.isActive = true
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    open override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        
+        window?.titleVisibility = .hidden
+    }
     
     public func pushItem(_ item: AUINavigationItem, animated: Bool) {
         if _items == nil {
@@ -69,10 +97,6 @@ open class AUINavigationBar: AUIView {
         // Drawing code here.
     }
     
-    open override var mouseDownCanMoveWindow: Bool {
-        return true
-    }
-    
     fileprivate var _barTitleView: NSView?
     
 }
@@ -89,7 +113,7 @@ extension AUINavigationBar {
         }
         
         if let newBarTitleView = item.titleView {
-            addSubview(newBarTitleView)
+            contentView.addSubview(newBarTitleView)
             _barTitleView = newBarTitleView
             newBarTitleView.centerToSuperview()
         }

@@ -191,6 +191,7 @@ open class AUINavigationController: AUIViewController {
         
         _navigationBarContainerView.addSubview(navigationBar);
         navigationBar.fillToSuperview()
+        navigationBar.barHeight = navigationBarHeight
 
         if let viewController = topViewController {
             setupInitialViewController(viewController)
@@ -233,10 +234,7 @@ extension AUINavigationController {
         
         addChildViewController(viewController)
         _contentContainerView.addSubview(viewController.view)
-        
         _constraintForLastViewController = viewController.view.fillToSuperview()
-        
-        updateViewConstraints()
     }
     
     fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animation: PushAnimation) {

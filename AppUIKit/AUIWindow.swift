@@ -29,6 +29,10 @@ open class AUIWindow: NSWindow {
     
     func setup() {
         styleMask = [styleMask, .fullSizeContentView]
+        
         titlebarAppearsTransparent = true
+        
+        isMovable = true
+        isMovableByWindowBackground = true
     }
 }
