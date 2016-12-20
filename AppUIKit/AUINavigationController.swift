@@ -131,12 +131,14 @@ open class AUINavigationController: AUIViewController {
         get {
             if _navigationBar == nil {
                 _navigationBar = AUINavigationBar()
+                _navigationBar?.delegate = self
             }
             
             return _navigationBar!
         }
         set {
             _navigationBar = newValue
+            _navigationBar?.delegate = self
         }
     }
     public func setNavigationBarHidden(_ hidden: Bool, animated: Bool) {
@@ -306,6 +308,12 @@ extension AUINavigationController {
             delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
         }
 
+    }
+}
+
+extension AUINavigationController: AUINavigationBarDelegate {
+    func navigationBarInvokeBackButton(_ navigationBar: AUINavigationBar) {
+        popViewController(animated: true)
     }
 }
 

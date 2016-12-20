@@ -8,7 +8,13 @@
 
 import Cocoa
 
+protocol AUINavigationBarDelegate: class {
+    func navigationBarInvokeBackButton(_ navigationBar: AUINavigationBar)
+}
+
 open class AUINavigationBar: AUIView {
+    weak var delegate: AUINavigationBarDelegate?
+    
     let contentView = AUIView()
     var barHeight: CGFloat = 44 {
         didSet {
@@ -98,7 +104,7 @@ open class AUINavigationBar: AUIView {
     }
     
     fileprivate var _barTitleView: NSView?
-    
+    fileprivate var _barBackButton: NSView?
 }
 
 extension AUINavigationBar {
@@ -106,6 +112,23 @@ extension AUINavigationBar {
     fileprivate func _invalidateItem(animation: AUINavigationController.PushAnimation) {
         guard let item = topItem else {
             return
+        }
+        
+        if let backItem = backItem {
+            // draw back button
+            let image = Bundle(for: AUINavigationBar.self).image(forResource: "Back Arrow")
+            //let imageView = NSImageView(image: image!)
+            
+            let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
+            button.isBordered = false
+            
+            contentView.addSubview(button)
+            button.centerYToSuperview()
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+            
+            _barBackButton = button
+        } else {
+            _barBackButton?.removeFromSuperview()
         }
         
         if let currentBarTitleView = _barTitleView {
@@ -117,5 +140,9 @@ extension AUINavigationBar {
             _barTitleView = newBarTitleView
             newBarTitleView.centerToSuperview()
         }
+    }
+    
+    func back() {
+        delegate?.navigationBarInvokeBackButton(self)
     }
 }
