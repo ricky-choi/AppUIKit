@@ -222,9 +222,9 @@ open class AUINavigationController: AUIViewController {
     fileprivate var _navigationBar: AUINavigationBar?
     fileprivate var _toolbar: AUIToolbar?
     
-    fileprivate var _contentContainerView = AUIView()
-    fileprivate var _navigationBarContainerView = AUIView()
-    fileprivate var _toolbarContainerView = AUIView()
+    fileprivate var _contentContainerView = NSView()
+    fileprivate var _navigationBarContainerView = NSView()
+    fileprivate var _toolbarContainerView = NSView()
     
     fileprivate var _constraintForLastViewController: ACDMarginConstraints?
 }

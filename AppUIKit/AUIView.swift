@@ -42,7 +42,7 @@ open class AUIView: NSView {
     }
     
     open override var wantsUpdateLayer: Bool {
-        return false
+        return wantsLayer
     }
 
     override open func draw(_ dirtyRect: NSRect) {

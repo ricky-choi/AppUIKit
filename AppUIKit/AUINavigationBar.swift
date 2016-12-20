@@ -12,6 +12,12 @@ protocol AUINavigationBarDelegate: class {
     func navigationBarInvokeBackButton(_ navigationBar: AUINavigationBar)
 }
 
+public enum VibrantColor {
+    case color(NSColor)
+    case vibrantLight
+    case vibrantDark
+}
+
 open class AUINavigationBar: AUIView {
     weak var delegate: AUINavigationBarDelegate?
     
@@ -23,9 +29,47 @@ open class AUINavigationBar: AUIView {
     }
     var heightConstraint: NSLayoutConstraint!
     
+    public var background = VibrantColor.color(NSColor.white) {
+        didSet {
+            removeVisualEffectView()
+            
+            switch background {
+            case .color(let color):
+                backgroundColor = color
+                
+            case .vibrantLight:
+                backgroundColor = NSColor.white.withAlphaComponent(0.75)
+                
+                let visualEffectView = NSVisualEffectView()
+                visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+                visualEffectView.blendingMode = .withinWindow
+                addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
+                visualEffectView.fillToSuperview()
+                
+            case .vibrantDark:
+                backgroundColor = NSColor.clear
+                
+                let visualEffectView = NSVisualEffectView()
+                visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+                visualEffectView.blendingMode = .withinWindow
+                visualEffectView.material = .ultraDark
+                addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
+                visualEffectView.fillToSuperview()
+            }
+        }
+    }
+    
+    private func removeVisualEffectView() {
+        for subview in subviews {
+            if let vev = subview as? NSVisualEffectView {
+                vev.removeFromSuperview()
+            }
+        }
+    }
+    
     override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        
+
         contentView.backgroundColor = NSColor.clear
         addSubview(contentView)
         contentView.fillXToSuperview()
