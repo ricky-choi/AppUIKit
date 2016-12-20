@@ -37,17 +37,21 @@ open class AUIView: NSView {
     }
     
     func setup() {
-        wantsLayer = true
+        wantsLayer = false
         layerContentsRedrawPolicy = .onSetNeedsDisplay
     }
     
     open override var wantsUpdateLayer: Bool {
-        return true
+        return false
     }
 
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
+        if let context = NSGraphicsContext.current()?.cgContext {
+            context.setFillColor(backgroundColor.cgColor)
+            context.fill(dirtyRect)
+        }
     }
     
     open override func updateLayer() {

@@ -99,8 +99,11 @@ open class AUINavigationBar: AUIView {
 
     open override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-
-        // Drawing code here.
+        
+        if let context = NSGraphicsContext.current()?.cgContext {
+            context.setFillColor(NSColor.gray.withAlphaComponent(0.5).cgColor)
+            context.fill(CGRect(x: 0, y: 0, width: bounds.width, height: 1))
+        }
     }
     
     fileprivate var _barTitleView: NSView?
@@ -116,8 +119,7 @@ extension AUINavigationBar {
         
         if let backItem = backItem {
             // draw back button
-            let image = Bundle(for: AUINavigationBar.self).image(forResource: "Back Arrow")
-            //let imageView = NSImageView(image: image!)
+            let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "Back Arrow")
             
             let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
             button.isBordered = false
