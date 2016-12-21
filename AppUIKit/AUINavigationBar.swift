@@ -76,6 +76,13 @@ open class AUINavigationBar: AUIView {
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         heightConstraint = contentView.heightAnchor.constraint(equalToConstant: barHeight)
         heightConstraint.isActive = true
+        
+        let shadowView = AUIView()
+        shadowView.backgroundColor = NSColor.gray.withAlphaComponent(0.5)
+        contentView.addSubview(shadowView)
+        shadowView.fillXToSuperview()
+        shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        shadowView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
     required public init?(coder: NSCoder) {
@@ -143,11 +150,12 @@ open class AUINavigationBar: AUIView {
 
     open override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
+        /*
         if let context = NSGraphicsContext.current()?.cgContext {
             context.setFillColor(NSColor.gray.withAlphaComponent(0.5).cgColor)
             context.fill(CGRect(x: 0, y: 0, width: bounds.width, height: 1))
         }
+        */
     }
     
     fileprivate var _barTitleView: NSView?
