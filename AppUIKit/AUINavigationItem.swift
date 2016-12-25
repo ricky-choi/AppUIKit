@@ -18,13 +18,13 @@ open class AUINavigationItem: NSObject {
     // Getting and Setting Properties
     public var title: String?
     
-    var prompt: String?
+    public var prompt: String?
     
-    var backBarButtonItem: AUIBarButtonItem?
+    public var backBarButtonItem: AUIBarButtonItem?
     
-    var hidesBackButton: Bool = false
+    public var hidesBackButton: Bool = false
     
-    func setHidesBackButton(_ hidesBackButton: Bool, animated: Bool) {
+    public func setHidesBackButton(_ hidesBackButton: Bool, animated: Bool) {
         
     }
     
@@ -55,27 +55,69 @@ open class AUINavigationItem: NSObject {
         return label
     }()
     
-    var leftBarButtonItems: [AUIBarButtonItem]?
-    
-    var leftBarButtonItem: AUIBarButtonItem?
-    
-    var rightBarButtonItems: [AUIBarButtonItem]?
-    
-    var rightBarButtonItem: AUIBarButtonItem?
-    
-    func setLeftBarButtonItems(_ items: [AUIBarButtonItem]?, animated: Bool) {
-        
+    public var leftBarButtonItems: [AUIBarButtonItem]? {
+        get {
+            return _leftBarButtonItems
+        }
+        set {
+            setLeftBarButtonItems(newValue, animated: false)
+        }
     }
     
-    func setLeftBarButton(_ item: AUIBarButtonItem?, animated: Bool) {
-        
+    public var leftBarButtonItem: AUIBarButtonItem? {
+        get {
+            return leftBarButtonItems?.first
+        }
+        set {
+            if newValue != nil {
+                leftBarButtonItems = [newValue!]
+            } else {
+                leftBarButtonItems = nil
+            }
+        }
     }
     
-    func setRightBarButtonItems(_ items: [AUIBarButtonItem]?, animated: Bool) {
-        
+    public var rightBarButtonItems: [AUIBarButtonItem]? {
+        get {
+            return _rightBarButtonItems
+        }
+        set {
+            setRightBarButtonItems(newValue, animated: false)
+        }
     }
     
-    func setRightBarButton(_ item: AUIBarButtonItem?, animated: Bool) {
-        
+    public var rightBarButtonItem: AUIBarButtonItem? {
+        get {
+            return rightBarButtonItems?.first
+        }
+        set {
+            if newValue != nil {
+                rightBarButtonItems = [newValue!]
+            } else {
+                rightBarButtonItems = nil
+            }
+        }
     }
+    
+    public func setLeftBarButtonItems(_ items: [AUIBarButtonItem]?, animated: Bool) {
+        _leftBarButtonItems = items
+    }
+    
+    public func setLeftBarButton(_ item: AUIBarButtonItem?, animated: Bool) {
+        setLeftBarButtonItems((item != nil) ? [item!] : nil, animated: animated)
+    }
+    
+    public func setRightBarButtonItems(_ items: [AUIBarButtonItem]?, animated: Bool) {
+        _rightBarButtonItems = items
+    }
+    
+    public func setRightBarButton(_ item: AUIBarButtonItem?, animated: Bool) {
+        setRightBarButtonItems((item != nil) ? [item!] : nil, animated: animated)
+    }
+    
+    // private
+    private var _leftBarButtonItems: [AUIBarButtonItem]?
+    
+    private var _rightBarButtonItems: [AUIBarButtonItem]?
+
 }
