@@ -79,9 +79,9 @@ open class AUINavigationBar: AUIView {
         
         let shadowView = AUIView()
         shadowView.backgroundColor = NSColor.gray.withAlphaComponent(0.5)
-        contentView.addSubview(shadowView)
+        addSubview(shadowView)
         shadowView.fillXToSuperview()
-        shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        shadowView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         shadowView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     

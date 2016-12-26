@@ -53,6 +53,7 @@ class ViewController: NSViewController {
             navigationWindowController.navigationController.popViewController(animated: animated)
         } else {
             let viewController = AUIViewController()
+            viewController.title = "ViewTitle"
             viewController.navigationItem.leftItemsSupplementBackButton = true
             viewController.navigationItem.leftBarButtonItems = [
                 AUIBarButtonItem(title: "Wow", style: .plain, target: self, action: #selector(printLog(sender:))),

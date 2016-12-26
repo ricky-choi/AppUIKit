@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../AppcidCocoaUtil"
 
 SPEC CHECKSUMS:
-  AppcidCocoaUtil: bb4be53c72eb8cd11a85b65fffc3b35ed600d3a2
+  AppcidCocoaUtil: b710365a284515a4d5f0cf019518203824b94a80
 
 PODFILE CHECKSUM: c5b8a3f275dbb1ad31ea0b888998025a87961eae
 
