@@ -26,6 +26,10 @@ class ViewController: NSViewController {
     @IBAction func action(_ sender: Any) {
         let viewController = AUIViewController()
         viewController.title = "My Title"
+        viewController.navigationItem.rightBarButtonItems = [
+            AUIBarButtonItem(title: "Log", style: .plain, target: self, action: #selector(printLog(sender:))),
+            AUIBarButtonItem(title: "Show", style: .plain, target: self, action: #selector(printLog(sender:)))
+        ]
         //(viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
         
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
@@ -39,16 +43,28 @@ class ViewController: NSViewController {
         navigationWindowController.window?.center()
     }
     
+    func printLog(sender: NSButton) {
+        Swift.print("hahaha", sender.title )
+    }
+    
     func togglePush() {
         let animated = true
         if navigationWindowController.navigationController.viewControllers.count > 1 {
             navigationWindowController.navigationController.popViewController(animated: animated)
         } else {
             let viewController = AUIViewController()
+            viewController.navigationItem.leftItemsSupplementBackButton = true
+            viewController.navigationItem.leftBarButtonItems = [
+                AUIBarButtonItem(title: "Wow", style: .plain, target: self, action: #selector(printLog(sender:))),
+                AUIBarButtonItem(title: "Cool", style: .plain, target: self, action: #selector(printLog(sender:)))
+            ]
+            viewController.navigationItem.rightBarButtonItems = [
+                AUIBarButtonItem(title: "Hello", style: .plain, target: self, action: #selector(printLog(sender:))),
+                AUIBarButtonItem(title: "AUI", style: .plain, target: self, action: #selector(printLog(sender:)))
+            ]
             (viewController.view as! AUIView).backgroundColor = NSColor.green
             navigationWindowController.navigationController.pushViewController(viewController, animated: animated)
         }
-        
     }
 
     var windowController: AUIWindowController!

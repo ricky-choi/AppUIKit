@@ -22,13 +22,20 @@ open class AUINavigationItem: NSObject {
     
     public var backBarButtonItem: AUIBarButtonItem?
     
-    public var hidesBackButton: Bool = false
-    
-    public func setHidesBackButton(_ hidesBackButton: Bool, animated: Bool) {
-        
+    public var hidesBackButton: Bool {
+        get {
+            return _hidesBackButton
+        }
+        set {
+            setHidesBackButton(newValue, animated: false)
+        }
     }
     
-    var leftItemsSupplementBackButton: Bool = false
+    public func setHidesBackButton(_ hidesBackButton: Bool, animated: Bool) {
+        _hidesBackButton = hidesBackButton
+    }
+    
+    public var leftItemsSupplementBackButton: Bool = false
     
     // Customizing Views
     private var _titleView: NSView?
@@ -116,8 +123,10 @@ open class AUINavigationItem: NSObject {
     }
     
     // private
-    private var _leftBarButtonItems: [AUIBarButtonItem]?
+    internal weak var navigationBar: AUINavigationBar?
     
+    private var _hidesBackButton: Bool = false
+    private var _leftBarButtonItems: [AUIBarButtonItem]?
     private var _rightBarButtonItems: [AUIBarButtonItem]?
 
 }

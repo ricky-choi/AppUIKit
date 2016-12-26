@@ -9,11 +9,11 @@
 import Cocoa
 
 open class AUIBarItem: NSObject {
-    var isEnabled: Bool = false
-    var image: NSImage?
-    var landscapeImagePhone: NSImage?
-    var imageInsets: EdgeInsets = NSEdgeInsetsZero
-    var landscapeImagePhoneInsets: EdgeInsets = NSEdgeInsetsZero
-    var title: String?
-    var tag: Int = 0
+    public var isEnabled: Bool = false
+    public var image: NSImage?
+    public var landscapeImagePhone: NSImage?
+    public var imageInsets: EdgeInsets = NSEdgeInsetsZero
+    public var landscapeImagePhoneInsets: EdgeInsets = NSEdgeInsetsZero
+    public var title: String?
+    public var tag: Int = 0
 }

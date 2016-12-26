@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum AUIBarButtonSystemItem: Int {
+public enum AUIBarButtonSystemItem: Int {
     case done
     case cancel
     case edit
@@ -35,34 +35,48 @@ enum AUIBarButtonSystemItem: Int {
     case pageCurl
 }
 
-enum AUIBarButtonItemStyle: Int {
+public enum AUIBarButtonItemStyle: Int {
     case plain
     case done
 }
 
 open class AUIBarButtonItem: AUIBarItem {
-    convenience init(barButtonSystemItem systemItem: AUIBarButtonSystemItem, target: Any?, action: Selector?) {
+    convenience public init(barButtonSystemItem systemItem: AUIBarButtonSystemItem, target: Any?, action: Selector?) {
         self.init()
+        
     }
-    convenience init(customView: NSView) {
+    convenience public init(customView: NSView) {
         self.init()
+        self.customView = customView
     }
-    convenience init(image: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
+    convenience public init(image: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
         self.init()
+        self.image = image
+        self.style = style
+        self.target = target as AnyObject?
+        self.action = action
     }
-    convenience init(title: String?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
+    convenience public init(title: String?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
         self.init()
+        self.title = title
+        self.style = style
+        self.target = target as AnyObject?
+        self.action = action
     }
-    convenience init(image: NSImage?, landscapeImagePhone: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
+    convenience public init(image: NSImage?, landscapeImagePhone: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
         self.init()
+        self.image = image
+        self.landscapeImagePhone = landscapeImagePhone
+        self.target = target as AnyObject?
+        self.action = action
     }
     
-    weak var target: AnyObject?
-    var action: Selector?
-    var style: AUIBarButtonItemStyle = .plain
-    var possibleTitles: Set<String>?
-    var width: CGFloat = 0
-    var customView: NSView?
+    public weak var target: AnyObject?
+    public var action: Selector?
+    public private(set) var style: AUIBarButtonItemStyle = .plain
+    public var possibleTitles: Set<String>?
+    public private(set) var width: CGFloat = 0
+    public private(set) var customView: NSView?
     
-    var tintColor: NSColor?
+    public var tintColor: NSColor?
 }

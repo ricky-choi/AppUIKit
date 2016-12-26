@@ -160,6 +160,8 @@ open class AUINavigationBar: AUIView {
     
     fileprivate var _barTitleView: NSView?
     fileprivate var _barBackButton: NSView?
+    fileprivate var _leftItemButtons: [NSView]?
+    fileprivate var _rightItemButtons: [NSView]?
 }
 
 extension AUINavigationBar {
@@ -169,22 +171,95 @@ extension AUINavigationBar {
             return
         }
         
-        if let backItem = backItem {
+        // remove all subviews temporarily. TODO: add animation
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+        
+        // set navigation bar for navigation items
+        items?.forEach({ (item) in
+            item.navigationBar = nil
+        })
+        
+        item.navigationBar = self
+        
+        let padding: CGFloat = 10
+        let font = NSFont.systemFont(ofSize: 15)
+        
+        var barLeadingAnchor: NSLayoutXAxisAnchor = leadingAnchor
+        var barTrailingAnchor: NSLayoutXAxisAnchor = trailingAnchor
+        
+        let needDrawLeftItems = (item.leftBarButtonItems?.count ?? 0) > 0
+        
+        // draw back item
+        if let backItem = backItem, !backItem.hidesBackButton, (!needDrawLeftItems || (needDrawLeftItems && item.leftItemsSupplementBackButton)) {
             // draw back button
             let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "Back Arrow")
             
             let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
             button.isBordered = false
+            button.font = font
             
             contentView.addSubview(button)
             button.centerYToSuperview()
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+            button.leadingAnchor.constraint(equalTo: barLeadingAnchor, constant: padding).isActive = true
             
             _barBackButton = button
+            
+            barLeadingAnchor = button.trailingAnchor
         } else {
             _barBackButton?.removeFromSuperview()
+            
+            barLeadingAnchor = leadingAnchor
         }
         
+        // draw left items
+        if let leftItems = item.leftBarButtonItems {
+            for item in leftItems {
+                var button: NSButton!
+                if let image = item.image {
+                    button = NSButton(image: image, target: item.target, action: item.action)
+                } else if let title = item.title {
+                    button = NSButton(title: title, target: item.target, action: item.action)
+                }
+                
+                if button != nil {
+                    button.isBordered = false
+                    button.font = font
+                    button.setAccessibilityLabel(item.title)
+                    
+                    contentView.addSubview(button)
+                    button.centerYToSuperview()
+                    button.leadingAnchor.constraint(equalTo: barLeadingAnchor, constant: padding).isActive = true
+                    
+                    barLeadingAnchor = button.trailingAnchor
+                }
+            }
+        }
+        
+        // draw right items
+        if let rightItems = item.rightBarButtonItems {
+            for item in rightItems {
+                var button: NSButton!
+                if let image = item.image {
+                    button = NSButton(image: image, target: item.target, action: item.action)
+                } else if let title = item.title {
+                    button = NSButton(title: title, target: item.target, action: item.action)
+                }
+                
+                if button != nil {
+                    button.isBordered = false
+                    button.font = font
+                    button.setAccessibilityLabel(item.title)
+                    
+                    contentView.addSubview(button)
+                    button.centerYToSuperview()
+                    button.trailingAnchor.constraint(equalTo: barTrailingAnchor, constant: -padding).isActive = true
+                    
+                    barTrailingAnchor = button.leadingAnchor
+                }
+            }
+        }
+        
+        // draw title view
         if let currentBarTitleView = _barTitleView {
             currentBarTitleView.removeFromSuperview()
         }
@@ -193,6 +268,8 @@ extension AUINavigationBar {
             contentView.addSubview(newBarTitleView)
             _barTitleView = newBarTitleView
             newBarTitleView.centerToSuperview()
+            newBarTitleView.leadingAnchor.constraint(greaterThanOrEqualTo: barLeadingAnchor, constant: padding).isActive = true
+            newBarTitleView.trailingAnchor.constraint(lessThanOrEqualTo: barTrailingAnchor, constant: -padding).isActive = true
         }
     }
     
