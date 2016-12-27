@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public enum AUIBarButtonSystemItem: Int {
+public enum AUIBarButtonSystemItem: Int, CustomStringConvertible {
     case done
     case cancel
     case edit
@@ -34,15 +34,27 @@ public enum AUIBarButtonSystemItem: Int {
     case redo
     case pageCurl
     
-    var title: String {
+    var title: String? {
+        switch self {
+        case .done: return "Done"
+        case .cancel: return "Cancel"
+        case .edit: return "Edit"
+        case .save: return "Save"
+        case .undo: return "Undo"
+        case .redo: return "Redo"
+        default: return nil
+        }
+    }
+    
+    public var description: String {
         switch self {
         case .done: return "Done"
         case .cancel: return "Cancel"
         case .edit: return "Edit"
         case .save: return "Save"
         case .add: return "Add"
-        case .flexibleSpace: return ""
-        case .fixedSpace: return ""
+        case .flexibleSpace: return "Flexible Space"
+        case .fixedSpace: return "Fixed Space"
         case .compose: return "Compose"
         case .reply: return "Reply"
         case .action: return "Action"
@@ -155,28 +167,18 @@ open class AUIBarButtonItem: AUIBarItem {
         self.target = target as AnyObject?
         self.action = action
     }
+
     convenience public init(customView: NSView) {
         self.init()
         self.customView = customView
     }
-    convenience public init(image: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
-        self.init()
-        self.image = image
-        self.style = style
-        self.target = target as AnyObject?
-        self.action = action
-    }
-    convenience public init(title: String?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
+
+    convenience public init(title: String?, image: NSImage? = nil, landscapeImagePhone: NSImage? = nil, style: AUIBarButtonItemStyle = .plain, target: Any?, action: Selector?) {
         self.init()
         self.title = title
-        self.style = style
-        self.target = target as AnyObject?
-        self.action = action
-    }
-    convenience public init(image: NSImage?, landscapeImagePhone: NSImage?, style: AUIBarButtonItemStyle, target: Any?, action: Selector?) {
-        self.init()
         self.image = image
         self.landscapeImagePhone = landscapeImagePhone
+        self.style = style
         self.target = target as AnyObject?
         self.action = action
     }

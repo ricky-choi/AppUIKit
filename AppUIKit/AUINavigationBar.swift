@@ -246,7 +246,6 @@ extension AUINavigationBar {
         item.navigationBar = self
         
         let padding: CGFloat = 10
-        let font = NSFont.systemFont(ofSize: 15)
         
         var barLeadingAnchor: NSLayoutXAxisAnchor = leadingAnchor
         var barTrailingAnchor: NSLayoutXAxisAnchor = trailingAnchor
@@ -257,10 +256,9 @@ extension AUINavigationBar {
         if let backItem = backItem, !backItem.hidesBackButton, (!needDrawLeftItems || (needDrawLeftItems && item.leftItemsSupplementBackButton)) {
             // draw back button
             let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "UINavigationBarBackIndicatorDefault")
+            let backBarButtonItem = AUIBarButtonItem(title: backItem.title ?? nil, image: image!, target: self, action: #selector(back))
             
-            let button = AUIButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
-            button.font = font
-            button.tintColor = tintColor
+            let button = makeButton(forBarButtonItem: backBarButtonItem)!
             
             contentView.addSubview(button)
             button.centerYToSuperview()
@@ -278,18 +276,7 @@ extension AUINavigationBar {
         // draw left items
         if let leftItems = item.leftBarButtonItems {
             for item in leftItems {
-                var button: AUIButton!
-                if let image = item.image {
-                    button = AUIButton(image: image, target: item.target, action: item.action)
-                } else if let title = item.title {
-                    button = AUIButton(title: title, target: item.target, action: item.action)
-                }
-                
-                if button != nil {
-                    button.font = font
-                    button.tintColor = item.tintColor ?? tintColor
-                    button.setAccessibilityLabel(item.title)
-                    
+                if let button = makeButton(forBarButtonItem: item) {
                     contentView.addSubview(button)
                     button.centerYToSuperview()
                     button.leadingAnchor.constraint(equalTo: barLeadingAnchor, constant: padding).isActive = true
@@ -302,18 +289,7 @@ extension AUINavigationBar {
         // draw right items
         if let rightItems = item.rightBarButtonItems {
             for item in rightItems {
-                var button: AUIButton!
-                if let image = item.image {
-                    button = AUIButton(image: image, target: item.target, action: item.action)
-                } else if let title = item.title {
-                    button = AUIButton(title: title, target: item.target, action: item.action)
-                }
-                
-                if button != nil {
-                    button.font = font
-                    button.tintColor = item.tintColor ?? tintColor
-                    button.setAccessibilityLabel(item.title)
-                    
+                if let button = makeButton(forBarButtonItem: item) {
                     contentView.addSubview(button)
                     button.centerYToSuperview()
                     button.trailingAnchor.constraint(equalTo: barTrailingAnchor, constant: -padding).isActive = true
@@ -337,6 +313,25 @@ extension AUINavigationBar {
             
             invalidateAttributedTitleLabel(item: item)
         }
+    }
+    
+    func makeButton(forBarButtonItem item: AUIBarButtonItem) -> AUIButton? {
+        var button: AUIButton?
+        if let title = item.title, let image = item.image {
+            button = AUIButton(title: title, image: image, target: item.target, action: item.action)
+        } else if let image = item.image {
+            button = AUIButton(image: image, target: item.target, action: item.action)
+        } else if let title = item.title {
+            button = AUIButton(title: title, target: item.target, action: item.action)
+        }
+        
+        if let button = button {
+            button.font = NSFont.systemFont(ofSize: 15)
+            button.tintColor = item.tintColor ?? tintColor
+            button.setAccessibilityLabel(item.description)
+        }
+        
+        return button
     }
     
     func back() {
