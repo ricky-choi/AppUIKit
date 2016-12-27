@@ -21,6 +21,18 @@ public enum VibrantColor {
 open class AUINavigationBar: AUIView {
     weak var delegate: AUINavigationBarDelegate?
     
+    public override var tintColor: NSColor {
+        didSet {
+            for subview in contentView.subviews {
+                if let view = subview as? AUIView {
+                    view.tintColor = tintColor
+                } else if let button = subview as? NSButton {
+                    button.setTintColor(color: tintColor)
+                }
+            }
+        }
+    }
+    
     let contentView = AUIView()
     var barHeight: CGFloat = 44 {
         didSet {
@@ -197,6 +209,7 @@ extension AUINavigationBar {
             let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
             button.isBordered = false
             button.font = font
+            button.setTintColor(color: tintColor)
             
             contentView.addSubview(button)
             button.centerYToSuperview()
@@ -224,6 +237,7 @@ extension AUINavigationBar {
                 if button != nil {
                     button.isBordered = false
                     button.font = font
+                    button.setTintColor(color: item.tintColor ?? tintColor)
                     button.setAccessibilityLabel(item.title)
                     
                     contentView.addSubview(button)
@@ -248,6 +262,7 @@ extension AUINavigationBar {
                 if button != nil {
                     button.isBordered = false
                     button.font = font
+                    button.setTintColor(color: item.tintColor ?? tintColor)
                     button.setAccessibilityLabel(item.title)
                     
                     contentView.addSubview(button)
@@ -275,5 +290,20 @@ extension AUINavigationBar {
     
     func back() {
         delegate?.navigationBarInvokeBackButton(self)
+    }
+}
+
+extension NSButton {
+    func setTintColor(color: NSColor) {
+        guard title.length() > 0, let buttonCell = cell as? NSButtonCell else {
+            return
+        }
+        
+        if buttonCell.imagePosition == .imageOnly || buttonCell.imagePosition == .imageOverlaps {
+            return
+        }
+        
+        let attrString = NSAttributedString(string: title, attributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: color])
+        attributedTitle = attrString
     }
 }

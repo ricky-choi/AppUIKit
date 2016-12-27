@@ -10,6 +10,7 @@ import Cocoa
 import AppcidCocoaUtil
 
 open class AUIView: NSView {
+    public var tintColor = NSColor.blue
     
     public var backgroundColor = NSColor.white {
         didSet {

@@ -26,9 +26,11 @@ class ViewController: NSViewController {
     @IBAction func action(_ sender: Any) {
         let viewController = AUIViewController()
         viewController.title = "My Title"
+        let item = AUIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(printLog(sender:)))
+        item.tintColor = NSColor.red
         viewController.navigationItem.rightBarButtonItems = [
             AUIBarButtonItem(barButtonSystemItem:.action, target: self, action: #selector(printLog(sender:))),
-            AUIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(printLog(sender:)))
+            item
         ]
         //(viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
         
