@@ -35,6 +35,8 @@
 		9CCE99FD1E000F5D00E1B086 /* AUINavigationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */; };
 		9CF0F7491DF158E600063DAC /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F7481DF158E600063DAC /* WindowController.swift */; };
 		9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */; };
+		AE2F874A1E12B257004A5E19 /* AUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F87491E12B257004A5E19 /* AUIButton.swift */; };
+		AE2F874C1E12B550004A5E19 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F874B1E12B550004A5E19 /* ColorExtension.swift */; };
 		BB758A8A4BAD3B0CBBFECEA9 /* Pods_AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		9CF0F7481DF158E600063DAC /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIWindowController.swift; sourceTree = "<group>"; };
 		A3807DD4F5DCA671B7F2279D /* Pods-Irish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.release.xcconfig"; sourceTree = "<group>"; };
+		AE2F87491E12B257004A5E19 /* AUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIButton.swift; sourceTree = "<group>"; };
+		AE2F874B1E12B550004A5E19 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.debug.xcconfig"; sourceTree = "<group>"; };
 		F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +229,8 @@
 				9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */,
 				9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */,
 				9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */,
+				AE2F87491E12B257004A5E19 /* AUIButton.swift */,
+				AE2F874B1E12B550004A5E19 /* ColorExtension.swift */,
 				9CAC02DD1E08A7AC00E9D916 /* Media.xcassets */,
 			);
 			path = AppUIKit;
@@ -574,12 +580,14 @@
 				9CBD96471DF4E72900CAC2A6 /* AUILabel.swift in Sources */,
 				9C9554B11DECFD8600156EA8 /* AUIWindow.swift in Sources */,
 				9CBD96551DF4E89100CAC2A6 /* AUIBarItem.swift in Sources */,
+				AE2F874A1E12B257004A5E19 /* AUIButton.swift in Sources */,
 				9CBD96511DF4E86700CAC2A6 /* AUINavigationBar.swift in Sources */,
 				9CBD964F1DF4E84900CAC2A6 /* AUIView.swift in Sources */,
 				9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */,
 				9CBD964D1DF4E82B00CAC2A6 /* AUINavigationController.swift in Sources */,
 				9CBD96571DF4E8A800CAC2A6 /* AUIBarButtonItem.swift in Sources */,
 				9C96FCB21DF62EDA0057050E /* AUIToolbar.swift in Sources */,
+				AE2F874C1E12B550004A5E19 /* ColorExtension.swift in Sources */,
 				9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */,
 				9CCE99FD1E000F5D00E1B086 /* AUINavigationWindowController.swift in Sources */,
 				9C1D5E9C1DEF9264004BF825 /* DeviceInfo.swift in Sources */,

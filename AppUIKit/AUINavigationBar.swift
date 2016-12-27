@@ -31,8 +31,8 @@ open class AUINavigationBar: AUIView {
             for subview in contentView.subviews {
                 if let view = subview as? AUIView {
                     view.tintColor = tintColor
-                } else if let button = subview as? NSButton {
-                    button.setTintColor(color: tintColor)
+                } else if let button = subview as? AUIButton {
+                    button.setSafeTintColor(tintColor)
                 }
             }
         }
@@ -232,10 +232,9 @@ extension AUINavigationBar {
             // draw back button
             let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "UINavigationBarBackIndicatorDefault")
             
-            let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
-            button.isBordered = false
+            let button = AUIButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
             button.font = font
-            button.setTintColor(color: tintColor)
+            button.tintColor = tintColor
             
             contentView.addSubview(button)
             button.centerYToSuperview()
@@ -253,17 +252,16 @@ extension AUINavigationBar {
         // draw left items
         if let leftItems = item.leftBarButtonItems {
             for item in leftItems {
-                var button: NSButton!
+                var button: AUIButton!
                 if let image = item.image {
-                    button = NSButton(image: image, target: item.target, action: item.action)
+                    button = AUIButton(image: image, target: item.target, action: item.action)
                 } else if let title = item.title {
-                    button = NSButton(title: title, target: item.target, action: item.action)
+                    button = AUIButton(title: title, target: item.target, action: item.action)
                 }
                 
                 if button != nil {
-                    button.isBordered = false
                     button.font = font
-                    button.setTintColor(color: item.tintColor ?? tintColor)
+                    button.tintColor = item.tintColor ?? tintColor
                     button.setAccessibilityLabel(item.title)
                     
                     contentView.addSubview(button)
@@ -278,17 +276,16 @@ extension AUINavigationBar {
         // draw right items
         if let rightItems = item.rightBarButtonItems {
             for item in rightItems {
-                var button: NSButton!
+                var button: AUIButton!
                 if let image = item.image {
-                    button = NSButton(image: image, target: item.target, action: item.action)
+                    button = AUIButton(image: image, target: item.target, action: item.action)
                 } else if let title = item.title {
-                    button = NSButton(title: title, target: item.target, action: item.action)
+                    button = AUIButton(title: title, target: item.target, action: item.action)
                 }
                 
                 if button != nil {
-                    button.isBordered = false
                     button.font = font
-                    button.setTintColor(color: item.tintColor ?? tintColor)
+                    button.tintColor = item.tintColor ?? tintColor
                     button.setAccessibilityLabel(item.title)
                     
                     contentView.addSubview(button)
