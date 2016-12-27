@@ -35,7 +35,9 @@ class ViewController: NSViewController {
         //(viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
         
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
-        navigationWindowController.navigationController.navigationBar.background = .vibrantLight
+        //navigationWindowController.navigationController.navigationBar.barTintColor = NSColor.magenta
+        navigationWindowController.navigationController.navigationBar.barStyle = .black
+        navigationWindowController.navigationController.navigationBar.tintColor = NSColor.yellow
         
         let button = NSButton(title: "push", target: self, action: #selector(togglePush))
         viewController.view.addSubview(button)

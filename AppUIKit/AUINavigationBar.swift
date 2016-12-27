@@ -18,6 +18,11 @@ public enum VibrantColor {
     case vibrantDark
 }
 
+public enum AUIBarStyle : Int {
+    case `default`
+    case black
+}
+
 open class AUINavigationBar: AUIView {
     weak var delegate: AUINavigationBarDelegate?
     
@@ -33,6 +38,18 @@ open class AUINavigationBar: AUIView {
         }
     }
     
+    public var barTintColor: NSColor? {
+        didSet {
+            invalidateBackground()
+        }
+    }
+    
+    public var barStyle: AUIBarStyle = AUIBarStyle.default {
+        didSet {
+            invalidateBackground()
+        }
+    }
+    
     let contentView = AUIView()
     var barHeight: CGFloat = 44 {
         didSet {
@@ -41,33 +58,40 @@ open class AUINavigationBar: AUIView {
     }
     var heightConstraint: NSLayoutConstraint!
     
-    public var background = VibrantColor.color(NSColor.white) {
-        didSet {
-            removeVisualEffectView()
+    private func invalidateBackground() {
+        removeVisualEffectView()
+        
+        let background: VibrantColor
+        if let barTintColor = barTintColor {
+            background = VibrantColor.color(barTintColor.darkenColor)
+        } else if barStyle == .black {
+            background = VibrantColor.vibrantDark
+        } else {
+            background = VibrantColor.vibrantLight
+        }
+        
+        switch background {
+        case .color(let color):
+            backgroundColor = color
             
-            switch background {
-            case .color(let color):
-                backgroundColor = color
-                
-            case .vibrantLight:
-                backgroundColor = NSColor.white.withAlphaComponent(0.75)
-                
-                let visualEffectView = NSVisualEffectView()
-                visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
-                visualEffectView.blendingMode = .withinWindow
-                addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
-                visualEffectView.fillToSuperview()
-                
-            case .vibrantDark:
-                backgroundColor = NSColor.clear
-                
-                let visualEffectView = NSVisualEffectView()
-                visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
-                visualEffectView.blendingMode = .withinWindow
-                visualEffectView.material = .ultraDark
-                addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
-                visualEffectView.fillToSuperview()
-            }
+        case .vibrantLight:
+            backgroundColor = NSColor.white.withAlphaComponent(0.75)
+            
+            let visualEffectView = NSVisualEffectView()
+            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+            visualEffectView.blendingMode = .withinWindow
+            addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
+            visualEffectView.fillToSuperview()
+            
+        case .vibrantDark:
+            backgroundColor = NSColor.clear
+            
+            let visualEffectView = NSVisualEffectView()
+            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+            visualEffectView.blendingMode = .withinWindow
+            visualEffectView.material = .ultraDark
+            addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
+            visualEffectView.fillToSuperview()
         }
     }
     
@@ -95,6 +119,8 @@ open class AUINavigationBar: AUIView {
         shadowView.fillXToSuperview()
         shadowView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         shadowView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        invalidateBackground()
     }
     
     required public init?(coder: NSCoder) {
