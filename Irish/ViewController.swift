@@ -32,12 +32,14 @@ class ViewController: NSViewController {
             AUIBarButtonItem(barButtonSystemItem:.action, target: self, action: #selector(printLog(sender:))),
             item
         ]
-        //(viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
-        
+
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
-        //navigationWindowController.navigationController.navigationBar.barTintColor = NSColor.magenta
-        navigationWindowController.navigationController.navigationBar.barStyle = .black
-        navigationWindowController.navigationController.navigationBar.tintColor = NSColor.yellow
+        
+        let navigationBar = navigationWindowController.navigationController.navigationBar
+        navigationBar.barStyle = .black
+        navigationBar.tintColor = NSColor.yellow
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+        //navigationBar.barTintColor = NSColor.magenta
         
         let button = NSButton(title: "push", target: self, action: #selector(togglePush))
         viewController.view.addSubview(button)

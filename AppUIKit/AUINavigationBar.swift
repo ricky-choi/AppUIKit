@@ -185,6 +185,22 @@ open class AUINavigationBar: AUIView {
     
     public var backIndicatorImage: NSImage?
     public var isTranslucent: Bool = true
+    
+    public var titleTextAttributes: [String : Any]? {
+        didSet {
+            guard let item = topItem else {
+                return
+            }
+            
+            invalidateAttributedTitleLabel(item: item)
+        }
+    }
+    
+    func invalidateAttributedTitleLabel(item: AUINavigationItem) {
+        if let label = item.titleView as? AUILabel {
+            label.attributedStringValue = NSAttributedString(string: label.stringValue, attributes: titleTextAttributes)
+        }
+    }
 
     open override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -308,6 +324,8 @@ extension AUINavigationBar {
             newBarTitleView.centerToSuperview()
             newBarTitleView.leadingAnchor.constraint(greaterThanOrEqualTo: barLeadingAnchor, constant: padding).isActive = true
             newBarTitleView.trailingAnchor.constraint(lessThanOrEqualTo: barTrailingAnchor, constant: -padding).isActive = true
+            
+            invalidateAttributedTitleLabel(item: item)
         }
     }
     
@@ -316,17 +334,3 @@ extension AUINavigationBar {
     }
 }
 
-extension NSButton {
-    func setTintColor(color: NSColor) {
-        guard title.length() > 0, let buttonCell = cell as? NSButtonCell else {
-            return
-        }
-        
-        if buttonCell.imagePosition == .imageOnly || buttonCell.imagePosition == .imageOverlaps {
-            return
-        }
-        
-        let attrString = NSAttributedString(string: title, attributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: color])
-        attributedTitle = attrString
-    }
-}
