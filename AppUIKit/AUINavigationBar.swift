@@ -192,7 +192,7 @@ extension AUINavigationBar {
         // draw back item
         if let backItem = backItem, !backItem.hidesBackButton, (!needDrawLeftItems || (needDrawLeftItems && item.leftItemsSupplementBackButton)) {
             // draw back button
-            let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "Back Arrow")
+            let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "UINavigationBarBackIndicatorDefault")
             
             let button = NSButton(title: backItem.title ?? "", image: image!, target: self, action: #selector(back))
             button.isBordered = false

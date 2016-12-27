@@ -27,8 +27,8 @@ class ViewController: NSViewController {
         let viewController = AUIViewController()
         viewController.title = "My Title"
         viewController.navigationItem.rightBarButtonItems = [
-            AUIBarButtonItem(title: "Log", style: .plain, target: self, action: #selector(printLog(sender:))),
-            AUIBarButtonItem(title: "Show", style: .plain, target: self, action: #selector(printLog(sender:)))
+            AUIBarButtonItem(barButtonSystemItem:.action, target: self, action: #selector(printLog(sender:))),
+            AUIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(printLog(sender:)))
         ]
         //(viewController.view as? AUIView)?.backgroundColor = NSColor.yellow
         
