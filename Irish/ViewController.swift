@@ -38,7 +38,7 @@ class ViewController: NSViewController {
         let navigationBar = navigationWindowController.navigationController.navigationBar
         navigationBar.barStyle = .black
         navigationBar.tintColor = NSColor.yellow
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+        //navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
         //navigationBar.barTintColor = NSColor.magenta
         
         let button = NSButton(title: "push", target: self, action: #selector(togglePush))

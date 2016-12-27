@@ -74,6 +74,12 @@ open class AUINavigationBar: AUIView {
         case .color(let color):
             backgroundColor = color
             
+            if color.isBright() {
+                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
+            } else {
+                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+            }
+            
         case .vibrantLight:
             backgroundColor = NSColor.white.withAlphaComponent(0.75)
             
@@ -82,6 +88,8 @@ open class AUINavigationBar: AUIView {
             visualEffectView.blendingMode = .withinWindow
             addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
             visualEffectView.fillToSuperview()
+            
+            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
             
         case .vibrantDark:
             backgroundColor = NSColor.clear
@@ -92,6 +100,8 @@ open class AUINavigationBar: AUIView {
             visualEffectView.material = .ultraDark
             addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
             visualEffectView.fillToSuperview()
+            
+            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
         }
     }
     
