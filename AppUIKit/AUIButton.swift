@@ -7,12 +7,14 @@
 //
 
 import Cocoa
+import AppcidCocoaUtil
 
 open class AUIButton: NSButton {
     
     public var tintColor: NSColor? {
         didSet {
             invalidateTitleLabel()
+            invalidateImage()
         }
     }
     
@@ -41,6 +43,14 @@ open class AUIButton: NSButton {
         
         let attrString = NSAttributedString(string: title, attributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: tintColor!])
         attributedTitle = attrString
+    }
+    
+    func invalidateImage() {
+        guard tintColor != nil, image != nil else {
+            return
+        }
+        
+        image = image!.tintied(color: tintColor!)
     }
     
     override init(frame frameRect: NSRect) {

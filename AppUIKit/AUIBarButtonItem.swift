@@ -191,4 +191,6 @@ open class AUIBarButtonItem: AUIBarItem {
     public private(set) var customView: NSView?
     
     public var tintColor: NSColor?
+    
+    weak var button: AUIButton?
 }

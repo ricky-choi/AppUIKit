@@ -28,13 +28,22 @@ open class AUINavigationBar: AUIView {
     
     public override var tintColor: NSColor {
         didSet {
-            for subview in contentView.subviews {
-                if let view = subview as? AUIView {
-                    view.tintColor = tintColor
-                } else if let button = subview as? AUIButton {
-                    button.setSafeTintColor(tintColor)
-                }
+            guard let item = topItem else {
+                return
             }
+            
+            item.leftBarButtonItems?.forEach({ (item) in
+                if item.tintColor == nil {
+                    item.button?.tintColor = tintColor
+                }
+            })
+            
+            item.rightBarButtonItems?.forEach({ (item) in
+                if item.tintColor == nil {
+                    item.button?.tintColor = tintColor
+                }
+            })
+
         }
     }
     
@@ -316,6 +325,8 @@ extension AUINavigationBar {
     }
     
     func makeButton(forBarButtonItem item: AUIBarButtonItem) -> AUIButton? {
+        let tint = item.tintColor ?? tintColor
+        
         var button: AUIButton?
         if let title = item.title, let image = item.image {
             button = AUIButton(title: title, image: image, target: item.target, action: item.action)
@@ -327,9 +338,11 @@ extension AUINavigationBar {
         
         if let button = button {
             button.font = NSFont.systemFont(ofSize: 15)
-            button.tintColor = item.tintColor ?? tintColor
+            button.tintColor = tint
             button.setAccessibilityLabel(item.description)
         }
+        
+        item.button = button
         
         return button
     }
