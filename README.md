@@ -1,2 +1,5 @@
 # AppUIKit
-iOSrish interface design for macOS app
+iOS interface design for macOS app
+
+# Cocoapods
+pod 'AppUIKit'
