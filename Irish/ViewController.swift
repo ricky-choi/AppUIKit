@@ -22,8 +22,38 @@ class ViewController: NSViewController {
         }
     }
 
+    var windowController: AUIWindowController!
     var navigationWindowController: AUINavigationWindowController!
+    
     @IBAction func action(_ sender: Any) {
+        let device = IDevice.iPhone5
+        windowController = AUIWindowController(device: device)
+        let viewController = AUIViewController()
+        viewController.title = device.description
+        windowController.contentViewController = viewController
+        windowController.showAndCenter()
+    }
+    
+    func printLog(sender: NSButton) {
+        Swift.print("button pressed", sender.title )
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func makeWindow() {
+        windowController = AUIWindowController()
+        let viewController = AUIViewController()
+        viewController.title = "My Title"
+        let navigationController = AUINavigationController(rootViewController: viewController)
+        navigationController.view.frame = NSMakeRect(100, 100, 600, 400)
+        windowController.contentViewController = navigationController
+        windowController.show()
+    }
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func makeNavigationWindow() {
         let viewController = AUIViewController()
         viewController.title = "My Title"
         let item = AUIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(printLog(sender:)))
@@ -32,7 +62,7 @@ class ViewController: NSViewController {
             AUIBarButtonItem(barButtonSystemItem:.action, target: self, action: #selector(printLog(sender:))),
             item
         ]
-
+        
         navigationWindowController = AUINavigationWindowController(rootViewController: viewController, frame: NSMakeRect(100, 100, 600, 400))
         
         let navigationBar = navigationWindowController.navigationController.navigationBar
@@ -45,12 +75,7 @@ class ViewController: NSViewController {
         viewController.view.addSubview(button)
         button.centerToSuperview()
         
-        navigationWindowController.show()
-        navigationWindowController.window?.center()
-    }
-    
-    func printLog(sender: NSButton) {
-        Swift.print("hahaha", sender.title )
+        navigationWindowController.showAndCenter()
     }
     
     func togglePush() {
@@ -72,17 +97,6 @@ class ViewController: NSViewController {
             (viewController.view as! AUIView).backgroundColor = NSColor.green
             navigationWindowController.navigationController.pushViewController(viewController, animated: animated)
         }
-    }
-
-    var windowController: AUIWindowController!
-    func makeWindow1() {
-        windowController = AUIWindowController()
-        let viewController = AUIViewController()
-        viewController.title = "My Title"
-        let navigationController = AUINavigationController(rootViewController: viewController)
-        navigationController.view.frame = NSMakeRect(100, 100, 600, 400)
-        windowController.contentViewController = navigationController
-        windowController.show()
     }
 }
 

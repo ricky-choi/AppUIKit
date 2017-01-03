@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum IDeviceSize {
+public enum IDevice {
     case iPhoneEarly
     case iPhone4
     case iPhone5
@@ -50,6 +50,23 @@ public enum IDeviceSize {
             return 2
         case .iPhone7Plus:
             return 3
+        }
+    }
+}
+
+extension IDevice: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .iPhoneEarly:
+            return "iPhone 3GS"
+        case .iPhone4:
+            return "iPhone 4"
+        case .iPhone5:
+            return "iPhone 5"
+        case .iPhone7:
+            return "iPhone 7"
+        case .iPhone7Plus:
+            return "iPhoe 7 Plus"
         }
     }
 }

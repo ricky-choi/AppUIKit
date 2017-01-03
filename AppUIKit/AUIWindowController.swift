@@ -10,13 +10,18 @@ import Cocoa
 
 open class AUIWindowController: NSWindowController {
     
+    public init(frame: NSRect) {
+        let window = AUIWindow(contentRect: frame, backing: .buffered, defer: true)
+        super.init(window: window)
+    }
+    
     public convenience init() {
         self.init(frame: NSZeroRect)
     }
     
-    public init(frame: NSRect) {
-        let window = AUIWindow(contentRect: frame, backing: .buffered, defer: true)
-        super.init(window: window)
+    public convenience init(device: IDevice) {
+        self.init(frame: NSZeroRect)
+        setDevice(device)
     }
     
     required public init?(coder: NSCoder) {
@@ -45,6 +50,14 @@ open class AUIWindowController: NSWindowController {
         NSApp.addWindowsItem(window, title: window.title.isEmpty ? NSLocalizedString("Empty", comment: "") : window.title, filename: false)
     }
     
+    public func showAndCenter() {
+        guard let window = window else {
+            return
+        }
+        show()
+        window.center()
+    }
+    
 }
 
 extension AUIWindowController {
@@ -59,12 +72,12 @@ extension AUIWindowController {
         window.setFrame(newFrame, display: true, animate: animated)
     }
     
-    public func setDeviceSize(_ deviceSize: IDeviceSize, animated: Bool = false) {
+    public func setDevice(_ device: IDevice, animated: Bool = false) {
         guard let window = window else {
             return
         }
         
-        let size = deviceSize.size
+        let size = device.size
         
         setSize(size, animated: animated)
         

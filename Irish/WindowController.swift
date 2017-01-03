@@ -23,8 +23,8 @@ class WindowController: AUIWindowController {
             return
         }
         
-        if let deviceSize = deviceSize(for: menuItem.tag) {
-            setSize(deviceSize.size, animated: true)
+        if let device = device(for: menuItem.tag) {
+            setSize(device.size, animated: true)
             
             selectedSizeMenuItem?.state = NSOffState
             menuItem.state = NSOnState
@@ -32,7 +32,7 @@ class WindowController: AUIWindowController {
         }
     }
     
-    func deviceSize(for senderTag: Int) -> IDeviceSize? {
+    func device(for senderTag: Int) -> IDevice? {
         if senderTag == 1 {
             return .iPhone4
         }
@@ -55,6 +55,6 @@ class WindowController: AUIWindowController {
 
 extension WindowController: NSUserInterfaceValidations {
     func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
-        return deviceSize(for: item.tag) != nil
+        return device(for: item.tag) != nil
     }
 }
