@@ -60,28 +60,12 @@ open class AUIWindowController: NSWindowController {
     
 }
 
-extension AUIWindowController {
+extension NSWindowController {
     public func setSize(_ size: NSSize, animated: Bool = false) {
-        guard let window = window else {
-            return
-        }
-        
-        let currentOrigin = window.frame.origin
-        let newFrame = CGRect(origin: currentOrigin, size: size)
-        
-        window.setFrame(newFrame, display: true, animate: animated)
+        window?.setSize(size, animated: animated)
     }
     
     public func setDevice(_ device: IDevice, animated: Bool = false) {
-        guard let window = window else {
-            return
-        }
-        
-        let size = device.size
-        
-        setSize(size, animated: animated)
-        
-        window.minSize = size
-        window.maxSize = size
+        window?.setDevice(device, animated: animated)
     }
 }

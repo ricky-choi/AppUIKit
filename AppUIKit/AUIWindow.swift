@@ -36,3 +36,33 @@ open class AUIWindow: NSWindow {
         isMovableByWindowBackground = true
     }
 }
+
+extension NSWindow {
+    public func setSize(_ size: NSSize, animated: Bool = false) {
+        let currentOrigin = frame.origin
+        let newFrame = CGRect(origin: currentOrigin, size: size)
+        
+        setFrame(newFrame, display: true, animate: animated)
+        
+        if let zoomButton = standardWindowButton(.zoomButton) {
+            zoomButton.isEnabled = false
+        }
+    }
+    
+    public func setDevice(_ device: IDevice, animated: Bool = false) {
+        let size = device.size
+        
+        setSize(size, animated: animated)
+        
+        restrictSize(size)
+    }
+    
+    public func restrictSize(_ size: NSSize) {
+        minSize = size
+        maxSize = size
+        
+        if let zoomButton = standardWindowButton(.zoomButton) {
+            zoomButton.isEnabled = false
+        }
+    }
+}
