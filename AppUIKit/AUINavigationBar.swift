@@ -12,21 +12,10 @@ protocol AUINavigationBarDelegate: class {
     func navigationBarInvokeBackButton(_ navigationBar: AUINavigationBar)
 }
 
-public enum VibrantColor {
-    case color(NSColor)
-    case vibrantLight
-    case vibrantDark
-}
-
-public enum AUIBarStyle : Int {
-    case `default`
-    case black
-}
-
 open class AUINavigationBar: AUIView {
     weak var delegate: AUINavigationBarDelegate?
     
-    public override var tintColor: NSColor {
+    public override var tintColor: NSColor! {
         didSet {
             guard let item = topItem else {
                 return

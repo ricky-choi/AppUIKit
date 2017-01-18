@@ -9,7 +9,7 @@
 import Cocoa
 import AppcidCocoaUtil
 
-@objc protocol AUINavigationControllerDelegate: class {
+@objc public protocol AUINavigationControllerDelegate: class {
     @objc optional func navigationController(_ navigationController: AUINavigationController, willShow viewController: AUIViewController, animated: Bool)
     @objc optional func navigationController(_ navigationController: AUINavigationController, didShow viewController: AUIViewController, animated: Bool)
 }
@@ -177,7 +177,7 @@ open class AUINavigationController: AUIViewController {
     public var isNavigationBarHidden: Bool = false
     
     // Accessing the Delegate
-    weak var delegate: AUINavigationControllerDelegate?
+    weak open var delegate: AUINavigationControllerDelegate?
     
     // View LifeCycle
     open override func loadView() {

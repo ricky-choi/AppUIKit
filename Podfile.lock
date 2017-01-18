@@ -1,5 +1,5 @@
 PODS:
-  - AppcidCocoaUtil (0.1.0)
+  - AppcidCocoaUtil (0.2.1)
 
 DEPENDENCIES:
   - AppcidCocoaUtil (from `../AppcidCocoaUtil`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../AppcidCocoaUtil"
 
 SPEC CHECKSUMS:
-  AppcidCocoaUtil: b710365a284515a4d5f0cf019518203824b94a80
+  AppcidCocoaUtil: 1411e32229439b05b2a316a380af595a5acaa7f4
 
 PODFILE CHECKSUM: c5b8a3f275dbb1ad31ea0b888998025a87961eae
 

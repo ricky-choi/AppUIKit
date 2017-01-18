@@ -37,6 +37,12 @@
 		9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */; };
 		AE2F874A1E12B257004A5E19 /* AUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F87491E12B257004A5E19 /* AUIButton.swift */; };
 		AE2F874C1E12B550004A5E19 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2F874B1E12B550004A5E19 /* ColorExtension.swift */; };
+		AE3D90C51E2F9BE900A969E6 /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90C41E2F9BE900A969E6 /* AUITabBarController.swift */; };
+		AE3D90C71E2FA20A00A969E6 /* AUITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90C61E2FA20A00A969E6 /* AUITabBar.swift */; };
+		AE3D90C91E2FA28600A969E6 /* AUITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90C81E2FA28600A969E6 /* AUITabBarItem.swift */; };
+		AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */; };
+		AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */; };
+		AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */; };
 		BB758A8A4BAD3B0CBBFECEA9 /* Pods_AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +131,12 @@
 		A3807DD4F5DCA671B7F2279D /* Pods-Irish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.release.xcconfig"; sourceTree = "<group>"; };
 		AE2F87491E12B257004A5E19 /* AUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIButton.swift; sourceTree = "<group>"; };
 		AE2F874B1E12B550004A5E19 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		AE3D90C41E2F9BE900A969E6 /* AUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITabBarController.swift; sourceTree = "<group>"; };
+		AE3D90C61E2FA20A00A969E6 /* AUITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITabBar.swift; sourceTree = "<group>"; };
+		AE3D90C81E2FA28600A969E6 /* AUITabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITabBarItem.swift; sourceTree = "<group>"; };
+		AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIKit.swift; sourceTree = "<group>"; };
+		AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGeometry.swift; sourceTree = "<group>"; };
+		AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
 		E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.debug.xcconfig"; sourceTree = "<group>"; };
 		F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,21 +227,14 @@
 			children = (
 				9C74C89B1DECF21F009643B2 /* AppUIKit.h */,
 				9C74C89C1DECF21F009643B2 /* Info.plist */,
-				9C9554B01DECFD8600156EA8 /* AUIWindow.swift */,
-				9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */,
-				9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */,
+				AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */,
+				AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */,
+				AE3D90BF1E2F9B3800A969E6 /* Window */,
+				AE3D90C11E2F9B6D00A969E6 /* View */,
+				AE3D90C01E2F9B4900A969E6 /* Navigation */,
+				AE3D90C31E2F9BA300A969E6 /* TabBar */,
+				AE3D90C21E2F9B8300A969E6 /* Control */,
 				9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */,
-				9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */,
-				9CBD96481DF4E7F100CAC2A6 /* AUIViewController.swift */,
-				9CBD964A1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift */,
-				9CBD964C1DF4E82B00CAC2A6 /* AUINavigationController.swift */,
-				9CBD964E1DF4E84900CAC2A6 /* AUIView.swift */,
-				9CBD96501DF4E86700CAC2A6 /* AUINavigationBar.swift */,
-				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
-				9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */,
-				9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */,
-				9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */,
-				AE2F87491E12B257004A5E19 /* AUIButton.swift */,
 				AE2F874B1E12B550004A5E19 /* ColorExtension.swift */,
 				9CAC02DD1E08A7AC00E9D916 /* Media.xcassets */,
 			);
@@ -274,6 +279,59 @@
 				9C9554D71DECFDC200156EA8 /* Info.plist */,
 			);
 			path = IrishUITests;
+			sourceTree = "<group>";
+		};
+		AE3D90BF1E2F9B3800A969E6 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				9C9554B01DECFD8600156EA8 /* AUIWindow.swift */,
+				9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */,
+			);
+			name = Window;
+			sourceTree = "<group>";
+		};
+		AE3D90C01E2F9B4900A969E6 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */,
+				9CBD964C1DF4E82B00CAC2A6 /* AUINavigationController.swift */,
+				9CBD96501DF4E86700CAC2A6 /* AUINavigationBar.swift */,
+				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		AE3D90C11E2F9B6D00A969E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CBD96481DF4E7F100CAC2A6 /* AUIViewController.swift */,
+				9CBD964A1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift */,
+				9CBD964E1DF4E84900CAC2A6 /* AUIView.swift */,
+				9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */,
+				9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */,
+				9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AE3D90C21E2F9B8300A969E6 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */,
+				AE2F87491E12B257004A5E19 /* AUIButton.swift */,
+				AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */,
+			);
+			name = Control;
+			sourceTree = "<group>";
+		};
+		AE3D90C31E2F9BA300A969E6 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AE3D90C41E2F9BE900A969E6 /* AUITabBarController.swift */,
+				AE3D90C61E2FA20A00A969E6 /* AUITabBar.swift */,
+				AE3D90C81E2FA28600A969E6 /* AUITabBarItem.swift */,
+			);
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		B0E93AD0ED11368075D869EE /* Frameworks */ = {
@@ -577,16 +635,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBD96531DF4E87B00CAC2A6 /* AUINavigationItem.swift in Sources */,
+				AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */,
 				9CBD96471DF4E72900CAC2A6 /* AUILabel.swift in Sources */,
 				9C9554B11DECFD8600156EA8 /* AUIWindow.swift in Sources */,
 				9CBD96551DF4E89100CAC2A6 /* AUIBarItem.swift in Sources */,
 				AE2F874A1E12B257004A5E19 /* AUIButton.swift in Sources */,
+				AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */,
+				AE3D90C71E2FA20A00A969E6 /* AUITabBar.swift in Sources */,
 				9CBD96511DF4E86700CAC2A6 /* AUINavigationBar.swift in Sources */,
 				9CBD964F1DF4E84900CAC2A6 /* AUIView.swift in Sources */,
 				9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */,
+				AE3D90C51E2F9BE900A969E6 /* AUITabBarController.swift in Sources */,
+				AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */,
 				9CBD964D1DF4E82B00CAC2A6 /* AUINavigationController.swift in Sources */,
 				9CBD96571DF4E8A800CAC2A6 /* AUIBarButtonItem.swift in Sources */,
 				9C96FCB21DF62EDA0057050E /* AUIToolbar.swift in Sources */,
+				AE3D90C91E2FA28600A969E6 /* AUITabBarItem.swift in Sources */,
 				AE2F874C1E12B550004A5E19 /* ColorExtension.swift in Sources */,
 				9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */,
 				9CCE99FD1E000F5D00E1B086 /* AUINavigationWindowController.swift in Sources */,

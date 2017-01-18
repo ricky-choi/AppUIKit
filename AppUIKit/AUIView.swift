@@ -10,7 +10,13 @@ import Cocoa
 import AppcidCocoaUtil
 
 open class AUIView: NSView {
-    public var tintColor = NSColor.defaultTint
+    /*
+     -tintColor always returns a color. The color returned is the first non-default value in the receiver's superview chain (starting with itself).
+     If no non-default value is found, a system-defined color is returned.
+     If this view's -tintAdjustmentMode returns Dimmed, then the color that is returned for -tintColor will automatically be dimmed.
+     If your view subclass uses tintColor in its rendering, override -tintColorDidChange in order to refresh the rendering if the color changes.
+     */
+    public var tintColor: NSColor! = NSColor.defaultTint
     
     public var backgroundColor = NSColor.white {
         didSet {

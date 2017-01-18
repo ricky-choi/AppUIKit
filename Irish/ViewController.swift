@@ -26,16 +26,22 @@ class ViewController: NSViewController {
     var navigationWindowController: AUINavigationWindowController!
     
     @IBAction func action(_ sender: Any) {
+        makeNavigationWindow()
+    }
+    
+    func printLog(sender: NSButton) {
+        Swift.print("button pressed", sender.title )
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    
+    func makeIPhone5() {
         let device = IDevice.iPhone5
         windowController = AUIWindowController(device: device)
         let viewController = AUIViewController()
         viewController.title = device.description
         windowController.contentViewController = viewController
         windowController.showAndCenter()
-    }
-    
-    func printLog(sender: NSButton) {
-        Swift.print("button pressed", sender.title )
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
