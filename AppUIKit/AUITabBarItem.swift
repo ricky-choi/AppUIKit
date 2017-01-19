@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public enum AUITabBarSystemItem : Int {
+public enum AUITabBarSystemItem : Int, CustomStringConvertible {
     case more
     case favorites
     case featured
@@ -21,6 +21,44 @@ public enum AUITabBarSystemItem : Int {
     case downloads
     case mostRecent
     case mostViewed
+    
+    var title: String {
+        switch self {
+        case .more: return "More"
+        case .favorites: return "Favorites"
+        case .featured: return "Featured"
+        case .topRated: return "Top Rated"
+        case .recents: return "Recents"
+        case .contacts: return "Contacts"
+        case .history: return "History"
+        case .bookmarks: return "Bookmarks"
+        case .search: return "Search"
+        case .downloads: return "Downloads"
+        case .mostRecent: return "Most Recent"
+        case .mostViewed: return "Most Viewed"
+        }
+    }
+    
+    public var description: String {
+        return title
+    }
+    
+    var image: NSImage! {
+        switch self {
+        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        }
+    }
 }
 
 open class AUITabBarItem: AUIBarItem {
