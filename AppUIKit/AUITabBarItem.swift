@@ -45,20 +45,38 @@ public enum AUITabBarSystemItem : Int, CustomStringConvertible {
     
     var image: NSImage! {
         switch self {
-        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "")
-        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "")
+        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMoreTemplate")
+        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
+        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
+        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
+        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
+        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarContactsTemplate")
+        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
+        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarBookmarksTemplate")
+        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarSearchTemplate")
+        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarDownloadsTemplate")
+        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
+        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMostViewedTemplate")
         }
     }
+    
+    var selectedImage: NSImage! {
+        switch self {
+        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMoreTemplateSelected")
+        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
+        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
+        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
+        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
+        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarContactsTemplateSelected")
+        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
+        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarBookmarksTemplateSelected")
+        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarSearchTemplateSelected")
+        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarDownloadsTemplateSelected")
+        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
+        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMostViewedTemplateSelected")
+        }
+    }
+    
 }
 
 open class AUITabBarItem: AUIBarItem {
@@ -86,7 +104,10 @@ open class AUITabBarItem: AUIBarItem {
     
     public convenience init(tabBarSystemItem systemItem: AUITabBarSystemItem, tag: Int) {
         self.init()
-        assert(false, "not implemented")
+        self.title = systemItem.title
+        self.image = systemItem.image
+        self.selectedImage = systemItem.selectedImage
+        self.tag = tag
     }
     
     open var selectedImage: NSImage?
