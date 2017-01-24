@@ -28,7 +28,7 @@ open class AUIWindow: NSWindow {
     }
     
     func setup() {
-        styleMask = [styleMask, .fullSizeContentView]
+        styleMask = styleMask.union(.fullSizeContentView)
         
         titlebarAppearsTransparent = true
         

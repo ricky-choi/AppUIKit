@@ -110,7 +110,15 @@ open class AUITabBarItem: AUIBarItem {
         self.tag = tag
     }
     
-    open var selectedImage: NSImage?
+    fileprivate var _selectedImage: NSImage?
+    open var selectedImage: NSImage? {
+        set {
+            _selectedImage = newValue
+        }
+        get {
+            return _selectedImage ?? image
+        }
+    }
     open var badgeValue: String? // default is nil
     
     
@@ -124,15 +132,24 @@ open class AUITabBarItem: AUIBarItem {
     /// If this item displays a badge, this color will be used for the badge's background. If set to nil, the default background color will be used instead.
     @NSCopying open var badgeColor: NSColor?
     
-    
+    fileprivate var _badgeTextAttributes = [AUIControlState: [String: Any]]()
     /// Provide text attributes to use to draw the badge text for the given singular control state (Normal, Disabled, Focused, Selected, or Highlighted). Default values will be supplied for keys that are not provided by this dictionary. See NSAttributedString.h for details on what keys are available.
     open func setBadgeTextAttributes(_ textAttributes: [String : Any]?, for state: AUIControlState) {
+        if state == .default {
+            _badgeTextAttributes[.default] = textAttributes
+        }
         
+        for controlState in AUIControlState.notDefaultStates {
+            if state.contains(controlState) {
+                _badgeTextAttributes[controlState] = textAttributes
+            }
+        }
     }
     
     
     /// Returns attributes previously set via -setBadgeTextAttributes:forState:.
     open func badgeTextAttributes(for state: AUIControlState) -> [String : Any]? {
-        return nil
+        return _badgeTextAttributes[state] ?? _badgeTextAttributes[.default]
     }
 }
+
