@@ -37,6 +37,7 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
             
             selectedViewController = nil
             selectedIndex = NSNotFound
+            tabBar.items = nil
         }
         didSet {
             if let newViewControllers = _viewControllers, newViewControllers.count > 0 {
@@ -46,6 +47,7 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
                 
                 selectedViewController = newViewControllers.first!
                 selectedIndex = 0
+                tabBar.items = newViewControllers.map { $0.tabBarItem }
             }
         }
     }

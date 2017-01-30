@@ -12,7 +12,7 @@ protocol AUINavigationBarDelegate: class {
     func navigationBarInvokeBackButton(_ navigationBar: AUINavigationBar)
 }
 
-open class AUINavigationBar: AUIView {
+open class AUINavigationBar: AUIBar {
     weak var delegate: AUINavigationBarDelegate?
     
     public override var tintColor: NSColor! {
@@ -36,80 +36,29 @@ open class AUINavigationBar: AUIView {
         }
     }
     
-    public var barTintColor: NSColor? {
-        didSet {
-            invalidateBackground()
+    override func invalidateBackground() {
+        super.invalidateBackground()
+        
+        switch backgroundEffectColor {
+        case .color(let color):
+            if color.isBright() {
+                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
+            } else {
+                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+            }
+        case .vibrantLight:
+            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
+        case .vibrantDark:
+            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
         }
     }
     
-    public var barStyle: AUIBarStyle = AUIBarStyle.default {
-        didSet {
-            invalidateBackground()
-        }
-    }
-    
-    let contentView = AUIView()
     var barHeight: CGFloat = 44 {
         didSet {
             heightConstraint.constant = barHeight
         }
     }
     var heightConstraint: NSLayoutConstraint!
-    
-    private func invalidateBackground() {
-        removeVisualEffectView()
-        
-        let background: VibrantColor
-        if let barTintColor = barTintColor {
-            background = VibrantColor.color(barTintColor.darkenColor)
-        } else if barStyle == .black {
-            background = VibrantColor.vibrantDark
-        } else {
-            background = VibrantColor.vibrantLight
-        }
-        
-        switch background {
-        case .color(let color):
-            backgroundColor = color
-            
-            if color.isBright() {
-                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
-            } else {
-                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
-            }
-            
-        case .vibrantLight:
-            backgroundColor = NSColor.white.withAlphaComponent(0.75)
-            
-            let visualEffectView = NSVisualEffectView()
-            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
-            visualEffectView.blendingMode = .withinWindow
-            addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
-            visualEffectView.fillToSuperview()
-            
-            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
-            
-        case .vibrantDark:
-            backgroundColor = NSColor.clear
-            
-            let visualEffectView = NSVisualEffectView()
-            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
-            visualEffectView.blendingMode = .withinWindow
-            visualEffectView.material = .ultraDark
-            addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
-            visualEffectView.fillToSuperview()
-            
-            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
-        }
-    }
-    
-    private func removeVisualEffectView() {
-        for subview in subviews {
-            if let vev = subview as? NSVisualEffectView {
-                vev.removeFromSuperview()
-            }
-        }
-    }
     
     override public init(frame frameRect: NSRect) {
         super.init(frame: frameRect)

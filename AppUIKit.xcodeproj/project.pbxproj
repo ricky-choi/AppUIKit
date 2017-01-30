@@ -43,6 +43,7 @@
 		AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */; };
 		AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */; };
 		AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */; };
+		AEB142211E3F3545009A8F96 /* AUIBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB142201E3F3545009A8F96 /* AUIBar.swift */; };
 		BB758A8A4BAD3B0CBBFECEA9 /* Pods_AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */; };
 		F0AD7B91C7DA40338C5B3D86 /* Pods_AppUIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAE11C8BB1192D426BC553 /* Pods_AppUIKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +142,7 @@
 		AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIKit.swift; sourceTree = "<group>"; };
 		AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGeometry.swift; sourceTree = "<group>"; };
 		AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
+		AEB142201E3F3545009A8F96 /* AUIBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBar.swift; sourceTree = "<group>"; };
 		E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.debug.xcconfig"; sourceTree = "<group>"; };
 		F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,6 +305,7 @@
 				9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */,
 				9CBD964C1DF4E82B00CAC2A6 /* AUINavigationController.swift */,
 				9CBD96501DF4E86700CAC2A6 /* AUINavigationBar.swift */,
+				AEB142201E3F3545009A8F96 /* AUIBar.swift */,
 				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
 			);
 			name = Navigation;
@@ -702,6 +705,7 @@
 				9CBD964F1DF4E84900CAC2A6 /* AUIView.swift in Sources */,
 				9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */,
 				AE3D90C51E2F9BE900A969E6 /* AUITabBarController.swift in Sources */,
+				AEB142211E3F3545009A8F96 /* AUIBar.swift in Sources */,
 				AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */,
 				9CBD964D1DF4E82B00CAC2A6 /* AUINavigationController.swift in Sources */,
 				9CBD96571DF4E8A800CAC2A6 /* AUIBarButtonItem.swift in Sources */,

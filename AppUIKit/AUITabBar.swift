@@ -14,7 +14,19 @@ public enum AUITabBarItemPositioning : Int {
     case centered
 }
 
-open class AUITabBar: AUIView {
+open class AUITabBar: AUIBar {
+    open override func viewDidMoveToSuperview() {
+        super.viewDidMoveToSuperview()
+        
+        _invalidateItems()
+    }
+    
+    func _invalidateItems() {
+        
+    }
+    
+    
+    
     weak open var delegate: AUITabBarDelegate? // weak reference. default is nil
     
     fileprivate var _items: [AUITabBarItem]?
@@ -33,8 +45,6 @@ open class AUITabBar: AUIView {
     open func setItems(_ items: [AUITabBarItem]?, animated: Bool) {
         _items = items
     }// will fade in or out or reorder and adjust spacing
-    
-    open var barTintColor: NSColor? // default is nil
     
     /// Unselected items in this tab bar will be tinted with this color. Setting this value to nil indicates that UITabBar should use its default value instead.
     @NSCopying open var unselectedItemTintColor: NSColor?
@@ -73,7 +83,15 @@ open class AUITabBar: AUIView {
      Default of 0 or values less than 0 will be interpreted as a system-defined width.
      */
     open var itemWidth: CGFloat = 0
-    
+    let itemWidthDefault: CGFloat = 76
+    let itemWidthMin: CGFloat = 49
+    var itemWidthInternal: CGFloat {
+        if itemWidth > itemWidthMin {
+            return itemWidth
+        }
+        
+        return itemWidthDefault
+    }
     
     /*
      Set the itemSpacing to a positive value to be used between tab bar items
@@ -81,13 +99,30 @@ open class AUITabBar: AUIView {
      Default of 0 or values less than 0 will be interpreted as a system-defined spacing.
      */
     open var itemSpacing: CGFloat = 0
+    let itemSpacingDefault: CGFloat = 30
+    let itemSpacingMin: CGFloat = 4
+    var itemSpacingInternal: CGFloat {
+        if itemSpacing > 0 {
+            return itemSpacing + itemSpacingMin
+        }
+        
+        return itemSpacingDefault + itemSpacingMin
+    }
     
-    
-    /*
-     Valid bar styles are UIBarStyleDefault (default) and UIBarStyleBlack.
-     */
-    open var barStyle: AUIBarStyle = .default
-    
+    let minTabBarPadding: CGFloat = 2
+    var minTabBarWidth: CGFloat {
+        guard let items = items, items.count > 0 else {
+            return 0
+        }
+        
+        if items.count > 1 {
+            return minTabBarPadding * CGFloat(2) + itemWidthInternal * CGFloat(items.count) + itemSpacingInternal * CGFloat(items.count - 1)
+        } else if items.count == 1 {
+            return minTabBarPadding * CGFloat(2) + itemWidthInternal
+        }
+        
+        return 0
+    }    
     
     /*
      Default is YES.

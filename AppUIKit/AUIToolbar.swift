@@ -8,7 +8,7 @@
 
 import Cocoa
 
-open class AUIToolbar: AUIView {
+open class AUIToolbar: AUIBar {
 
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
