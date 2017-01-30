@@ -10,6 +10,9 @@ import Cocoa
 
 open class AUIViewController: NSViewController {
     
+    weak var _tabBarController: AUITabBarController?
+    var _tabBarItem: AUITabBarItem?
+    
     weak public var navigationController: AUINavigationController?
     lazy public private(set) var navigationItem: AUINavigationItem = {
         return AUINavigationItem(title: self.title ?? "")

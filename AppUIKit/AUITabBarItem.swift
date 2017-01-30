@@ -110,7 +110,11 @@ open class AUITabBarItem: AUIBarItem {
         self.tag = tag
     }
     
-    fileprivate var _selectedImage: NSImage?
+    fileprivate var _selectedImage: NSImage? {
+        didSet {
+            invalidateBadge()
+        }
+    }
     open var selectedImage: NSImage? {
         set {
             _selectedImage = newValue
@@ -119,7 +123,11 @@ open class AUITabBarItem: AUIBarItem {
             return _selectedImage ?? image
         }
     }
-    open var badgeValue: String? // default is nil
+    open var badgeValue: String? {
+        didSet {
+            invalidateBadge()
+        }
+    }// default is nil
     
     
     /* To set item label text attributes use the appearance selectors available on the superclass, UIBarItem.
@@ -130,9 +138,17 @@ open class AUITabBarItem: AUIBarItem {
     
     
     /// If this item displays a badge, this color will be used for the badge's background. If set to nil, the default background color will be used instead.
-    @NSCopying open var badgeColor: NSColor?
+    @NSCopying open var badgeColor: NSColor? {
+        didSet {
+            invalidateBadge()
+        }
+    }
     
-    fileprivate var _badgeTextAttributes = [AUIControlState: [String: Any]]()
+    fileprivate var _badgeTextAttributes = [AUIControlState: [String: Any]]() {
+        didSet {
+            invalidateBadge()
+        }
+    }
     /// Provide text attributes to use to draw the badge text for the given singular control state (Normal, Disabled, Focused, Selected, or Highlighted). Default values will be supplied for keys that are not provided by this dictionary. See NSAttributedString.h for details on what keys are available.
     open func setBadgeTextAttributes(_ textAttributes: [String : Any]?, for state: AUIControlState) {
         if state == .default {
@@ -150,6 +166,12 @@ open class AUITabBarItem: AUIBarItem {
     /// Returns attributes previously set via -setBadgeTextAttributes:forState:.
     open func badgeTextAttributes(for state: AUIControlState) -> [String : Any]? {
         return _badgeTextAttributes[state] ?? _badgeTextAttributes[.default]
+    }
+}
+
+extension AUITabBarItem {
+    func invalidateBadge() {
+        
     }
 }
 

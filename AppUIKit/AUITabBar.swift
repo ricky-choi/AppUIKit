@@ -17,13 +17,21 @@ public enum AUITabBarItemPositioning : Int {
 open class AUITabBar: AUIView {
     weak open var delegate: AUITabBarDelegate? // weak reference. default is nil
     
-    open var items: [AUITabBarItem]? // get/set visible UITabBarItems. default is nil. changes not animated. shown in order
+    fileprivate var _items: [AUITabBarItem]?
+    open var items: [AUITabBarItem]? {
+        get {
+            return _items
+        }
+        set {
+            setItems(newValue, animated: false)
+        }
+    }// get/set visible UITabBarItems. default is nil. changes not animated. shown in order
     
     weak open var selectedItem: AUITabBarItem? // will show feedback based on mode. default is nil
     
     
     open func setItems(_ items: [AUITabBarItem]?, animated: Bool) {
-        
+        _items = items
     }// will fade in or out or reorder and adjust spacing
     
     open var barTintColor: NSColor? // default is nil
@@ -93,7 +101,13 @@ open class AUITabBar: AUIView {
      for UIBarStyleBlack or white for UIBarStyleDefault if barTintColor is nil.
      */
     open var isTranslucent: Bool = true
-    
+
+}
+
+extension AUITabBar {
+    func selectItem(_ item: AUITabBarItem?) {
+        
+    }
 }
 
 @objc public protocol AUITabBarDelegate : NSObjectProtocol {

@@ -144,10 +144,10 @@ open class AUINavigationController: AUIViewController {
     public func setNavigationBarHidden(_ hidden: Bool, animated: Bool) {
         
     }
-    public var navigationBarHeight: CGFloat = 44
-    public var titleBarHeight: CGFloat = 24
-    public var navigationAreaHeight: CGFloat {
-        return navigationBarHeight + titleBarHeight
+    private var _navigationBarHeight: CGFloat = 44
+    private var _titleBarHeight: CGFloat = 24
+    private var _navigationAreaHeight: CGFloat {
+        return _navigationBarHeight + _titleBarHeight
     }
     
     // Configuring Custom Toolbars
@@ -189,11 +189,11 @@ open class AUINavigationController: AUIViewController {
         view.addSubview(_navigationBarContainerView)
         _navigationBarContainerView.fillXToSuperview()
         _navigationBarContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        _navigationBarContainerView.fixHeight(navigationAreaHeight)
+        _navigationBarContainerView.fixHeight(_navigationAreaHeight)
         
         _navigationBarContainerView.addSubview(navigationBar);
         navigationBar.fillToSuperview()
-        navigationBar.barHeight = navigationBarHeight
+        navigationBar.barHeight = _navigationBarHeight
 
         if let viewController = topViewController {
             setupInitialViewController(viewController)
