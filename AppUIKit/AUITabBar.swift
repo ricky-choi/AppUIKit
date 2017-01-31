@@ -15,19 +15,30 @@ public enum AUITabBarItemPositioning : Int {
 }
 
 open class AUITabBar: AUIBar {
-    open override func viewDidMoveToSuperview() {
-        super.viewDidMoveToSuperview()
-        
-        _invalidateItems()
+    fileprivate var segmentedControl: NSSegmentedControl? {
+        willSet {
+            if let current = segmentedControl {
+                current.removeFromSuperview()
+            }
+        }
+        didSet {
+            if let newOne = segmentedControl {
+                addSubview(newOne)
+                newOne.centerToSuperview()
+            }
+        }
     }
     
-    func _invalidateItems() {
-        
+    func _invalidateItems(animated: Bool = false) {
+        if let tabBarItems = items, tabBarItems.count > 0 {
+            segmentedControl = NSSegmentedControl(labels: tabBarItems.map {$0.title!}, trackingMode: .selectOne, target: self, action: #selector(selectItem(sender:)))
+        } else {
+            segmentedControl = nil
+        }
     }
-    
-    
     
     weak open var delegate: AUITabBarDelegate? // weak reference. default is nil
+    weak var internalDelegate: AUITabBarInternalDelegate?
     
     fileprivate var _items: [AUITabBarItem]?
     open var items: [AUITabBarItem]? {
@@ -44,6 +55,8 @@ open class AUITabBar: AUIBar {
     
     open func setItems(_ items: [AUITabBarItem]?, animated: Bool) {
         _items = items
+        
+        _invalidateItems(animated: animated)
     }// will fade in or out or reorder and adjust spacing
     
     /// Unselected items in this tab bar will be tinted with this color. Setting this value to nil indicates that UITabBar should use its default value instead.
@@ -137,9 +150,26 @@ open class AUITabBar: AUIBar {
      */
     open var isTranslucent: Bool = true
 
+    var selectedIndex: Int {
+        get {
+            return segmentedControl?.selectedSegment ?? NSNotFound
+        }
+        set {
+            guard selectedIndex != newValue else {
+                return
+            }
+            
+            segmentedControl?.selectedSegment = newValue
+        }
+    }
 }
 
 extension AUITabBar {
+    func selectItem(sender: NSSegmentedControl) {
+        selectedIndex = sender.selectedSegment
+        internalDelegate?.tabBar(self, didChangeIndex: selectedIndex)
+    }
+    
     func selectItem(_ item: AUITabBarItem?) {
         
     }
@@ -147,4 +177,8 @@ extension AUITabBar {
 
 @objc public protocol AUITabBarDelegate : NSObjectProtocol {
     @objc optional func tabBar(_ tabBar: AUITabBar, didSelect item: AUITabBarItem) // called when a new view is selected by the user (but not programatically)
+}
+
+protocol AUITabBarInternalDelegate : NSObjectProtocol {
+    func tabBar(_ tabBar: AUITabBar, didChangeIndex selectedIndex: Int)
 }

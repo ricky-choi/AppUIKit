@@ -10,6 +10,7 @@ import Cocoa
 
 
 open class AUITabBarController: AUIViewController, AUITabBarDelegate {
+    
     open override func loadView() {
         view = AUIView()
         
@@ -27,31 +28,7 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
         
     }
     
-    fileprivate var _viewControllers: [AUIViewController]? {
-        willSet {
-            if let oldViewControllers = _viewControllers {
-                for oldViewController in oldViewControllers {
-                    oldViewController.tabBarController = nil
-                }
-            }
-            
-            selectedViewController = nil
-            selectedIndex = NSNotFound
-            tabBar.items = nil
-        }
-        didSet {
-            if let newViewControllers = _viewControllers, newViewControllers.count > 0 {
-                for newViewController in newViewControllers {
-                    newViewController.tabBarController = self
-                }
-                
-                selectedViewController = newViewControllers.first!
-                selectedIndex = 0
-                tabBar.items = newViewControllers.map { $0.tabBarItem }
-            }
-        }
-    }
-    
+    fileprivate var _viewControllers: [AUIViewController]?    
     open var viewControllers: [AUIViewController]? {
         get {
             return _viewControllers
@@ -64,7 +41,31 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
     // If the number of view controllers is greater than the number displayable by a tab bar, a "More" navigation controller will automatically be shown.
     // The "More" navigation controller will not be returned by -viewControllers, but it may be returned by -selectedViewController.
     open func setViewControllers(_ viewControllers: [AUIViewController]?, animated: Bool) {
+        // remove olds
+        if let oldViewControllers = _viewControllers {
+            for oldViewController in oldViewControllers {
+                oldViewController.tabBarController = nil
+            }
+        }
+        
+        // set news
         _viewControllers = viewControllers
+        
+        if let newViewControllers = _viewControllers, newViewControllers.count > 0 {
+            for newViewController in newViewControllers {
+                newViewController.tabBarController = self
+            }
+            
+            tabBar.items = newViewControllers.map { $0.tabBarItem }
+            selectedViewController = newViewControllers.first!
+            selectedIndex = 0
+            
+        } else {
+            tabBar.items = nil
+            selectedViewController = nil
+            selectedIndex = NSNotFound
+            
+        }
     }
 
     weak open var selectedViewController: AUIViewController? {
@@ -78,17 +79,25 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
                 oldViewController.view.removeFromSuperview()
             }
             
-            if let selectedViewController = selectedViewController {
+            if let selectedViewController = selectedViewController, let vcs = viewControllers, vcs.contains(selectedViewController) {
                 addChildViewController(selectedViewController)
                 _contentContainerView.addSubview(selectedViewController.view)
                 selectedViewController.view.fillToSuperview()
+                
+                selectedIndex = vcs.index(of: selectedViewController)!
             }
         }
     }// This may return the "More" navigation controller if it exists.
     
     open var selectedIndex: Int = NSNotFound {
         didSet {
+            guard oldValue != selectedIndex, let vcs = viewControllers, selectedIndex < vcs.count else {
+                return
+            }
             
+            selectedViewController = vcs[selectedIndex]
+            
+            tabBar.selectedIndex = selectedIndex
         }
     }
     
@@ -105,6 +114,7 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
         
         super.init()
         
+        _tabBar.internalDelegate = self
     }
     
     required public init?(coder: NSCoder) {
@@ -144,4 +154,10 @@ extension AUIViewController {
             _tabBarController = newValue
         }
     } // If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.
+}
+
+extension AUITabBarController: AUITabBarInternalDelegate {
+    func tabBar(_ tabBar: AUITabBar, didChangeIndex selectedIndex: Int) {
+        self.selectedIndex = selectedIndex
+    }
 }

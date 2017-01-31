@@ -34,12 +34,12 @@ open class AUINavigationController: AUIViewController {
     
     // Creating Navigation Controllers
     public init(rootViewController: AUIViewController) {
-        viewControllers = [rootViewController]
+        _viewControllers = [rootViewController]
         super.init()
     }
     
     required public init?(coder: NSCoder) {
-        viewControllers = [AUIViewController]()
+        _viewControllers = [AUIViewController]()
         super.init(coder: coder)
     }
     
@@ -50,9 +50,18 @@ open class AUINavigationController: AUIViewController {
     public var visibleViewController: AUIViewController? {
         return topViewController
     }
-    public fileprivate(set) var viewControllers: [AUIViewController]
+    
+    fileprivate var _viewControllers: [AUIViewController]
+    public var viewControllers: [AUIViewController] {
+        get {
+            return _viewControllers
+        }
+        set {
+            setViewControllers(newValue, animated: false)
+        }
+    }
     public func setViewControllers(_ viewControllers: [AUIViewController], animated: Bool) {
-        self.viewControllers = viewControllers
+        self._viewControllers = viewControllers
         
         if let currentViewController = visibleViewController {
             currentViewController.removeFromParentViewController()
@@ -70,7 +79,7 @@ open class AUINavigationController: AUIViewController {
             return
         }
         
-        viewControllers.append(viewController)
+        _viewControllers.append(viewController)
         navigationBar.pushItem(viewController.navigationItem, animated: animated)
         _navigate(fromViewController: currentViewController, toViewController: viewController, animation: animated ? .push : .none)
     }
@@ -81,7 +90,7 @@ open class AUINavigationController: AUIViewController {
             return nil
         }
         
-        let popedViewController = viewControllers.removeLast()
+        let popedViewController = _viewControllers.removeLast()
         navigationBar.popItem(animated: animated)
         _navigate(fromViewController: popedViewController, toViewController: viewControllers.last!, animation: animated ? .pop : .none)
         
@@ -95,7 +104,7 @@ open class AUINavigationController: AUIViewController {
         }
         
         let rootViewController = viewControllers.first!
-        let removeViewControllers = viewControllers.dropFirst()
+        let removeViewControllers = _viewControllers.dropFirst()
         navigationBar.setItems([rootViewController.navigationItem], animated: animated)
         _navigate(fromViewController: removeViewControllers.last!, toViewController: rootViewController, animation: animated ? .pop : .none)
         
