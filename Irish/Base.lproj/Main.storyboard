@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -718,20 +718,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H40-Ja-Klt">
-                                <rect key="frame" x="200" y="117" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jiU-Ds-Fpi">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oEJ-YM-J0H">
+                                <rect key="frame" x="14" y="212" width="93" height="32"/>
+                                <buttonCell key="cell" type="push" title="iPhone 5" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7R9-2d-ETj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="action:" target="XfG-lQ-9wD" id="piz-hH-fXb"/>
+                                    <action selector="showIPhone5:" target="XfG-lQ-9wD" id="4F0-02-OiX"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Fk-bX-hjW">
+                                <rect key="frame" x="14" y="179" width="70" height="32"/>
+                                <buttonCell key="cell" type="push" title="View" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w0D-Sb-R4L">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showWindow:" target="XfG-lQ-9wD" id="tVg-yw-6ec"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="scH-UA-iPV">
+                                <rect key="frame" x="14" y="146" width="168" height="32"/>
+                                <buttonCell key="cell" type="push" title="Navigation Controller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="va7-bz-PTu">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showNavigationWindow:" target="XfG-lQ-9wD" id="FHv-xJ-ea3"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pIC-s8-4hH">
+                                <rect key="frame" x="14" y="113" width="150" height="32"/>
+                                <buttonCell key="cell" type="push" title="Tab Bar Controller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vjC-zx-ylx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showTabBar:" target="XfG-lQ-9wD" id="dC8-Bx-7Dd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="H40-Ja-Klt" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Q9h-By-6Bh"/>
-                            <constraint firstItem="H40-Ja-Klt" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="hm7-j2-Xc6"/>
+                            <constraint firstItem="6Fk-bX-hjW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="2cZ-xG-3F5"/>
+                            <constraint firstItem="pIC-s8-4hH" firstAttribute="top" secondItem="scH-UA-iPV" secondAttribute="bottom" constant="12" id="ADH-uc-ANQ"/>
+                            <constraint firstItem="oEJ-YM-J0H" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Jm1-G3-srX"/>
+                            <constraint firstItem="6Fk-bX-hjW" firstAttribute="top" secondItem="oEJ-YM-J0H" secondAttribute="bottom" constant="12" id="L8d-Om-mlg"/>
+                            <constraint firstItem="scH-UA-iPV" firstAttribute="top" secondItem="6Fk-bX-hjW" secondAttribute="bottom" constant="12" id="Wxv-eo-hgl"/>
+                            <constraint firstItem="scH-UA-iPV" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="dR6-iD-mQR"/>
+                            <constraint firstItem="oEJ-YM-J0H" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="eEh-pC-sj3"/>
+                            <constraint firstItem="pIC-s8-4hH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="tA1-RC-oV3"/>
                         </constraints>
                     </view>
                 </viewController>

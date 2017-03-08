@@ -21,22 +21,20 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-    var windowController: AUIWindowController!
+    
+    var windowControllers = [AUIWindowController]()
     var navigationWindowController: AUINavigationWindowController!
-    
-    @IBAction func action(_ sender: Any) {
-        makeTabBar()
-    }
-    
+
     func printLog(sender: NSButton) {
         Swift.print("button pressed", sender.title )
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    func makeTabBar() {
-        windowController = AUIWindowController(device: IDevice.iPhone5)
+    @IBAction func showTabBar(_ sender: Any) {
+        let windowController = AUIWindowController(device: IDevice.iPhone5)
+        windowControllers.append(windowController)
+        
         let tabBarController = AUITabBarController()
         
         let vc0 = AUIViewController()
@@ -63,9 +61,12 @@ class ViewController: NSViewController {
     
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    func makeIPhone5() {
+    @IBAction func showIPhone5(_ sender: Any) {
         let device = IDevice.iPhone5
-        windowController = AUIWindowController(device: device)
+        
+        let windowController = AUIWindowController(device: device)
+        windowControllers.append(windowController)
+        
         let viewController = AUIViewController()
         viewController.title = device.description
         windowController.contentViewController = viewController
@@ -74,8 +75,10 @@ class ViewController: NSViewController {
     
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    func makeWindow() {
-        windowController = AUIWindowController()
+    @IBAction func showWindow(_ sender: Any) {
+        let windowController = AUIWindowController()
+        windowControllers.append(windowController)
+        
         let viewController = AUIViewController()
         viewController.title = "My Title"
         let navigationController = AUINavigationController(rootViewController: viewController)
@@ -87,7 +90,7 @@ class ViewController: NSViewController {
     
     //////////////////////////////////////////////////////////////////////////////////////////
     
-    func makeNavigationWindow() {
+    @IBAction func showNavigationWindow(_ sender: Any) {
         let viewController = AUIViewController()
         viewController.title = "My Title"
         let item = AUIBarButtonItem(barButtonSystemItem:.done, target: self, action: #selector(printLog(sender:)))

@@ -18,14 +18,6 @@ open class AUIButton: NSButton {
         }
     }
     
-    public func setSafeTintColor(_ color: NSColor) {
-        guard tintColor == nil else {
-            return
-        }
-        
-        tintColor = color
-    }
-    
     open override var title: String {
         didSet {
             invalidateTitleLabel()
