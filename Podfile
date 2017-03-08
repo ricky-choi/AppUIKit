@@ -6,7 +6,7 @@ target 'AppUIKit' do
   use_frameworks!
 
   # Pods for AppUIKit
-  pod 'AppcidCocoaUtil', :path => '../AppcidCocoaUtil'
+  pod 'IUExtensions', :path => '../IUExtensions'
 
 end
 
@@ -15,7 +15,7 @@ target 'AppUIKitTests' do
   use_frameworks!
 
   # Pods for AppUIKit
-  pod 'AppcidCocoaUtil', :path => '../AppcidCocoaUtil'
+  pod 'IUExtensions', :path => '../IUExtensions'
 
 end
 
@@ -24,6 +24,6 @@ target 'Irish' do
   use_frameworks!
 
   # Pods for Irish
-  pod 'AppcidCocoaUtil', :path => '../AppcidCocoaUtil'
+  pod 'IUExtensions', :path => '../IUExtensions'
 
 end

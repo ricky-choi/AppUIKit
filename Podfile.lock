@@ -1,16 +1,16 @@
 PODS:
-  - AppcidCocoaUtil (0.2.1)
+  - IUExtensions (0.1.0)
 
 DEPENDENCIES:
-  - AppcidCocoaUtil (from `../AppcidCocoaUtil`)
+  - IUExtensions (from `../IUExtensions`)
 
 EXTERNAL SOURCES:
-  AppcidCocoaUtil:
-    :path: ../AppcidCocoaUtil
+  IUExtensions:
+    :path: "../IUExtensions"
 
 SPEC CHECKSUMS:
-  AppcidCocoaUtil: 1411e32229439b05b2a316a380af595a5acaa7f4
+  IUExtensions: a9d4184d56094deca562672dbe3e1441d8d2fce3
 
-PODFILE CHECKSUM: f82e3af09c1f5ba2d77dffcd89746170f5f0acef
+PODFILE CHECKSUM: 2dd7b1a42732e00a1bf7c8b65d9d9996d0361c58
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

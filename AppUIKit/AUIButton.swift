@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import AppcidCocoaUtil
+import IUExtensions
 
 open class AUIButton: NSButton {
     

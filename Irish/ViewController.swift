@@ -8,7 +8,7 @@
 
 import Cocoa
 import AppUIKit
-import AppcidCocoaUtil
+import IUExtensions
 
 class ViewController: NSViewController {
 
