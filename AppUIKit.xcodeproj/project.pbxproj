@@ -32,6 +32,8 @@
 		9CBD96531DF4E87B00CAC2A6 /* AUINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */; };
 		9CBD96551DF4E89100CAC2A6 /* AUIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */; };
 		9CBD96571DF4E8A800CAC2A6 /* AUIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */; };
+		9CBF83B91E7E3D6500502A99 /* AUISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF83B81E7E3D6500502A99 /* AUISegmentedControl.swift */; };
+		9CBF83BB1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF83BA1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift */; };
 		9CCE99FD1E000F5D00E1B086 /* AUINavigationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */; };
 		9CF0F7491DF158E600063DAC /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F7481DF158E600063DAC /* WindowController.swift */; };
 		9CF0F74C1DF15A2900063DAC /* AUIWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */; };
@@ -130,6 +132,8 @@
 		9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUINavigationItem.swift; sourceTree = "<group>"; };
 		9CBD96541DF4E89100CAC2A6 /* AUIBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarItem.swift; sourceTree = "<group>"; };
 		9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarButtonItem.swift; sourceTree = "<group>"; };
+		9CBF83B81E7E3D6500502A99 /* AUISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControl.swift; sourceTree = "<group>"; };
+		9CBF83BA1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITabBarSegmentedControl.swift; sourceTree = "<group>"; };
 		9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUINavigationWindowController.swift; sourceTree = "<group>"; };
 		9CF0F7481DF158E600063DAC /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIWindowController.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 				AE3D90C41E2F9BE900A969E6 /* AUITabBarController.swift */,
 				AE3D90C61E2FA20A00A969E6 /* AUITabBar.swift */,
 				AE3D90C81E2FA28600A969E6 /* AUITabBarItem.swift */,
+				9CBF83B81E7E3D6500502A99 /* AUISegmentedControl.swift */,
+				9CBF83BA1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift */,
 			);
 			name = TabBar;
 			sourceTree = "<group>";
@@ -701,6 +707,8 @@
 				AE2F874A1E12B257004A5E19 /* AUIButton.swift in Sources */,
 				AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */,
 				AE3D90C71E2FA20A00A969E6 /* AUITabBar.swift in Sources */,
+				9CBF83B91E7E3D6500502A99 /* AUISegmentedControl.swift in Sources */,
+				9CBF83BB1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift in Sources */,
 				9CBD96511DF4E86700CAC2A6 /* AUINavigationBar.swift in Sources */,
 				9CBD964F1DF4E84900CAC2A6 /* AUIView.swift in Sources */,
 				9CBD964B1DF4E80C00CAC2A6 /* AUIEmptyViewController.swift in Sources */,

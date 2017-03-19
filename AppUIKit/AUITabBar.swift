@@ -15,7 +15,7 @@ public enum AUITabBarItemPositioning : Int {
 }
 
 open class AUITabBar: AUIBar {
-    fileprivate var segmentedControl: NSSegmentedControl? {
+    fileprivate var segmentedControl: AUITabBarSegmentedControl? {
         willSet {
             if let current = segmentedControl {
                 current.removeFromSuperview()
@@ -24,14 +24,18 @@ open class AUITabBar: AUIBar {
         didSet {
             if let newOne = segmentedControl {
                 addSubview(newOne)
-                newOne.centerToSuperview()
+                newOne.fillToSuperview()
             }
         }
     }
     
     func _invalidateItems(animated: Bool = false) {
         if let tabBarItems = items, tabBarItems.count > 0 {
-            segmentedControl = NSSegmentedControl(labels: tabBarItems.map {$0.title!}, trackingMode: .selectOne, target: self, action: #selector(selectItem(sender:)))
+            segmentedControl = AUITabBarSegmentedControl(items: tabBarItems.map({ (tabBarItem) -> AUITabBarSegmentedControl.Item in
+                AUITabBarSegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage, .imageAbove)
+            }))
+            segmentedControl!.target = self
+            segmentedControl!.action = #selector(selectItem(sender:))
         } else {
             segmentedControl = nil
         }
@@ -165,7 +169,7 @@ open class AUITabBar: AUIBar {
 }
 
 extension AUITabBar {
-    func selectItem(sender: NSSegmentedControl) {
+    func selectItem(sender: AUITabBarSegmentedControl) {
         selectedIndex = sender.selectedSegment
         internalDelegate?.tabBar(self, didChangeIndex: selectedIndex)
     }

@@ -14,6 +14,7 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override var representedObject: Any? {
@@ -39,18 +40,22 @@ class ViewController: NSViewController {
         
         let vc0 = AUIViewController()
         vc0.title = "V1"
+        vc0.tabBarItem = AUITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         (vc0.view as! AUIView).backgroundColor = NSColor.green
         
         let vc1 = AUIViewController()
         vc1.title = "V2"
+        vc1.tabBarItem = AUITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         (vc1.view as! AUIView).backgroundColor = NSColor.yellow
         
         let vc2 = AUIViewController()
         vc2.title = "V3"
+        vc2.tabBarItem = AUITabBarItem(tabBarSystemItem: .downloads, tag: 2)
         (vc2.view as! AUIView).backgroundColor = NSColor.blue
         
         let vc3 = AUIViewController()
         vc3.title = "V4"
+        vc3.tabBarItem = AUITabBarItem(tabBarSystemItem: .featured, tag: 3)
         (vc3.view as! AUIView).backgroundColor = NSColor.red
         
         tabBarController.viewControllers = [vc0, vc1, vc2, vc3]
