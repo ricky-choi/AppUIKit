@@ -10,7 +10,6 @@ import Cocoa
 import IUExtensions
 
 open class AUIButton: NSButton {
-    
     public var tintColor: NSColor? {
         didSet {
             invalidateTitleLabel()
@@ -18,9 +17,10 @@ open class AUIButton: NSButton {
         }
     }
     
-    public var backgroundColor: NSColor? {
+    public var alternateTintColor: NSColor? {
         didSet {
-            needsDisplay = true
+            invalidateTitleLabel()
+            invalidateImage()
         }
     }
     
@@ -31,7 +31,7 @@ open class AUIButton: NSButton {
     }
     
     func invalidateTitleLabel() {
-        guard tintColor != nil, title.length() > 0, let buttonCell = cell as? NSButtonCell else {
+        guard let buttonCell = cell as? NSButtonCell else {
             return
         }
         
@@ -39,16 +39,23 @@ open class AUIButton: NSButton {
             return
         }
         
-        let attrString = NSAttributedString(string: title, attributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: tintColor!])
-        attributedTitle = attrString
+        if let tintColor = tintColor {
+            attributedTitle = attributedTitle.addingAttribute(NSForegroundColorAttributeName, value: tintColor, range: NSMakeRange(0, attributedTitle.length))
+        }
+        
+        if let alternateTintColor = alternateTintColor {
+            attributedAlternateTitle = attributedAlternateTitle.addingAttribute(NSForegroundColorAttributeName, value: alternateTintColor, range: NSMakeRange(0, attributedAlternateTitle.length))
+        }
     }
     
     func invalidateImage() {
-        guard tintColor != nil, image != nil else {
-            return
+        if tintColor != nil, image != nil {
+            image = image!.tintied(color: tintColor!)
         }
         
-        image = image!.tintied(color: tintColor!)
+        if alternateTintColor != nil, alternateImage != nil {
+            alternateImage = alternateImage!.tintied(color: alternateTintColor!)
+        }
     }
     
     override init(frame frameRect: NSRect) {
@@ -60,13 +67,5 @@ open class AUIButton: NSButton {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    override open func draw(_ dirtyRect: NSRect) {
-        if let context = NSGraphicsContext.current()?.cgContext, let backgroundColor = backgroundColor {
-            context.setFillColor(backgroundColor.cgColor)
-            context.fill(dirtyRect)
-        }
-        
-        super.draw(dirtyRect)
-    }
+
 }

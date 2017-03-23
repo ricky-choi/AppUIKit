@@ -27,10 +27,18 @@ class AUITabBarButton: AUIButton {
 
 open class AUISegmentedControl: NSControl {
     
-    public var tintColor: NSColor? {
+    open var tintColor: NSColor? {
         didSet {
             buttons.forEach {
-                $0.tintColor = tintColor
+                $0.alternateTintColor = tintColor
+            }
+        }
+    }
+    
+    open var unselectedItemTintColor: NSColor? {
+        didSet {
+            buttons.forEach {
+                $0.tintColor = unselectedItemTintColor
             }
         }
     }
@@ -123,6 +131,7 @@ open class AUISegmentedControl: NSControl {
         //stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.fillToSuperview()
+
     }
     
     required public init?(coder: NSCoder) {
