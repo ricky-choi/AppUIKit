@@ -18,6 +18,12 @@ open class AUIButton: NSButton {
         }
     }
     
+    public var backgroundColor: NSColor? {
+        didSet {
+            needsDisplay = true
+        }
+    }
+    
     open override var title: String {
         didSet {
             invalidateTitleLabel()
@@ -55,4 +61,12 @@ open class AUIButton: NSButton {
         super.init(coder: coder)
     }
     
+    override open func draw(_ dirtyRect: NSRect) {
+        if let context = NSGraphicsContext.current()?.cgContext, let backgroundColor = backgroundColor {
+            context.setFillColor(backgroundColor.cgColor)
+            context.fill(dirtyRect)
+        }
+        
+        super.draw(dirtyRect)
+    }
 }

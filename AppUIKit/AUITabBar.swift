@@ -32,7 +32,7 @@ open class AUITabBar: AUIBar {
     func _invalidateItems(animated: Bool = false) {
         if let tabBarItems = items, tabBarItems.count > 0 {
             segmentedControl = AUITabBarSegmentedControl(items: tabBarItems.map({ (tabBarItem) -> AUITabBarSegmentedControl.Item in
-                AUITabBarSegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage, .imageAbove)
+                AUITabBarSegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage?.tintied(color: tintColor), .imageAbove)
             }))
             segmentedControl!.target = self
             segmentedControl!.action = #selector(selectItem(sender:))
@@ -132,14 +132,17 @@ open class AUITabBar: AUIBar {
             return 0
         }
         
-        if items.count > 1 {
-            return minTabBarPadding * CGFloat(2) + itemWidthInternal * CGFloat(items.count) + itemSpacingInternal * CGFloat(items.count - 1)
-        } else if items.count == 1 {
+        return minTabBarWidth(itemCount: items.count)
+    }
+    func minTabBarWidth(itemCount: Int) -> CGFloat {
+        if itemCount > 1 {
+            return minTabBarPadding * CGFloat(2) + itemWidthInternal * CGFloat(itemCount) + itemSpacingInternal * CGFloat(itemCount - 1)
+        } else if itemCount == 1 {
             return minTabBarPadding * CGFloat(2) + itemWidthInternal
         }
         
         return 0
-    }    
+    }
     
     /*
      Default is YES.

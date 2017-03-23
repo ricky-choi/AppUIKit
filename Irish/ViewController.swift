@@ -33,7 +33,7 @@ class ViewController: NSViewController {
     //////////////////////////////////////////////////////////////////////////////////////////
     
     @IBAction func showTabBar(_ sender: Any) {
-        let windowController = AUIWindowController(device: IDevice.iPhone5)
+        let windowController = AUIWindowController()
         windowControllers.append(windowController)
         
         let tabBarController = AUITabBarController()
@@ -59,6 +59,7 @@ class ViewController: NSViewController {
         (vc3.view as! AUIView).backgroundColor = NSColor.red
         
         tabBarController.viewControllers = [vc0, vc1, vc2, vc3]
+        tabBarController.view.frame = NSMakeRect(100, 100, 600, 400)
         
         windowController.contentViewController = tabBarController
         windowController.showAndCenter()

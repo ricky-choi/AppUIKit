@@ -11,13 +11,14 @@ import Cocoa
 public class AUITabBarSegmentedControl: AUISegmentedControl {
 
     init(items: [Item]) {
+        let font = NSFont.systemFont(ofSize: 10)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
         super.init(items: items,
                    selectIndicatorType: .none,
-                   normalAttributes: [NSFontAttributeName: NSFont.systemFont(ofSize: 10), NSForegroundColorAttributeName: NSColor.black, NSParagraphStyleAttributeName: paragraphStyle],
-                   selectedAttributes: [NSFontAttributeName: NSFont.systemFont(ofSize: 10), NSForegroundColorAttributeName: NSColor.blue, NSParagraphStyleAttributeName: paragraphStyle])
+                   normalAttributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: NSColor.black, NSParagraphStyleAttributeName: paragraphStyle],
+                   selectedAttributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: NSColor.blue, NSParagraphStyleAttributeName: paragraphStyle])
     }
     
     required public init?(coder: NSCoder) {

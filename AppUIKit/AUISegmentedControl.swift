@@ -8,8 +8,32 @@
 
 import Cocoa
 
+class AUITabBarButton: AUIButton {
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        focusRingType = .none
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var intrinsicContentSize: NSSize {
+        return NSSize(width: 76, height: 40)
+    }
+}
+
 
 open class AUISegmentedControl: NSControl {
+    
+    public var tintColor: NSColor? {
+        didSet {
+            buttons.forEach {
+                $0.tintColor = tintColor
+            }
+        }
+    }
     
     public enum Item {
         case title(String)
@@ -32,7 +56,7 @@ open class AUISegmentedControl: NSControl {
         case underBar(CGFloat, NSColor)
     }
     
-    private var buttons = [NSButton]()
+    private var buttons = [AUITabBarButton]()
     private var stackView = NSStackView()
     
     open var selectedSegment: Int = 0 {
@@ -58,17 +82,17 @@ open class AUISegmentedControl: NSControl {
         super.init(frame: NSRect.zero)
         
         for (index, item) in items.enumerated() {
-            let button: NSButton
+            let button: AUITabBarButton
             switch item {
             case .title(let string):
-                button = NSButton(title: string, target: self, action: #selector(buttonInvoked(sender:)))
+                button = AUITabBarButton(title: string, target: self, action: #selector(buttonInvoked(sender:)))
                 button.setButtonType(.radio)
             case .image(let image, let alternateImage):
-                button = NSButton(image: image, target: self, action: #selector(buttonInvoked(sender:)))
+                button = AUITabBarButton(image: image, target: self, action: #selector(buttonInvoked(sender:)))
                 button.alternateImage = alternateImage
                 button.setButtonType(.radio)
             case .multi(let string, let image, let alternateImage, let position):
-                button = NSButton(title: string, image: image, target: self, action: #selector(buttonInvoked(sender:)))
+                button = AUITabBarButton(title: string, image: image, target: self, action: #selector(buttonInvoked(sender:)))
                 button.alternateImage = alternateImage
                 button.setButtonType(.radio)
                 if let imagePosition = position {
@@ -94,6 +118,9 @@ open class AUISegmentedControl: NSControl {
         }
         
         stackView.setViews(buttons, in: .center)
+        stackView.spacing = 30
+        stackView.edgeInsets = EdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
+        //stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.fillToSuperview()
     }
