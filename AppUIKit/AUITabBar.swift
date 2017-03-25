@@ -15,7 +15,24 @@ public enum AUITabBarItemPositioning : Int {
 }
 
 open class AUITabBar: AUIBar {
-    fileprivate var segmentedControl: NSSegmentedControl? {
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        let shadowView = AUIView()
+        shadowView.backgroundColor = NSColor.gray.withAlphaComponent(0.5)
+        addSubview(shadowView)
+        shadowView.fillXToSuperview()
+        shadowView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        shadowView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        invalidateBackground()
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    fileprivate var segmentedControl: AUITabBarSegmentedControl? {
         willSet {
             if let current = segmentedControl {
                 current.removeFromSuperview()
@@ -24,14 +41,22 @@ open class AUITabBar: AUIBar {
         didSet {
             if let newOne = segmentedControl {
                 addSubview(newOne)
-                newOne.centerToSuperview()
+                newOne.fillToSuperview()
             }
         }
     }
     
     func _invalidateItems(animated: Bool = false) {
         if let tabBarItems = items, tabBarItems.count > 0 {
-            segmentedControl = NSSegmentedControl(labels: tabBarItems.map {$0.title!}, trackingMode: .selectOne, target: self, action: #selector(selectItem(sender:)))
+            segmentedControl = AUITabBarSegmentedControl(items: tabBarItems.map({ (tabBarItem) -> AUITabBarSegmentedControl.Item in
+                AUISegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage/*?.tintied(color: tintColor)*/, .imageAbove)
+            }))
+            
+            segmentedControl!.unselectedItemTintColor = NSColor.black
+            segmentedControl!.tintColor = NSColor.red
+            
+            segmentedControl!.target = self
+            segmentedControl!.action = #selector(selectItem(sender:))
         } else {
             segmentedControl = nil
         }
@@ -128,14 +153,17 @@ open class AUITabBar: AUIBar {
             return 0
         }
         
-        if items.count > 1 {
-            return minTabBarPadding * CGFloat(2) + itemWidthInternal * CGFloat(items.count) + itemSpacingInternal * CGFloat(items.count - 1)
-        } else if items.count == 1 {
+        return minTabBarWidth(itemCount: items.count)
+    }
+    func minTabBarWidth(itemCount: Int) -> CGFloat {
+        if itemCount > 1 {
+            return minTabBarPadding * CGFloat(2) + itemWidthInternal * CGFloat(itemCount) + itemSpacingInternal * CGFloat(itemCount - 1)
+        } else if itemCount == 1 {
             return minTabBarPadding * CGFloat(2) + itemWidthInternal
         }
         
         return 0
-    }    
+    }
     
     /*
      Default is YES.
@@ -165,7 +193,7 @@ open class AUITabBar: AUIBar {
 }
 
 extension AUITabBar {
-    func selectItem(sender: NSSegmentedControl) {
+    func selectItem(sender: AUITabBarSegmentedControl) {
         selectedIndex = sender.selectedSegment
         internalDelegate?.tabBar(self, didChangeIndex: selectedIndex)
     }

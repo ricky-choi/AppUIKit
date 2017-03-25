@@ -16,7 +16,11 @@ open class AUINavigationItem: NSObject {
     }
     
     // Getting and Setting Properties
-    public var title: String?
+    public var title: String? {
+        didSet {
+            titleLabel.stringValue = title ?? ""
+        }
+    }
     
     public var prompt: String?
     

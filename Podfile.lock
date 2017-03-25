@@ -1,11 +1,11 @@
 PODS:
-  - IUExtensions (0.1.0)
+  - IUExtensions (0.1.1)
 
 DEPENDENCIES:
   - IUExtensions
 
 SPEC CHECKSUMS:
-  IUExtensions: 53ed3f26b67b43075ee34ce2978bb85cd99d88b5
+  IUExtensions: 6c6b64797b0a244fc755ce924762ca44ee856cda
 
 PODFILE CHECKSUM: a4f9d093dfefb874976203c1bbb5ebe4b9ae81e2
 
