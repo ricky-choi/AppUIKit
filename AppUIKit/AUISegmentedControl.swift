@@ -8,23 +8,6 @@
 
 import Cocoa
 
-class AUITabBarButton: AUIButton {
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        
-        focusRingType = .none
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override var intrinsicContentSize: NSSize {
-        return NSSize(width: 76, height: 40)
-    }
-}
-
-
 open class AUISegmentedControl: NSControl {
     
     open var tintColor: NSColor? {
@@ -64,7 +47,7 @@ open class AUISegmentedControl: NSControl {
         case underBar(CGFloat, NSColor)
     }
     
-    private var buttons = [AUITabBarButton]()
+    private var buttons = [AUIButton]()
     private var stackView = NSStackView()
     
     open var selectedSegment: Int = 0 {
@@ -82,6 +65,32 @@ open class AUISegmentedControl: NSControl {
     
     public let selectIndicatorType: SelectIndicatorType
     
+    open func buttonForItem(_ item: Item) -> AUIButton {
+        let button: AUIButton
+        switch item {
+        case .title(let string):
+            button = AUIButton(title: string, target: self, action: #selector(buttonInvoked(sender:)))
+            button.setButtonType(.radio)
+        case .image(let image, let alternateImage):
+            button = AUIButton(image: image, target: self, action: #selector(buttonInvoked(sender:)))
+            button.alternateImage = alternateImage
+            button.setButtonType(.radio)
+        case .multi(let string, let image, let alternateImage, let position):
+            button = AUIButton(title: string, image: image, target: self, action: #selector(buttonInvoked(sender:)))
+            button.alternateImage = alternateImage
+            button.setButtonType(.radio)
+            if let imagePosition = position {
+                button.imagePosition = imagePosition
+            }
+        }
+        
+        button.focusRingType = .none
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }
+    
     init(items: [Item], selectIndicatorType: SelectIndicatorType, normalAttributes: [String: Any]? = nil, selectedAttributes: [String: Any]? = nil) {
         assert(items.count > 0)
         
@@ -90,23 +99,7 @@ open class AUISegmentedControl: NSControl {
         super.init(frame: NSRect.zero)
         
         for (index, item) in items.enumerated() {
-            let button: AUITabBarButton
-            switch item {
-            case .title(let string):
-                button = AUITabBarButton(title: string, target: self, action: #selector(buttonInvoked(sender:)))
-                button.setButtonType(.radio)
-            case .image(let image, let alternateImage):
-                button = AUITabBarButton(image: image, target: self, action: #selector(buttonInvoked(sender:)))
-                button.alternateImage = alternateImage
-                button.setButtonType(.radio)
-            case .multi(let string, let image, let alternateImage, let position):
-                button = AUITabBarButton(title: string, image: image, target: self, action: #selector(buttonInvoked(sender:)))
-                button.alternateImage = alternateImage
-                button.setButtonType(.radio)
-                if let imagePosition = position {
-                    button.imagePosition = imagePosition
-                }
-            }
+            let button: AUIButton = buttonForItem(item)
             
             button.tag = index
             if selectedSegment == button.tag {
@@ -128,7 +121,6 @@ open class AUISegmentedControl: NSControl {
         stackView.setViews(buttons, in: .center)
         stackView.spacing = 30
         stackView.edgeInsets = EdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
-        //stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.fillToSuperview()
 
@@ -150,3 +142,4 @@ open class AUISegmentedControl: NSControl {
     }
     
 }
+

@@ -25,4 +25,13 @@ public class AUITabBarSegmentedControl: AUISegmentedControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func buttonForItem(_ item: AUISegmentedControl.Item) -> AUIButton {
+        let button = super.buttonForItem(item)
+        
+        button.widthAnchor.constraint(equalToConstant: 76).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        return button
+    }
+    
 }

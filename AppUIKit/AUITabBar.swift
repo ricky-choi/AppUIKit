@@ -49,7 +49,7 @@ open class AUITabBar: AUIBar {
     func _invalidateItems(animated: Bool = false) {
         if let tabBarItems = items, tabBarItems.count > 0 {
             segmentedControl = AUITabBarSegmentedControl(items: tabBarItems.map({ (tabBarItem) -> AUITabBarSegmentedControl.Item in
-                AUISegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage/*?.tintied(color: tintColor)*/, .imageAbove)
+                AUISegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage, .imageAbove)
             }))
             
             segmentedControl!.unselectedItemTintColor = NSColor.black
