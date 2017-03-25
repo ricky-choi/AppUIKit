@@ -15,6 +15,23 @@ public enum AUITabBarItemPositioning : Int {
 }
 
 open class AUITabBar: AUIBar {
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        
+        let shadowView = AUIView()
+        shadowView.backgroundColor = NSColor.gray.withAlphaComponent(0.5)
+        addSubview(shadowView)
+        shadowView.fillXToSuperview()
+        shadowView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        shadowView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        invalidateBackground()
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     fileprivate var segmentedControl: AUITabBarSegmentedControl? {
         willSet {
             if let current = segmentedControl {

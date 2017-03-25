@@ -38,10 +38,9 @@ class ViewController: NSViewController {
         
         let tabBarController = AUITabBarController()
         
-        let vc0 = AUIViewController()
-        vc0.title = "V1"
-        vc0.tabBarItem = AUITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        (vc0.view as! AUIView).backgroundColor = NSColor.green
+        let masterViewController = MasterViewController()
+        let nc = AUINavigationController(rootViewController: masterViewController)
+        nc.tabBarItem = AUITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         
         let vc1 = AUIViewController()
         vc1.title = "V2"
@@ -58,7 +57,7 @@ class ViewController: NSViewController {
         vc3.tabBarItem = AUITabBarItem(tabBarSystemItem: .featured, tag: 3)
         (vc3.view as! AUIView).backgroundColor = NSColor.red
         
-        tabBarController.viewControllers = [vc0, vc1, vc2, vc3]
+        tabBarController.viewControllers = [nc, vc1, vc2, vc3]
         tabBarController.view.frame = NSMakeRect(100, 100, 600, 400)
         
         windowController.contentViewController = tabBarController

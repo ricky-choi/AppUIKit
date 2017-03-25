@@ -45,6 +45,8 @@
 		AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */; };
 		AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */; };
 		AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */; };
+		AEA980B01E86B2F000683329 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA980AF1E86B2F000683329 /* MasterViewController.swift */; };
+		AEA980B21E86B30400683329 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA980B11E86B30400683329 /* DetailViewController.swift */; };
 		AEB142211E3F3545009A8F96 /* AUIBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB142201E3F3545009A8F96 /* AUIBar.swift */; };
 		BB758A8A4BAD3B0CBBFECEA9 /* Pods_AppUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD400F0E3E15CFC514DCFEA2 /* Pods_AppUIKit.framework */; };
 		F0AD7B91C7DA40338C5B3D86 /* Pods_AppUIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAE11C8BB1192D426BC553 /* Pods_AppUIKitTests.framework */; };
@@ -146,6 +148,8 @@
 		AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIKit.swift; sourceTree = "<group>"; };
 		AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGeometry.swift; sourceTree = "<group>"; };
 		AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
+		AEA980AF1E86B2F000683329 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		AEA980B11E86B30400683329 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AEB142201E3F3545009A8F96 /* AUIBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBar.swift; sourceTree = "<group>"; };
 		E9BAE76664CE52304A0A8C72 /* Pods-Irish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Irish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Irish/Pods-Irish.debug.xcconfig"; sourceTree = "<group>"; };
 		F6815E91EA613598BAB87511 /* Pods-AppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppUIKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppUIKit/Pods-AppUIKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 			children = (
 				9C9554B81DECFDC100156EA8 /* AppDelegate.swift */,
 				9C9554BA1DECFDC100156EA8 /* ViewController.swift */,
+				AEA980AF1E86B2F000683329 /* MasterViewController.swift */,
+				AEA980B11E86B30400683329 /* DetailViewController.swift */,
 				9CF0F7481DF158E600063DAC /* WindowController.swift */,
 				9C9554BC1DECFDC100156EA8 /* Assets.xcassets */,
 				9C9554BE1DECFDC100156EA8 /* Main.storyboard */,
@@ -739,7 +745,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA980B01E86B2F000683329 /* MasterViewController.swift in Sources */,
 				9C9554BB1DECFDC100156EA8 /* ViewController.swift in Sources */,
+				AEA980B21E86B30400683329 /* DetailViewController.swift in Sources */,
 				9CF0F7491DF158E600063DAC /* WindowController.swift in Sources */,
 				9C9554B91DECFDC100156EA8 /* AppDelegate.swift in Sources */,
 			);
