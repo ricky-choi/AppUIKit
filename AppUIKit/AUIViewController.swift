@@ -18,6 +18,12 @@ open class AUIViewController: NSViewController {
         return AUINavigationItem(title: self.title ?? "")
     }()
     
+    open override var title: String? {
+        didSet {
+            navigationItem.title = title
+        }
+    }
+    
     public init() {
         super.init(nibName: nil, bundle: nil)!
     }
