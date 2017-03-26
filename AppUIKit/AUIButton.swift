@@ -10,6 +10,9 @@ import Cocoa
 import IUExtensions
 
 open class AUIButton: NSButton {
+    var originalImage: NSImage?
+    var originalAlternateImage: NSImage?
+    
     public var tintColor: NSColor? {
         didSet {
             invalidateTitleLabel()
@@ -20,7 +23,7 @@ open class AUIButton: NSButton {
     public var alternateTintColor: NSColor? {
         didSet {
             invalidateTitleLabel()
-            invalidateImage()
+            invalidateAlternateImage()
         }
     }
     
@@ -48,13 +51,36 @@ open class AUIButton: NSButton {
         }
     }
     
+    func invalidateImages() {
+        invalidateImage()
+        invalidateAlternateImage()
+    }
+    
     func invalidateImage() {
-        if tintColor != nil, image != nil {
-            image = image!.tintied(color: tintColor!)
+        if image != nil {
+            if originalImage == nil {
+                originalImage = image
+            }
+            
+            if tintColor != nil {
+                image = originalImage!.tintied(color: tintColor!)
+            } else {
+                image = originalImage
+            }
         }
-        
-        if alternateTintColor != nil, alternateImage != nil {
-            alternateImage = alternateImage!.tintied(color: alternateTintColor!)
+    }
+    
+    func invalidateAlternateImage() {
+        if alternateImage != nil {
+            if originalAlternateImage == nil {
+                originalAlternateImage = alternateImage
+            }
+            
+            if alternateTintColor != nil {
+                alternateImage = alternateImage!.tintied(color: alternateTintColor!)
+            } else {
+                alternateImage = originalAlternateImage
+            }
         }
     }
     

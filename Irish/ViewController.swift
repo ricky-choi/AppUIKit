@@ -37,6 +37,8 @@ class ViewController: NSViewController {
         windowControllers.append(windowController)
         
         let tabBarController = AUITabBarController()
+        tabBarController.tabBar.tintColor = NSColor.red
+        tabBarController.tabBar.unselectedItemTintColor = NSColor.black
         
         let masterViewController = MasterViewController()
         let nc = AUINavigationController(rootViewController: masterViewController)

@@ -52,9 +52,8 @@ open class AUITabBar: AUIBar {
                 AUISegmentedControl.Item.multi(tabBarItem.title!, tabBarItem.image!, tabBarItem.selectedImage, .imageAbove)
             }))
             
-            segmentedControl!.unselectedItemTintColor = NSColor.black
-            segmentedControl!.tintColor = NSColor.red
-            
+            segmentedControl!.unselectedItemTintColor = unselectedItemTintColor
+            segmentedControl!.tintColor = tintColor
             segmentedControl!.target = self
             segmentedControl!.action = #selector(selectItem(sender:))
         } else {

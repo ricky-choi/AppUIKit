@@ -70,6 +70,7 @@ open class AUISegmentedControl: NSControl {
         switch item {
         case .title(let string):
             button = AUIButton(title: string, target: self, action: #selector(buttonInvoked(sender:)))
+            button.alternateTitle = string
             button.setButtonType(.radio)
         case .image(let image, let alternateImage):
             button = AUIButton(image: image, target: self, action: #selector(buttonInvoked(sender:)))
@@ -77,6 +78,7 @@ open class AUISegmentedControl: NSControl {
             button.setButtonType(.radio)
         case .multi(let string, let image, let alternateImage, let position):
             button = AUIButton(title: string, image: image, target: self, action: #selector(buttonInvoked(sender:)))
+            button.alternateTitle = string
             button.alternateImage = alternateImage
             button.setButtonType(.radio)
             if let imagePosition = position {
@@ -85,7 +87,6 @@ open class AUISegmentedControl: NSControl {
         }
         
         button.focusRingType = .none
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -108,8 +109,10 @@ open class AUISegmentedControl: NSControl {
                 button.state = NSOffState
             }
             
-            if let attributes = normalAttributes, item.hasTitle {
-                button.attributedTitle = NSAttributedString(string: button.title, attributes: attributes)
+            if item.hasTitle {
+                if let attributes = normalAttributes {
+                    button.attributedTitle = NSAttributedString(string: button.title, attributes: attributes)
+                }
                 if let alternateAttributes = selectedAttributes {
                     button.attributedAlternateTitle = NSAttributedString(string: button.title, attributes: alternateAttributes)
                 }
