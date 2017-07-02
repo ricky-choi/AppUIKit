@@ -29,7 +29,7 @@ open class AUISegmentedControl: NSControl {
     public enum Item {
         case title(String)
         case image(NSImage, NSImage?)
-        case multi(String, NSImage, NSImage?, NSCellImagePosition?)
+        case multi(String, NSImage, NSImage?, NSControl.ImagePosition?)
         
         var hasTitle: Bool {
             switch self {
@@ -54,9 +54,9 @@ open class AUISegmentedControl: NSControl {
         didSet {
             for button in buttons {
                 if selectedSegment == button.tag {
-                    button.state = NSOnState
+                    button.state = NSControl.StateValue.onState
                 } else {
-                    button.state = NSOffState
+                    button.state = NSControl.StateValue.offState
                 }
             }
             invalidateSelectIndicator()
@@ -92,7 +92,7 @@ open class AUISegmentedControl: NSControl {
         return button
     }
     
-    init(items: [Item], selectIndicatorType: SelectIndicatorType, normalAttributes: [String: Any]? = nil, selectedAttributes: [String: Any]? = nil) {
+    init(items: [Item], selectIndicatorType: SelectIndicatorType, normalAttributes: [NSAttributedStringKey: Any]? = nil, selectedAttributes: [NSAttributedStringKey: Any]? = nil) {
         assert(items.count > 0)
         
         self.selectIndicatorType = selectIndicatorType
@@ -104,9 +104,9 @@ open class AUISegmentedControl: NSControl {
             
             button.tag = index
             if selectedSegment == button.tag {
-                button.state = NSOnState
+                button.state = NSControl.StateValue.onState
             } else {
-                button.state = NSOffState
+                button.state = NSControl.StateValue.offState
             }
             
             if item.hasTitle {
@@ -123,7 +123,7 @@ open class AUISegmentedControl: NSControl {
         
         stackView.setViews(buttons, in: .center)
         stackView.spacing = 30
-        stackView.edgeInsets = EdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
+        stackView.edgeInsets = NSEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
         addSubview(stackView)
         stackView.fillToSuperview()
 
@@ -133,7 +133,7 @@ open class AUISegmentedControl: NSControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func buttonInvoked(sender: NSButton) {
+    @objc public func buttonInvoked(sender: NSButton) {
         selectedSegment = sender.tag
         if let action = action {
             NSApp.sendAction(action, to: target, from: self)

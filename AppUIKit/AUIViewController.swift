@@ -25,7 +25,7 @@ open class AUIViewController: NSViewController {
     }
     
     public init() {
-        super.init(nibName: nil, bundle: nil)!
+        super.init(nibName: nil, bundle: nil)
     }
     
     required public init?(coder: NSCoder) {

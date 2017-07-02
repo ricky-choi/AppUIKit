@@ -45,6 +45,7 @@
 		AE3D90CB1E2FB19500A969E6 /* AUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */; };
 		AE3D90CD1E2FBA1800A969E6 /* AUIGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */; };
 		AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */; };
+		AE77AA4A1F09301000B4E0DB /* NSImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE77AA491F09301000B4E0DB /* NSImageNames.swift */; };
 		AEA980B01E86B2F000683329 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA980AF1E86B2F000683329 /* MasterViewController.swift */; };
 		AEA980B21E86B30400683329 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA980B11E86B30400683329 /* DetailViewController.swift */; };
 		AEB142211E3F3545009A8F96 /* AUIBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB142201E3F3545009A8F96 /* AUIBar.swift */; };
@@ -148,6 +149,7 @@
 		AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIKit.swift; sourceTree = "<group>"; };
 		AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGeometry.swift; sourceTree = "<group>"; };
 		AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
+		AE77AA491F09301000B4E0DB /* NSImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageNames.swift; sourceTree = "<group>"; };
 		AEA980AF1E86B2F000683329 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		AEA980B11E86B30400683329 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AEB142201E3F3545009A8F96 /* AUIBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBar.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */,
 				AE2F874B1E12B550004A5E19 /* ColorExtension.swift */,
 				9CAC02DD1E08A7AC00E9D916 /* Media.xcassets */,
+				AE77AA491F09301000B4E0DB /* NSImageNames.swift */,
 			);
 			path = AppUIKit;
 			sourceTree = "<group>";
@@ -591,7 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		429CC5BD09EE1881F63D4557 /* [CP] Check Pods Manifest.lock */ = {
@@ -606,7 +609,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4DBC41C60B505292436B89B5 /* [CP] Copy Pods Resources */ = {
@@ -636,7 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		833B0CA487505643BB7CE49B /* [CP] Copy Pods Resources */ = {
@@ -707,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBD96531DF4E87B00CAC2A6 /* AUINavigationItem.swift in Sources */,
+				AE77AA4A1F09301000B4E0DB /* NSImageNames.swift in Sources */,
 				AE3D90CF1E2FBB7200A969E6 /* AUIControl.swift in Sources */,
 				9CBD96471DF4E72900CAC2A6 /* AUILabel.swift in Sources */,
 				9C9554B11DECFD8600156EA8 /* AUIWindow.swift in Sources */,
@@ -854,6 +858,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -898,6 +903,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -922,7 +928,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -945,7 +951,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.AppUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -960,7 +966,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.AppUIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -974,7 +980,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.AppUIKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -989,7 +995,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.Irish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1005,7 +1011,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.Irish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -1020,7 +1026,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.IrishTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Irish.app/Contents/MacOS/Irish";
 			};
 			name = Debug;
@@ -1035,7 +1041,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.IrishTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Irish.app/Contents/MacOS/Irish";
 			};
 			name = Release;
@@ -1049,7 +1055,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.IrishUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Irish;
 			};
 			name = Debug;
@@ -1063,7 +1069,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appcid.IrishUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Irish;
 			};
 			name = Release;

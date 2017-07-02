@@ -2,11 +2,15 @@ PODS:
   - IUExtensions (0.1.1)
 
 DEPENDENCIES:
-  - IUExtensions
+  - IUExtensions (from `../IUExtensions`)
+
+EXTERNAL SOURCES:
+  IUExtensions:
+    :path: "../IUExtensions"
 
 SPEC CHECKSUMS:
-  IUExtensions: 6c6b64797b0a244fc755ce924762ca44ee856cda
+  IUExtensions: 03c20eb32f3a0cad58cebc7c39e715b37205ccf2
 
-PODFILE CHECKSUM: a4f9d093dfefb874976203c1bbb5ebe4b9ae81e2
+PODFILE CHECKSUM: 2dd7b1a42732e00a1bf7c8b65d9d9996d0361c58
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

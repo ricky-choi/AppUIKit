@@ -43,7 +43,7 @@ open class AUIBar: AUIView {
             backgroundColor = NSColor.white.withAlphaComponent(0.75)
             
             let visualEffectView = NSVisualEffectView()
-            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+            visualEffectView.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
             visualEffectView.blendingMode = .withinWindow
             addSubview(visualEffectView, positioned: .below, relativeTo: contentView)
             visualEffectView.fillToSuperview()
@@ -52,7 +52,7 @@ open class AUIBar: AUIView {
             backgroundColor = NSColor.clear
             
             let visualEffectView = NSVisualEffectView()
-            visualEffectView.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+            visualEffectView.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
             visualEffectView.blendingMode = .withinWindow
             visualEffectView.material = .ultraDark
             addSubview(visualEffectView, positioned: .below, relativeTo: contentView)

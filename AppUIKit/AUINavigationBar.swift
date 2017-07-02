@@ -42,14 +42,14 @@ open class AUINavigationBar: AUIBar {
         switch backgroundEffectColor {
         case .color(let color):
             if color.isBright() {
-                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
+                titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.black]
             } else {
-                titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+                titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
             }
         case .vibrantLight:
-            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.black]
+            titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.black]
         case .vibrantDark:
-            titleTextAttributes = [NSForegroundColorAttributeName: NSColor.white]
+            titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
         }
     }
     
@@ -116,7 +116,11 @@ open class AUINavigationBar: AUIBar {
     public func setItems(_ items: [AUINavigationItem]?, animated: Bool) {
         _items = items
         
-        _invalidateItem(animation: animated ? .viewControllerTransitionOptions(.crossfade) : .none)
+        if animated {
+            _invalidateItem(animation: .viewControllerTransitionOptions(.crossfade))
+        } else {
+            _invalidateItem(animation: .none)
+        }
     }
     
     fileprivate var _items: [AUINavigationItem]?
@@ -143,7 +147,7 @@ open class AUINavigationBar: AUIBar {
     public var backIndicatorImage: NSImage?
     public var isTranslucent: Bool = true
     
-    public var titleTextAttributes: [String : Any]? {
+    public var titleTextAttributes: [NSAttributedStringKey : Any]? {
         didSet {
             guard let item = topItem else {
                 return
@@ -202,7 +206,7 @@ extension AUINavigationBar {
         // draw back item
         if let backItem = backItem, !backItem.hidesBackButton, (!needDrawLeftItems || (needDrawLeftItems && item.leftItemsSupplementBackButton)) {
             // draw back button
-            let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: "UINavigationBarBackIndicatorDefault")
+            let image = backIndicatorImage ?? Bundle(for: AUINavigationBar.self).image(forResource: .navigationBarBack)
             let backBarButtonItem = AUIBarButtonItem(title: backItem.title ?? nil, image: image!, target: self, action: #selector(back))
             
             let button = makeButton(forBarButtonItem: backBarButtonItem)!
@@ -285,8 +289,11 @@ extension AUINavigationBar {
         return button
     }
     
-    func back() {
+    @objc func back() {
         delegate?.navigationBarInvokeBackButton(self)
     }
 }
 
+extension NSImage.Name {
+    static let backIndicator = NSImage.Name("UINavigationBarBackIndicatorDefault")
+}

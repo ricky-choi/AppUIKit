@@ -45,38 +45,42 @@ public enum AUITabBarSystemItem : Int, CustomStringConvertible {
     
     var image: NSImage! {
         switch self {
-        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMoreTemplate")
-        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
-        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
-        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplate")
-        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
-        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarContactsTemplate")
-        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
-        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarBookmarksTemplate")
-        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarSearchTemplate")
-        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarDownloadsTemplate")
-        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplate")
-        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMostViewedTemplate")
+        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarMore)
+        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavorites)
+        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavorites)
+        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavorites)
+        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistory)
+        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarContacts)
+        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistory)
+        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarBookmarks)
+        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarSearch)
+        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarDownloads)
+        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistory)
+        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarMostViewed)
         }
     }
     
     var selectedImage: NSImage! {
         switch self {
-        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMoreTemplateSelected")
-        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
-        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
-        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarFavoritesTemplateSelected")
-        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
-        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarContactsTemplateSelected")
-        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
-        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarBookmarksTemplateSelected")
-        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarSearchTemplateSelected")
-        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarDownloadsTemplateSelected")
-        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarHistoryTemplateSelected")
-        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: "UITabBarMostViewedTemplateSelected")
+        case .more: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarMoreSelected)
+        case .favorites: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavoritesSelected)
+        case .featured: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavoritesSelected)
+        case .topRated: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarFavoritesSelected)
+        case .recents: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistorySelected)
+        case .contacts: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarContactsSelected)
+        case .history: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistorySelected)
+        case .bookmarks: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarBookmarksSelected)
+        case .search: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarSearchSelected)
+        case .downloads: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarDownloadsSelected)
+        case .mostRecent: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarHistorySelected)
+        case .mostViewed: return Bundle(for: AUITabBarItem.self).image(forResource: .tabBarMostViewedSelected)
         }
     }
     
+}
+
+extension NSImage.Name {
+
 }
 
 open class AUITabBarItem: AUIBarItem {

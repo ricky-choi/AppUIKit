@@ -79,21 +79,21 @@ public enum AUIBarButtonSystemItem: Int, CustomStringConvertible {
         switch self {
         case .done, .cancel, .edit, .save, .undo, .redo, .flexibleSpace, .fixedSpace, .pageCurl:
             return nil
-        case .add: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarNew")
-        case .compose: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarCompose")
-        case .reply: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarReply")
-        case .action: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarAction")
-        case .organize: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarOrganize")
-        case .bookmarks: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarBookmarks")
-        case .search: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarSearch")
-        case .refresh: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarRefresh")
-        case .stop: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarStop")
-        case .camera: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarCamera")
-        case .trash: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarTrash")
-        case .play: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarPlay")
-        case .pause: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarPause")
-        case .rewind: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarRewind")
-        case .fastForward: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarFastForward")
+        case .add: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonNew)
+        case .compose: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonCompose)
+        case .reply: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonReply)
+        case .action: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonAction)
+        case .organize: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonOrganize)
+        case .bookmarks: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonBookmarks)
+        case .search: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonSearch)
+        case .refresh: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonRefresh)
+        case .stop: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonStop)
+        case .camera: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonCamera)
+        case .trash: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonTrash)
+        case .play: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonPlay)
+        case .pause: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonPause)
+        case .rewind: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonRewind)
+        case .fastForward: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonFastForward)
         }
     }
     
@@ -101,21 +101,21 @@ public enum AUIBarButtonSystemItem: Int, CustomStringConvertible {
         switch self {
         case .done, .cancel, .edit, .save, .undo, .redo, .flexibleSpace, .fixedSpace, .pageCurl:
             return nil
-        case .add: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarNewLandscape")
-        case .compose: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarComposeLandscape")
-        case .reply: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarReplyLandscape")
-        case .action: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarActionSmall")
-        case .organize: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarOrganizeLandscape")
-        case .bookmarks: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarBookmarksLandscape")
-        case .search: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarSearchLandscape")
-        case .refresh: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarRefreshLandscape")
-        case .stop: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarStopLandscape")
-        case .camera: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarCameraSmall")
-        case .trash: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarTrashLandscape")
-        case .play: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarPlayLandscape")
-        case .pause: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarPauseLandscape")
-        case .rewind: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarRewindLandscape")
-        case .fastForward: return Bundle(for: AUIBarButtonItem.self).image(forResource: "UIButtonBarFastForwardLandscape")
+        case .add: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonNewLandscape)
+        case .compose: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonComposeLandscape)
+        case .reply: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonReplyLandscape)
+        case .action: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonActionSmall)
+        case .organize: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonOrganizeLandscape)
+        case .bookmarks: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonBookmarksLandscape)
+        case .search: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonSearchLandscape)
+        case .refresh: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonRefreshLandscape)
+        case .stop: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonStopLandscape)
+        case .camera: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonCameraSmall)
+        case .trash: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonTrashLandscape)
+        case .play: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonPlayLandscape)
+        case .pause: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonPauseLandscape)
+        case .rewind: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonRewindLandscape)
+        case .fastForward: return Bundle(for: AUIBarButtonItem.self).image(forResource: .barButtonFastForwardLandscape)
         }
     }
     
@@ -194,3 +194,4 @@ open class AUIBarButtonItem: AUIBarItem {
     
     weak var button: AUIButton?
 }
+

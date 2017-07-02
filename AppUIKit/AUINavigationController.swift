@@ -19,7 +19,7 @@ open class AUINavigationController: AUIViewController {
     enum PushAnimation {
         case push
         case pop
-        case viewControllerTransitionOptions(NSViewControllerTransitionOptions)
+        case viewControllerTransitionOptions(NSViewController.TransitionOptions)
         case none
         
         var isAnimated: Bool {

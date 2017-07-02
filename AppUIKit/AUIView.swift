@@ -55,7 +55,7 @@ open class AUIView: NSView {
     override open func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        if let context = NSGraphicsContext.current()?.cgContext {
+        if let context = NSGraphicsContext.current?.cgContext {
             context.setFillColor(backgroundColor.cgColor)
             context.fill(dirtyRect)
         }

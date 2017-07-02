@@ -9,13 +9,13 @@
 import Cocoa
 
 open class AUIWindow: NSWindow {
-    static let defaultStyleMask: NSWindowStyleMask = [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView]
+    static let defaultStyleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView]
     
-    public convenience init(contentRect: NSRect, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    public convenience init(contentRect: NSRect, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
         self.init(contentRect: contentRect, styleMask: AUIWindow.defaultStyleMask, backing: bufferingType, defer: flag)
     }
     
-    override init(contentRect: NSRect, styleMask style: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
         
         setup()

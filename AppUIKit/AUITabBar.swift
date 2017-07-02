@@ -192,7 +192,7 @@ open class AUITabBar: AUIBar {
 }
 
 extension AUITabBar {
-    func selectItem(sender: AUITabBarSegmentedControl) {
+    @objc func selectItem(sender: AUITabBarSegmentedControl) {
         selectedIndex = sender.selectedSegment
         internalDelegate?.tabBar(self, didChangeIndex: selectedIndex)
     }

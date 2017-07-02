@@ -12,8 +12,8 @@ open class AUIBarItem: NSObject {
     public var isEnabled: Bool = false
     public var image: NSImage?
     public var landscapeImagePhone: NSImage?
-    public var imageInsets: EdgeInsets = NSEdgeInsetsZero
-    public var landscapeImagePhoneInsets: EdgeInsets = NSEdgeInsetsZero
+    public var imageInsets: NSEdgeInsets = NSEdgeInsetsZero
+    public var landscapeImagePhoneInsets: NSEdgeInsets = NSEdgeInsetsZero
     public var title: String?
     public var tag: Int = 0
 }

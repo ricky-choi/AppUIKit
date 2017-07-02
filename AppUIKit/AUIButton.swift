@@ -43,11 +43,11 @@ open class AUIButton: NSButton {
         }
         
         if let tintColor = tintColor {
-            attributedTitle = attributedTitle.addingAttribute(NSForegroundColorAttributeName, value: tintColor, range: NSMakeRange(0, attributedTitle.length))
+            attributedTitle = attributedTitle.addingAttribute(NSAttributedStringKey.foregroundColor, value: tintColor, range: NSMakeRange(0, attributedTitle.length))
         }
         
         if let alternateTintColor = alternateTintColor {
-            attributedAlternateTitle = attributedAlternateTitle.addingAttribute(NSForegroundColorAttributeName, value: alternateTintColor, range: NSMakeRange(0, attributedAlternateTitle.length))
+            attributedAlternateTitle = attributedAlternateTitle.addingAttribute(NSAttributedStringKey.foregroundColor, value: alternateTintColor, range: NSMakeRange(0, attributedAlternateTitle.length))
         }
     }
     

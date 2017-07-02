@@ -62,7 +62,7 @@ open class AUINavigationItem: NSObject {
     }
     lazy private var titleLabel: AUILabel = {
         let label = AUILabel()
-        label.font = NSFont.systemFont(ofSize: 16, weight: NSFontWeightSemibold)
+        label.font = NSFont.systemFont(ofSize: 16, weight: NSFont.Weight.semibold)
         return label
     }()
     

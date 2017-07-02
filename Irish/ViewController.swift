@@ -26,7 +26,7 @@ class ViewController: NSViewController {
     var windowControllers = [AUIWindowController]()
     var navigationWindowController: AUINavigationWindowController!
 
-    func printLog(sender: NSButton) {
+    @objc func printLog(sender: NSButton) {
         Swift.print("button pressed", sender.title )
     }
     
@@ -122,7 +122,7 @@ class ViewController: NSViewController {
         navigationWindowController.showAndCenter()
     }
     
-    func togglePush() {
+    @objc func togglePush() {
         let animated = true
         if navigationWindowController.navigationController.viewControllers.count > 1 {
             navigationWindowController.navigationController.popViewController(animated: animated)

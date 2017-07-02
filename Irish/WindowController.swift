@@ -26,8 +26,8 @@ class WindowController: AUIWindowController {
         if let device = device(for: menuItem.tag) {
             setSize(device.size, animated: true)
             
-            selectedSizeMenuItem?.state = NSOffState
-            menuItem.state = NSOnState
+            selectedSizeMenuItem?.state = NSControl.StateValue.offState
+            menuItem.state = NSControl.StateValue.onState
             selectedSizeMenuItem = menuItem
         }
     }

@@ -22,7 +22,7 @@ class MasterViewController: AUIViewController {
         button.centerToSuperview()
     }
 
-    func push() {
+    @objc func push() {
         let viewController = DetailViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
