@@ -8,15 +8,9 @@ target 'AppUIKit' do
   # Pods for AppUIKit
   pod 'IUExtensions', :path => '../IUExtensions'
 
-end
-
-target 'AppUIKitTests' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for AppUIKit
-  pod 'IUExtensions', :path => '../IUExtensions'
-
+  target 'AppUIKitTests' do
+    inherit! :search_paths
+  end
 end
 
 target 'Irish' do
