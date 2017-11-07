@@ -149,6 +149,7 @@
 		AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIKit.swift; sourceTree = "<group>"; };
 		AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGeometry.swift; sourceTree = "<group>"; };
 		AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
+		AE44F8DB1FB26FE700D45358 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AE77AA491F09301000B4E0DB /* NSImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageNames.swift; sourceTree = "<group>"; };
 		AEA980AF1E86B2F000683329 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		AEA980B11E86B30400683329 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		9C74C88E1DECF21F009643B2 = {
 			isa = PBXGroup;
 			children = (
+				AE44F8DB1FB26FE700D45358 /* README.md */,
 				9C74C89A1DECF21F009643B2 /* AppUIKit */,
 				9C74C8A51DECF21F009643B2 /* AppUIKitTests */,
 				9C9554B71DECFDC100156EA8 /* Irish */,
