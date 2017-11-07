@@ -54,9 +54,9 @@ open class AUISegmentedControl: NSControl {
         didSet {
             for button in buttons {
                 if selectedSegment == button.tag {
-                    button.state = NSControl.StateValue.onState
+                    button.state = .on
                 } else {
-                    button.state = NSControl.StateValue.offState
+                    button.state = .off
                 }
             }
             invalidateSelectIndicator()
@@ -104,9 +104,9 @@ open class AUISegmentedControl: NSControl {
             
             button.tag = index
             if selectedSegment == button.tag {
-                button.state = NSControl.StateValue.onState
+                button.state = .on
             } else {
-                button.state = NSControl.StateValue.offState
+                button.state = .off
             }
             
             if item.hasTitle {
