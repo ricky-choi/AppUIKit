@@ -9,11 +9,19 @@
 import Cocoa
 
 open class AUIViewController: NSViewController {
-    
-    weak var _tabBarController: AUITabBarController?
     var _tabBarItem: AUITabBarItem?
     
-    weak public var navigationController: AUINavigationController?
+    public var navigationController: AUINavigationController? {
+        var target: NSViewController = self
+        while let parent = target.parent {
+            if let navigationController = parent as? AUINavigationController {
+                return navigationController
+            }
+            target = parent
+        }
+        
+        return nil
+    }
     lazy public private(set) var navigationItem: AUINavigationItem = {
         return AUINavigationItem(title: self.title ?? "")
     }()
