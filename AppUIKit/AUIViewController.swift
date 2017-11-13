@@ -12,16 +12,9 @@ open class AUIViewController: NSViewController {
     var _tabBarItem: AUITabBarItem?
     
     public var navigationController: AUINavigationController? {
-        var target: NSViewController = self
-        while let parent = target.parent {
-            if let navigationController = parent as? AUINavigationController {
-                return navigationController
-            }
-            target = parent
-        }
-        
-        return nil
+        return nearestAncestor() as? AUINavigationController
     }
+    
     lazy public private(set) var navigationItem: AUINavigationItem = {
         return AUINavigationItem(title: self.title ?? "")
     }()
@@ -53,4 +46,18 @@ open class AUIViewController: NSViewController {
         // Do view setup here.
     }
     
+}
+
+extension NSViewController {
+    func nearestAncestor<T: NSViewController>() -> T? {
+        var target: NSViewController = self
+        while let parent = target.parent {
+            if let parent = parent as? T {
+                return parent
+            }
+            target = parent
+        }
+        
+        return nil
+    }
 }

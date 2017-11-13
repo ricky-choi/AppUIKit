@@ -134,15 +134,7 @@ extension AUIViewController {
     }// Automatically created lazily with the view controller's title if it's not set explicitly.
     
     open var tabBarController: AUITabBarController? {
-        var target: NSViewController = self
-        while let parent = target.parent {
-            if let tabBarController = parent as? AUITabBarController {
-                return tabBarController
-            }
-            target = parent
-        }
-        
-        return nil
+        return nearestAncestor() as? AUITabBarController
     } // If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.
 }
 
