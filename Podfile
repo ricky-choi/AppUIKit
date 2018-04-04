@@ -6,7 +6,7 @@ target 'AppUIKit' do
   use_frameworks!
 
   # Pods for AppUIKit
-  pod 'IUExtensions', :path => '../IUExtensions'
+  pod 'IUExtensions'
 
   target 'AppUIKitTests' do
     inherit! :search_paths
@@ -18,6 +18,6 @@ target 'Irish' do
   use_frameworks!
 
   # Pods for Irish
-  pod 'IUExtensions', :path => '../IUExtensions'
+  pod 'IUExtensions'
 
 end
