@@ -1,12 +1,16 @@
 PODS:
-  - IUExtensions (0.2.0)
+  - IUExtensions (0.2.1)
 
 DEPENDENCIES:
   - IUExtensions
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - IUExtensions
+
 SPEC CHECKSUMS:
-  IUExtensions: 0c0f3b8714ca3c9948e870b579da77fa1cfc39a6
+  IUExtensions: d699e4d5617ec9a153bc64f181ae416fcc26db6a
 
 PODFILE CHECKSUM: b37087f3e138f5d7db745f865bc8d915ecbe731d
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
