@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import IUExtensions
 
 open class AUIView: NSView {
     /*

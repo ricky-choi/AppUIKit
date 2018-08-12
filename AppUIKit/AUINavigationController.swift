@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import IUExtensions
 
 @objc public protocol AUINavigationControllerDelegate: class {
     @objc optional func navigationController(_ navigationController: AUINavigationController, willShow viewController: AUIViewController, animated: Bool)

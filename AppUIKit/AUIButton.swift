@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import IUExtensions
 
 open class AUIButton: NSButton {
     var originalImage: NSImage?
@@ -43,11 +42,15 @@ open class AUIButton: NSButton {
         }
         
         if let tintColor = tintColor {
-            attributedTitle = attributedTitle.addingAttribute(NSAttributedStringKey.foregroundColor, value: tintColor, range: NSMakeRange(0, attributedTitle.length))
+            let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
+            mutableAttributedTitle.addAttribute(.foregroundColor, value: tintColor, range: NSMakeRange(0, attributedTitle.length))
+            attributedTitle = mutableAttributedTitle.copy() as! NSAttributedString
         }
         
         if let alternateTintColor = alternateTintColor {
-            attributedAlternateTitle = attributedAlternateTitle.addingAttribute(NSAttributedStringKey.foregroundColor, value: alternateTintColor, range: NSMakeRange(0, attributedAlternateTitle.length))
+            let mutableAttributedAlternateTitle = NSMutableAttributedString(attributedString: attributedAlternateTitle)
+            mutableAttributedAlternateTitle.addAttribute(.foregroundColor, value: alternateTintColor, range: NSMakeRange(0, attributedAlternateTitle.length))
+            attributedAlternateTitle = mutableAttributedAlternateTitle.copy() as! NSAttributedString
         }
     }
     
