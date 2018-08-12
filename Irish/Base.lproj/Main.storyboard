@@ -764,13 +764,17 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="6Fk-bX-hjW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="2cZ-xG-3F5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oEJ-YM-J0H" secondAttribute="trailing" constant="20" id="9gg-MA-2Dd"/>
                             <constraint firstItem="pIC-s8-4hH" firstAttribute="top" secondItem="scH-UA-iPV" secondAttribute="bottom" constant="12" id="ADH-uc-ANQ"/>
                             <constraint firstItem="oEJ-YM-J0H" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Jm1-G3-srX"/>
                             <constraint firstItem="6Fk-bX-hjW" firstAttribute="top" secondItem="oEJ-YM-J0H" secondAttribute="bottom" constant="12" id="L8d-Om-mlg"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Fk-bX-hjW" secondAttribute="trailing" constant="20" id="UzU-so-a51"/>
                             <constraint firstItem="scH-UA-iPV" firstAttribute="top" secondItem="6Fk-bX-hjW" secondAttribute="bottom" constant="12" id="Wxv-eo-hgl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pIC-s8-4hH" secondAttribute="trailing" constant="20" id="Y3S-R2-aqn"/>
                             <constraint firstItem="scH-UA-iPV" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="dR6-iD-mQR"/>
                             <constraint firstItem="oEJ-YM-J0H" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="eEh-pC-sj3"/>
                             <constraint firstItem="pIC-s8-4hH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="tA1-RC-oV3"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="scH-UA-iPV" secondAttribute="trailing" constant="20" id="w6I-A2-9EX"/>
                         </constraints>
                     </view>
                 </viewController>
