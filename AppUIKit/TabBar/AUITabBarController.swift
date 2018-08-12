@@ -41,30 +41,16 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
     // If the number of view controllers is greater than the number displayable by a tab bar, a "More" navigation controller will automatically be shown.
     // The "More" navigation controller will not be returned by -viewControllers, but it may be returned by -selectedViewController.
     open func setViewControllers(_ viewControllers: [AUIViewController]?, animated: Bool) {
-        // remove olds
-        if let oldViewControllers = _viewControllers {
-            for oldViewController in oldViewControllers {
-                oldViewController.tabBarController = nil
-            }
-        }
-        
-        // set news
         _viewControllers = viewControllers
         
         if let newViewControllers = _viewControllers, newViewControllers.count > 0 {
-            for newViewController in newViewControllers {
-                newViewController.tabBarController = self
-            }
-            
             tabBar.items = newViewControllers.map { $0.tabBarItem }
             selectedViewController = newViewControllers.first!
             selectedIndex = 0
-            
         } else {
             tabBar.items = nil
             selectedViewController = nil
             selectedIndex = NSNotFound
-            
         }
     }
 
@@ -146,13 +132,9 @@ extension AUIViewController {
             _tabBarItem = newValue
         }
     }// Automatically created lazily with the view controller's title if it's not set explicitly.
+    
     open var tabBarController: AUITabBarController? {
-        get {
-            return _tabBarController
-        }
-        set {
-            _tabBarController = newValue
-        }
+        return nearestAncestor() as? AUITabBarController
     } // If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -220,19 +220,17 @@
 		9C74C89A1DECF21F009643B2 /* AppUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				AECEC60E21206B450053A176 /* Extensions */,
 				9C74C89B1DECF21F009643B2 /* AppUIKit.h */,
 				9C74C89C1DECF21F009643B2 /* Info.plist */,
 				AE3D90CA1E2FB19500A969E6 /* AUIKit.swift */,
-				AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */,
-				AE3D90BF1E2F9B3800A969E6 /* Window */,
-				AE3D90C11E2F9B6D00A969E6 /* View */,
-				AE3D90C01E2F9B4900A969E6 /* Navigation */,
-				AE3D90C31E2F9BA300A969E6 /* TabBar */,
-				AE3D90C21E2F9B8300A969E6 /* Control */,
-				9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */,
+				AE3CB1D41FBA5E290087F1EF /* Window */,
+				AE3CB1D51FBA5E570087F1EF /* View */,
+				AE3CB1D81FBA5E8F0087F1EF /* TabBar */,
+				AE3CB1D61FBA5E730087F1EF /* Navigation */,
+				AE3CB1D91FBA5E9C0087F1EF /* Control */,
+				AECEC60E21206B450053A176 /* Extensions */,
+				AE3CB1DA1FBA5EB10087F1EF /* etc */,
 				9CAC02DD1E08A7AC00E9D916 /* Media.xcassets */,
-				AE77AA491F09301000B4E0DB /* NSImageNames.swift */,
 			);
 			path = AppUIKit;
 			sourceTree = "<group>";
@@ -279,28 +277,16 @@
 			path = IrishUITests;
 			sourceTree = "<group>";
 		};
-		AE3D90BF1E2F9B3800A969E6 /* Window */ = {
+		AE3CB1D41FBA5E290087F1EF /* Window */ = {
 			isa = PBXGroup;
 			children = (
 				9C9554B01DECFD8600156EA8 /* AUIWindow.swift */,
 				9CF0F74A1DF15A2900063DAC /* AUIWindowController.swift */,
 			);
-			name = Window;
+			path = Window;
 			sourceTree = "<group>";
 		};
-		AE3D90C01E2F9B4900A969E6 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */,
-				9CBD964C1DF4E82B00CAC2A6 /* AUINavigationController.swift */,
-				9CBD96501DF4E86700CAC2A6 /* AUINavigationBar.swift */,
-				AEB142201E3F3545009A8F96 /* AUIBar.swift */,
-				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
-			);
-			name = Navigation;
-			sourceTree = "<group>";
-		};
-		AE3D90C11E2F9B6D00A969E6 /* View */ = {
+		AE3CB1D51FBA5E570087F1EF /* View */ = {
 			isa = PBXGroup;
 			children = (
 				9CBD96481DF4E7F100CAC2A6 /* AUIViewController.swift */,
@@ -310,20 +296,22 @@
 				9CBD96561DF4E8A800CAC2A6 /* AUIBarButtonItem.swift */,
 				9C96FCB11DF62EDA0057050E /* AUIToolbar.swift */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
-		AE3D90C21E2F9B8300A969E6 /* Control */ = {
+		AE3CB1D61FBA5E730087F1EF /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */,
-				AE2F87491E12B257004A5E19 /* AUIButton.swift */,
-				AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */,
+				9CCE99FC1E000F5D00E1B086 /* AUINavigationWindowController.swift */,
+				9CBD964C1DF4E82B00CAC2A6 /* AUINavigationController.swift */,
+				9CBD96501DF4E86700CAC2A6 /* AUINavigationBar.swift */,
+				AEB142201E3F3545009A8F96 /* AUIBar.swift */,
+				9CBD96521DF4E87B00CAC2A6 /* AUINavigationItem.swift */,
 			);
-			name = Control;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
-		AE3D90C31E2F9BA300A969E6 /* TabBar */ = {
+		AE3CB1D81FBA5E8F0087F1EF /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				AE3D90C41E2F9BE900A969E6 /* AUITabBarController.swift */,
@@ -332,7 +320,27 @@
 				9CBF83B81E7E3D6500502A99 /* AUISegmentedControl.swift */,
 				9CBF83BA1E7E3FE600502A99 /* AUITabBarSegmentedControl.swift */,
 			);
-			name = TabBar;
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AE3CB1D91FBA5E9C0087F1EF /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				9CBD96461DF4E72900CAC2A6 /* AUILabel.swift */,
+				AE2F87491E12B257004A5E19 /* AUIButton.swift */,
+				AE3D90CE1E2FBB7200A969E6 /* AUIControl.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		AE3CB1DA1FBA5EB10087F1EF /* etc */ = {
+			isa = PBXGroup;
+			children = (
+				AE3D90CC1E2FBA1800A969E6 /* AUIGeometry.swift */,
+				9C1D5E9B1DEF9264004BF825 /* DeviceInfo.swift */,
+				AE77AA491F09301000B4E0DB /* NSImageNames.swift */,
+			);
+			path = etc;
 			sourceTree = "<group>";
 		};
 		AECEC60E21206B450053A176 /* Extensions */ = {
@@ -487,7 +495,7 @@
 				};
 			};
 			buildConfigurationList = 9C74C8921DECF21F009643B2 /* Build configuration list for PBXProject "AppUIKit" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (

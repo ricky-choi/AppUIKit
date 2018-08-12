@@ -240,7 +240,6 @@ open class AUINavigationController: AUIViewController {
 extension AUINavigationController {
     fileprivate func setupInitialViewController(_ viewController: AUIViewController) {
         navigationBar.setItems([viewController.navigationItem], animated: false)
-        viewController.navigationController = self
         
         addChildViewController(viewController)
         _contentContainerView.addSubview(viewController.view)
@@ -248,9 +247,6 @@ extension AUINavigationController {
     }
     
     fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animation: PushAnimation) {
-        fromViewController.navigationController = self
-        toViewController.navigationController = self
-        
         delegate?.navigationController?(self, willShow: toViewController, animated: animation.isAnimated)
 
         addChildViewController(toViewController)
