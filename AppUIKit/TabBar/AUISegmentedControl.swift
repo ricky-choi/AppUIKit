@@ -92,7 +92,7 @@ open class AUISegmentedControl: NSControl {
         return button
     }
     
-    init(items: [Item], selectIndicatorType: SelectIndicatorType, normalAttributes: [NSAttributedStringKey: Any]? = nil, selectedAttributes: [NSAttributedStringKey: Any]? = nil) {
+    init(items: [Item], selectIndicatorType: SelectIndicatorType, normalAttributes: [NSAttributedString.Key: Any]? = nil, selectedAttributes: [NSAttributedString.Key: Any]? = nil) {
         assert(items.count > 0)
         
         self.selectIndicatorType = selectIndicatorType

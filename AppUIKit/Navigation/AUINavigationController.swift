@@ -63,7 +63,7 @@ open class AUINavigationController: AUIViewController {
         self._viewControllers = viewControllers
         
         if let currentViewController = visibleViewController {
-            currentViewController.removeFromParentViewController()
+            currentViewController.removeFromParent()
             currentViewController.view.removeFromSuperview()
         }
         
@@ -241,7 +241,7 @@ extension AUINavigationController {
     fileprivate func setupInitialViewController(_ viewController: AUIViewController) {
         navigationBar.setItems([viewController.navigationItem], animated: false)
         
-        addChildViewController(viewController)
+        addChild(viewController)
         _contentContainerView.addSubview(viewController.view)
         _constraintForLastViewController = viewController.view.fillToSuperview()
     }
@@ -249,7 +249,7 @@ extension AUINavigationController {
     fileprivate func _navigate(fromViewController: AUIViewController, toViewController: AUIViewController, animation: PushAnimation) {
         delegate?.navigationController?(self, willShow: toViewController, animated: animation.isAnimated)
 
-        addChildViewController(toViewController)
+        addChild(toViewController)
         
         switch animation {
         case .push:
@@ -265,7 +265,7 @@ extension AUINavigationController {
                 newConstraintX.leadingConstraint.animator().constant = 0
                 newConstraintX.trailingConstraint.animator().constant = 0
             }, completionHandler: {
-                fromViewController.removeFromParentViewController()
+                fromViewController.removeFromParent()
                 fromViewController.view.removeFromSuperview()
                 
                 self._constraintForLastViewController = newConstraintX
@@ -285,7 +285,7 @@ extension AUINavigationController {
                 newConstraintX.leadingConstraint.animator().constant = 0
                 newConstraintX.trailingConstraint.animator().constant = 0
             }, completionHandler: {
-                fromViewController.removeFromParentViewController()
+                fromViewController.removeFromParent()
                 fromViewController.view.removeFromSuperview()
                 
                 self._constraintForLastViewController = newConstraintX
@@ -297,7 +297,7 @@ extension AUINavigationController {
             _constraintForLastViewController = toViewController.view.fillToSuperview()
             
             transition(from: fromViewController, to: toViewController, options: options, completionHandler: {
-                fromViewController.removeFromParentViewController()
+                fromViewController.removeFromParent()
                 fromViewController.view.removeFromSuperview()
                 
                 self.delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)
@@ -306,7 +306,7 @@ extension AUINavigationController {
             _contentContainerView.addSubview(toViewController.view)
             _constraintForLastViewController = toViewController.view.fillToSuperview()
             
-            fromViewController.removeFromParentViewController()
+            fromViewController.removeFromParent()
             fromViewController.view.removeFromSuperview()
             
             delegate?.navigationController?(self, didShow: toViewController, animated: animation.isAnimated)

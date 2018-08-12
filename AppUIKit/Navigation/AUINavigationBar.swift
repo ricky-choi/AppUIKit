@@ -42,14 +42,14 @@ open class AUINavigationBar: AUIBar {
         switch backgroundEffectColor {
         case .color(let color):
             if color.isBright() {
-                titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.black]
+                titleTextAttributes = [NSAttributedString.Key.foregroundColor: NSColor.black]
             } else {
-                titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
+                titleTextAttributes = [NSAttributedString.Key.foregroundColor: NSColor.white]
             }
         case .vibrantLight:
-            titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.black]
+            titleTextAttributes = [NSAttributedString.Key.foregroundColor: NSColor.black]
         case .vibrantDark:
-            titleTextAttributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
+            titleTextAttributes = [NSAttributedString.Key.foregroundColor: NSColor.white]
         }
     }
     
@@ -147,7 +147,7 @@ open class AUINavigationBar: AUIBar {
     public var backIndicatorImage: NSImage?
     public var isTranslucent: Bool = true
     
-    public var titleTextAttributes: [NSAttributedStringKey : Any]? {
+    public var titleTextAttributes: [NSAttributedString.Key : Any]? {
         didSet {
             guard let item = topItem else {
                 return
@@ -295,5 +295,5 @@ extension AUINavigationBar {
 }
 
 extension NSImage.Name {
-    static let backIndicator = NSImage.Name("UINavigationBarBackIndicatorDefault")
+    static let backIndicator = "UINavigationBarBackIndicatorDefault"
 }

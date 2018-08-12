@@ -61,12 +61,12 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
             }
             
             if let oldViewController = oldValue {
-                oldViewController.removeFromParentViewController()
+                oldViewController.removeFromParent()
                 oldViewController.view.removeFromSuperview()
             }
             
             if let selectedViewController = selectedViewController, let vcs = viewControllers, vcs.contains(selectedViewController) {
-                addChildViewController(selectedViewController)
+                addChild(selectedViewController)
                 _contentContainerView.addSubview(selectedViewController.view)
                 selectedViewController.view.fillToSuperview()
                 

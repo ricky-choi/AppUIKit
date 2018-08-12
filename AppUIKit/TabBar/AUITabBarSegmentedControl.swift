@@ -17,8 +17,8 @@ public class AUITabBarSegmentedControl: AUISegmentedControl {
         
         super.init(items: items,
                    selectIndicatorType: .none,
-                   normalAttributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: paragraphStyle],
-                   selectedAttributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.paragraphStyle: paragraphStyle])
+                   normalAttributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: paragraphStyle],
+                   selectedAttributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
     
     required public init?(coder: NSCoder) {
