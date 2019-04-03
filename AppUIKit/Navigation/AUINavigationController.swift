@@ -116,7 +116,7 @@ open class AUINavigationController: AUIViewController {
             return nil
         }
         
-        guard let targetIndex = viewControllers.index(of: viewController) else {
+        guard let targetIndex = viewControllers.firstIndex(of: viewController) else {
             return nil
         }
         

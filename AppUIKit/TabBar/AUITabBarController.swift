@@ -70,7 +70,7 @@ open class AUITabBarController: AUIViewController, AUITabBarDelegate {
                 _contentContainerView.addSubview(selectedViewController.view)
                 selectedViewController.view.fillToSuperview()
                 
-                selectedIndex = vcs.index(of: selectedViewController)!
+                selectedIndex = vcs.firstIndex(of: selectedViewController)!
             }
         }
     }// This may return the "More" navigation controller if it exists.
