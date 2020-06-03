@@ -33,9 +33,9 @@ open class AUISegmentedControl: NSControl {
         
         var hasTitle: Bool {
             switch self {
-            case .title(_), .multi(_):
+            case .title, .multi:
                 return true
-            case .image(_):
+            case .image:
                 return false
             }
         }
